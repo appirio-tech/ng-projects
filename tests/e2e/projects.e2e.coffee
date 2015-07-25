@@ -1,13 +1,13 @@
-submissionsText = null
+projectsText = null
 
 describe 'login', ->
   beforeEach (done) ->
     browser.get 'http://localhost:9999/#/'
 
-    $('submissions').getText().then (value) ->
-      submissionsText = value
+    $('projects').getText().then (value) ->
+      projectsText = value
 
       done()
 
   it 'should have batman in header', ->
-    expect(submissionsText.length).to.be.ok
+    expect(projectsText.length).to.be.ok

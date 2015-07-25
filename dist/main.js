@@ -4,11 +4,11 @@
 
   dependencies = ['ui.router', 'ngResource', 'app.constants'];
 
-  angular.module('appirio-tech-ng-submissions', dependencies);
+  angular.module('appirio-tech-ng-projects', dependencies);
 
 }).call(this);
 
-angular.module("appirio-tech-ng-submissions").run(["$templateCache", function($templateCache) {$templateCache.put("views/submissions.directive.html","<div>hello world</div>");}]);
+angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/projects.directive.html","<div>hello world</div>");}]);
 (function() {
   'use strict';
   var directive;
@@ -16,10 +16,10 @@ angular.module("appirio-tech-ng-submissions").run(["$templateCache", function($t
   directive = function() {
     return {
       restrict: 'E',
-      templateUrl: 'views/submissions.directive.html'
+      templateUrl: 'views/projects.directive.html'
     };
   };
 
-  angular.module('appirio-tech-ng-submissions').directive('submissions', directive);
+  angular.module('appirio-tech-ng-projects').directive('projects', directive);
 
 }).call(this);

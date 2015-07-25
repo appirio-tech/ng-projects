@@ -21,13 +21,13 @@ angular.module("app.constants", [])
   'use strict';
   var dependencies;
 
-  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-submissions'];
+  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-projects'];
 
   angular.module('example', dependencies);
 
 }).call(this);
 
-angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/submissions.html","<submissions></submissions>");}]);
+angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/projects.html","<projects></projects>");}]);
 (function() {
   'use strict';
   var config;
@@ -35,10 +35,10 @@ angular.module("example").run(["$templateCache", function($templateCache) {$temp
   config = function($stateProvider) {
     var key, results, state, states;
     states = {};
-    states['submissions'] = {
+    states['projects'] = {
       url: '/',
-      title: 'submissions',
-      templateUrl: 'views/submissions.html'
+      title: 'projects',
+      templateUrl: 'views/projects.html'
     };
     results = [];
     for (key in states) {

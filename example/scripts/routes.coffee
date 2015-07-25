@@ -3,10 +3,10 @@
 config = ($stateProvider) ->
   states = {}
 
-  states['submissions'] =
+  states['projects'] =
     url         : '/'
-    title       : 'submissions'
-    templateUrl : 'views/submissions.html'
+    title       : 'projects'
+    templateUrl : 'views/projects.html'
 
   for key, state of states
     $stateProvider.state key, state
