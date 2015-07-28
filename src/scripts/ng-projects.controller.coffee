@@ -1,6 +1,6 @@
 'use strict'
 
-ProjectsController = ($scope, WorkAPIService) ->
+NgProjectsController = ($scope, WorkAPIService) ->
   vm          = this
   vm.projects = []
   vm.loaded   = false
@@ -37,6 +37,6 @@ ProjectsController = ($scope, WorkAPIService) ->
 
   activate()
 
-ProjectsController.$inject = ['$scope', 'WorkAPIService']
+NgProjectsController.$inject = ['$scope', 'WorkAPIService']
 
-angular.module('appirio-tech-ng-projects').controller 'ProjectsController', ProjectsController
+angular.module('appirio-tech-ng-projects').controller 'NgProjectsController', NgProjectsController

@@ -1,6 +1,6 @@
 @import "work-includes";
 
-projects {
+ng-projects {
   > ul {
     @include flex-center(flex-start, $spacing-big);
 

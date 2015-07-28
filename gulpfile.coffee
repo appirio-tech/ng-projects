@@ -5,7 +5,7 @@ configs.templateCache = []
 
 configs.templateCache.push
   files : [
-    '.tmp/views/projects.directive.html'
+    '.tmp/views/ng-projects.directive.html'
   ]
   root  : 'views/'
   module: 'appirio-tech-ng-projects'

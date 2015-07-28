@@ -4,7 +4,7 @@ describe 'login', ->
   beforeEach (done) ->
     browser.get 'http://localhost:9999/#/'
 
-    $('projects').getText().then (value) ->
+    $('ng-projects').getInnerHtml().then (value) ->
       projectsText = value
 
       done()

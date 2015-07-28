@@ -27,7 +27,7 @@ angular.module("app.constants", [])
 
 }).call(this);
 
-angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/projects.html","<projects></projects>");}]);
+angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/projects.html","<ng-projects></ng-projects>");}]);
 (function() {
   'use strict';
   var config;

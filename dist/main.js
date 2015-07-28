@@ -8,7 +8,7 @@
 
 }).call(this);
 
-angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/projects.directive.html","<ul><li ng-repeat=\"project in vm.projects track by $index\"><ul class=\"header\"><li><p class=\"name\">{{ project.name || \'n/a\' }}</p></li><li><p>{{ vm.typeMap[project.requestType] || \'n/a\' }}</p></li></ul><div class=\"preview\"></div><ul class=\"statuses\"><li class=\"icon-house\"><div ng-if=\"project.status == \'Submitted\'\" class=\"icon checkmark small\"></div><div ng-if=\"project.status == \'Incomplete\'\" class=\"icon warning small\"></div><avatar ng-if=\"project.status != \'Incomplete\' &amp;&amp; project.status != \'Submitted\'\"></avatar></li><li class=\"message\">{{ vm.statusMap[project.status] || vm.statusMap[\'Incomplete\'] }}</li><li class=\"action\"><a ng-if=\"project.status == \'Incomplete\'\" ui-sref=\"submit-work.flow({ id: project.id })\">Continue</a><span ng-if=\"project.status == \'Submitted\'\"><a ui-sref=\"timeline({ workId: project.id })\">Awaiting estimate</a></span><a ng-if=\"project.status == \'Assigned\'\" ui-sref=\"timeline({ workId: project.id })\">Meet your copilot</a><a ng-if=\"project.status == \'Estimate\'\" ui-sref=\"timeline({ workId: project.id })\">View your quote and begin</a><a ng-if=\"project.status == \'Launched\'\" ui-sref=\"timeline({ workId: project.id })\">View project</a><a ng-if=\"project.status == \'Messaged\'\" ui-sref=\"timeline({ workId: project.id })\">View 1 unread message</a></li></ul></li></ul>");}]);
+angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/ng-projects.directive.html","<ul><li ng-repeat=\"project in vm.projects track by $index\"><ul class=\"header\"><li><p class=\"name\">{{ project.name || \'n/a\' }}</p></li><li><p>{{ vm.typeMap[project.requestType] || \'n/a\' }}</p></li></ul><div class=\"preview\"></div><ul class=\"statuses\"><li class=\"icon-house\"><div ng-if=\"project.status == \'Submitted\'\" class=\"icon checkmark small\"></div><div ng-if=\"project.status == \'Incomplete\'\" class=\"icon warning small\"></div><avatar ng-if=\"project.status != \'Incomplete\' &amp;&amp; project.status != \'Submitted\'\"></avatar></li><li class=\"message\">{{ vm.statusMap[project.status] || vm.statusMap[\'Incomplete\'] }}</li><li class=\"action\"><a ng-if=\"project.status == \'Incomplete\'\" ui-sref=\"submit-work.flow({ id: project.id })\">Continue</a><span ng-if=\"project.status == \'Submitted\'\"><a ui-sref=\"timeline({ workId: project.id })\">Awaiting estimate</a></span><a ng-if=\"project.status == \'Assigned\'\" ui-sref=\"timeline({ workId: project.id })\">Meet your copilot</a><a ng-if=\"project.status == \'Estimate\'\" ui-sref=\"timeline({ workId: project.id })\">View your quote and begin</a><a ng-if=\"project.status == \'Launched\'\" ui-sref=\"timeline({ workId: project.id })\">View project</a><a ng-if=\"project.status == \'Messaged\'\" ui-sref=\"timeline({ workId: project.id })\">View 1 unread message</a></li></ul></li></ul>");}]);
 (function() {
   'use strict';
   var directive;
@@ -16,20 +16,20 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
   directive = function() {
     return {
       restrict: 'E',
-      templateUrl: 'views/projects.directive.html',
-      controller: 'ProjectsController as vm'
+      templateUrl: 'views/ng-projects.directive.html',
+      controller: 'NgProjectsController as vm'
     };
   };
 
-  angular.module('appirio-tech-ng-projects').directive('projects', directive);
+  angular.module('appirio-tech-ng-projects').directive('ngProjects', directive);
 
 }).call(this);
 
 (function() {
   'use strict';
-  var ProjectsController;
+  var NgProjectsController;
 
-  ProjectsController = function($scope, WorkAPIService) {
+  NgProjectsController = function($scope, WorkAPIService) {
     var activate, getProjects, vm;
     vm = this;
     vm.projects = [];
@@ -65,9 +65,9 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
     return activate();
   };
 
-  ProjectsController.$inject = ['$scope', 'WorkAPIService'];
+  NgProjectsController.$inject = ['$scope', 'WorkAPIService'];
 
-  angular.module('appirio-tech-ng-projects').controller('ProjectsController', ProjectsController);
+  angular.module('appirio-tech-ng-projects').controller('NgProjectsController', NgProjectsController);
 
 }).call(this);
 

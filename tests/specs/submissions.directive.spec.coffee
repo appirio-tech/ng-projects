@@ -1,9 +1,9 @@
 'use strict'
 
 element = null
-html    = '<projects></projects>'
+html    = '<ng-projects></ng-projects>'
 
-describe 'ProjectsDirective', ->
+describe 'NgProjectsDirective', ->
   beforeEach inject ($compile, $rootScope) ->
     compiled = $compile html
     element  = compiled $rootScope
