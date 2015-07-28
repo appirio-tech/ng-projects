@@ -19,10 +19,7 @@ ProjectsController = ($scope, WorkAPIService) ->
     'both'  : 'Design/Code'
 
   activate = ->
-    params =
-      workId: $scope.workId
-
-    getProjects params
+    getProjects()
 
     vm
 

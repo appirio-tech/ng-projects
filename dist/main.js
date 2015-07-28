@@ -17,10 +17,7 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
     return {
       restrict: 'E',
       templateUrl: 'views/projects.directive.html',
-      controller: 'ProjectsController as vm',
-      scope: {
-        workId: '@workId'
-      }
+      controller: 'ProjectsController as vm'
     };
   };
 
@@ -51,11 +48,7 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
       'both': 'Design/Code'
     };
     activate = function() {
-      var params;
-      params = {
-        workId: $scope.workId
-      };
-      getProjects(params);
+      getProjects();
       return vm;
     };
     getProjects = function(params) {
