@@ -6,6 +6,7 @@ schemas = [
   'bower_components/appirio-tech-api-schemas/swagger/v3-events.json'
   'bower_components/appirio-tech-api-schemas/swagger/v2.json'
   'bower_components/appirio-tech-api-schemas/swagger/v3-messages.json'
+  'bower_components/appirio-tech-api-schemas/swagger/v3-work.json'
 ]
 
 fixtures = []

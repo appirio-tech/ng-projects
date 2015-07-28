@@ -1,44 +1,39 @@
-//- div(ui-view="")
-
-//- // TODO: flash message shouldnt be handled here
-//- .message(ng-if="vm.showMessage || true")
-//-   img.checkmark-green(src="manage/images/check-solid-green.svg")
-
-//-   p Your project has been launched.  Your co-pilot will contact you within 1 business day.
-
-//- hr
 ul
   li(ng-repeat= "project in vm.projects track by $index")
     ul.header
       li
-        a.name {{ project.name || 'n/a' }}
+        p.name {{ project.name || 'n/a' }}
 
       li
-        p {{ project.requestType }}
+        p {{ vm.typeMap[project.requestType] || 'n/a' }}
 
     .preview
 
     ul.statuses
-      li.checkmark-house
-        .icon.checkmark.small
+      li.icon-house
+        .icon.checkmark.small(ng-if="project.status == 'Submitted'")
 
-      li.message {{ project.message || 'n/a' }}
+        .icon.warning.small(ng-if="project.status == 'Incomplete'")
+
+        avatar(ng-if="project.status != 'Incomplete' && project.status != 'Submitted'")
+
+      li.message {{ vm.statusMap[project.status] || vm.statusMap['Incomplete'] }}
 
       li.action
         a(ng-if="project.status == 'Incomplete'",
-          ui-sref="submit-work.flow({ id: project.id })") Continue setup
+          ui-sref="submit-work.flow({ id: project.id })") Continue
 
         span(ng-if="project.status == 'Submitted'")
-          a(href="/timeline/{{ project.id }}") Awaiting Estimate
+          a(ui-sref="timeline({ workId: project.id })") Awaiting estimate
 
         a(ng-if="project.status == 'Assigned'",
-          href="/timeline/{{ project.id }}") Meet your copilot
+          ui-sref="timeline({ workId: project.id })") Meet your copilot
 
         a(ng-if="project.status == 'Estimate'",
-          href="/timeline/{{ project.id }}") View your quote and begin
+          ui-sref="timeline({ workId: project.id })") View your quote and begin
 
         a(ng-if="project.status == 'Launched'",
-          href="/timeline/{{ project.id }}") View project
+          ui-sref="timeline({ workId: project.id })") View project
 
-        a(ng-if="project.status == 'Messaged' || true",
-          href="/timeline/{{ project.id }}") View 1 unread message
+        a(ng-if="project.status == 'Messaged'",
+          ui-sref="timeline({ workId: project.id })") View 1 unread message

@@ -5,8 +5,8 @@ projects {
     @include flex-center(flex-start, $spacing-big);
 
     > li {
-      width           : 220px;
-      min-width       : 220px;
+      width           : 240px;
+      min-width       : 240px;
       border          : 1px solid $primary-color-darkest;
       background-color: $primary-color-lightest;
 
@@ -19,10 +19,10 @@ projects {
           }
 
           &:last-child {
-            max-width: 50px;
+            max-width: 70px;
           }
 
-          a, p {
+          p {
             @include ellipsis;
           }
 
@@ -58,8 +58,10 @@ projects {
           }
         }
 
-        .checkmark-house {
+        .icon-house {
           padding         : $spacing-smallest;
+          min-width       : 20px + $spacing-smallest * 2;
+          min-height      : 20px + $spacing-smallest * 2;
           max-width       : 20px + $spacing-smallest * 2;
           max-height      : 20px + $spacing-smallest * 2;
           background-color: white;

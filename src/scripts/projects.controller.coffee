@@ -1,16 +1,25 @@
 'use strict'
 
-ProjectsController = ($scope) ->
+
+
+
+ProjectsController = ($scope, WorkAPIService) ->
   vm          = this
-  project     =
-    name: "a very long freaking name"
-    requestType: "mobile a ssd sdkj ksjd"
-    message: "project submitted submitted submitted"
-  project2     =
-    name: "a very long freaking name"
-    requestType: "mobile"
-  vm.projects = [project, project2, 2, 3, 4]
+  vm.projects = []
   vm.loaded   = false
+
+  vm.statusMap =
+    'Incomplete': 'Setup incomplete'
+    'Submitted' : 'Project submitted'
+    'Assigned'  : 'Copilot assigned'
+    'Estimate'  : 'Project approved!'
+    'Launched'  : 'Project launched'
+    'Messaged'  : 'Project launched'
+
+  vm.typeMap =
+    'design': 'Design'
+    'code'  : 'Code'
+    'both'  : 'Design/Code'
 
   activate = ->
     params =
@@ -20,11 +29,20 @@ ProjectsController = ($scope) ->
 
     vm
 
-  getProjects = ->
-    #TO DO: get projects
+  getProjects = (params) ->
+    resource = WorkAPIService.get params
+
+    resource.$promise.then (response) ->
+      vm.projects = response
+
+    resource.$promise.catch (response) ->
+      # TODO: handle error
+
+    resource.$promise.finally ->
+      vm.loaded = true
 
   activate()
 
-ProjectsController.$inject = ['$scope']
+ProjectsController.$inject = ['$scope', 'WorkAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'ProjectsController', ProjectsController
