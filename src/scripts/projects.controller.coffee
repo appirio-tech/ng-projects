@@ -1,8 +1,5 @@
 'use strict'
 
-
-
-
 ProjectsController = ($scope, WorkAPIService) ->
   vm          = this
   vm.projects = []
