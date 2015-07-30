@@ -15,7 +15,7 @@ ul
 
         .icon.warning.small(ng-if="project.status == 'Incomplete'")
 
-        avatar(ng-if="project.status != 'Incomplete' && project.status != 'Submitted'")
+        avatar.icon.small(ng-if="project.status != 'Incomplete' && project.status != 'Submitted'")
 
       li.message {{ vm.statusMap[project.status] || vm.statusMap['Incomplete'] }}
 
