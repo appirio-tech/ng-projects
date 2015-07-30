@@ -66,6 +66,12 @@ ng-projects {
           max-height      : 20px + $spacing-smallest * 2;
           background-color: white;
           border-radius   : 50%;
+
+          avatar {
+            max-width       : 20px;
+            max-height      : 20px;
+            background-color: initial;
+          }
         }
 
         .message {
