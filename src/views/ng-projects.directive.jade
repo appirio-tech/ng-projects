@@ -21,7 +21,7 @@ ul
 
       li.action
         a(ng-if="project.status == 'Incomplete'",
-          ui-sref="submit-work.flow({ id: project.id })") Continue
+          ui-sref="submit-work({ id: project.id })") Continue
 
         span(ng-if="project.status == 'Submitted'")
           a(ui-sref="timeline({ workId: project.id })") Awaiting estimate
