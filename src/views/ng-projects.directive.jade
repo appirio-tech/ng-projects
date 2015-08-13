@@ -21,7 +21,7 @@ ul
 
       li.action
         a(ng-if="project.status == 'Incomplete'",
-          ui-sref="submit-work") Continue
+          ui-sref="submit-work.flow({ id: project.id })") Continue
 
         span(ng-if="project.status == 'Submitted'")
           a(ui-sref="timeline({ workId: project.id })") Awaiting estimate
@@ -37,5 +37,3 @@ ul
 
         a(ng-if="project.status == 'Messaged'",
           ui-sref="timeline({ workId: project.id })") View 1 unread message
-
-a(ui-sref="view-projects.assigned", ng-show="vm.projects.length < 1") Manage your copilot projects
