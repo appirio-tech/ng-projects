@@ -20,7 +20,7 @@ ul
       li.message {{ vm.statusMap[project.status] || vm.statusMap['Incomplete'] }}
 
       li.action
-        a(ng-if="project.status == 'Incomplete'",
+        a(ng-if="project.status == 'Incomplete' || !project.status",
           ui-sref="submit-work({ id: project.id })") Continue
 
         span(ng-if="project.status == 'Submitted'")
