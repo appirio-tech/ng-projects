@@ -2,7 +2,7 @@
   'use strict';
   var dependencies;
 
-  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components'];
+  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components', 'appirio-tech-ng-api-services'];
 
   angular.module('appirio-tech-ng-projects', dependencies);
 
@@ -69,42 +69,5 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
   NgProjectsController.$inject = ['$scope', 'WorkAPIService'];
 
   angular.module('appirio-tech-ng-projects').controller('NgProjectsController', NgProjectsController);
-
-}).call(this);
-
-(function() {
-  'use strict';
-  var srv, transformResponse;
-
-  transformResponse = function(response) {
-    var parsed, ref;
-    parsed = JSON.parse(response);
-    return (parsed != null ? (ref = parsed.result) != null ? ref.content : void 0 : void 0) || [];
-  };
-
-  srv = function($resource, API_URL) {
-    var methods, params, url;
-    url = API_URL + '/work/:workId';
-    params = {
-      workId: '@workId'
-    };
-    methods = {
-      query: {
-        method: 'GET',
-        isArray: true,
-        transformResponse: transformResponse
-      },
-      get: {
-        method: 'GET',
-        isArray: true,
-        transformResponse: transformResponse
-      }
-    };
-    return $resource(url, params, methods);
-  };
-
-  srv.$inject = ['$resource', 'API_URL'];
-
-  angular.module('appirio-tech-ng-projects').factory('WorkAPIService', srv);
 
 }).call(this);
