@@ -2,7 +2,7 @@ ul
   li(ng-repeat= "project in vm.projects track by $index")
     ul.header
       li
-        p.name {{ project.name || '(Unamed Project)' }}
+        p.name {{ project.name || 'Unnamed Project' }}
 
       li
         p {{ vm.typeMap[project.projectType] || '' }}
@@ -11,31 +11,31 @@ ul
 
     ul.statuses
       li.icon-house
-        .icon.checkmark.small(ng-if="project.status == 'SUBMITTED'")
+        .icon.checkmark.small(ng-if="project.status == 'Submitted'")
 
-        .icon.warning.small(ng-if="project.status == 'INCOMPLETE'")
+        .icon.warning.small(ng-if="project.status == 'Incomplete'")
 
-        avatar.icon.small(ng-if="project.status != 'INCOMPLETE' && project.status != 'SUBMITTED'")
+        avatar.icon.small(ng-if="project.status != 'Incomplete' && project.status != 'Submitted'")
 
-      li.message {{ vm.statusMap[project.status] || vm.statusMap['INCOMPLETE'] }}
+      li.message {{ vm.statusMap[project.status] || vm.statusMap['Incomplete'] }}
 
       li.action
-        a(ng-if="project.status == 'INCOMPLETE' || !project.status",
+        a(ng-if="project.status == 'Incomplete' || !project.status",
           ui-sref="submit-work-features({ id: project.id })") Continue
 
-        span(ng-if="project.status == 'SUBMITTED'")
+        span(ng-if="project.status == 'Submitted'")
           a(ui-sref="timeline({ workId: project.id })") Awaiting estimate
 
-        a(ng-if="project.status == 'ASSIGNED'",
+        a(ng-if="project.status == 'Assigned'",
           ui-sref="timeline({ workId: project.id })") Meet your copilot
 
-        a(ng-if="project.status == 'ESTIMATED'",
+        a(ng-if="project.status == 'Estimate'",
           ui-sref="timeline({ workId: project.id })") View your quote and begin
 
-        a(ng-if="project.status == 'LAUNCHED'",
+        a(ng-if="project.status == 'Launched'",
           ui-sref="timeline({ workId: project.id })") View project
 
-        a(ng-if="project.status == 'MESSAGED'",
+        a(ng-if="project.status == 'Messaged'",
           ui-sref="timeline({ workId: project.id })") View 1 unread message
 
 a(ui-sref="view-projects.assigned", ng-show="vm.projects.length < 1") Manage your copilot projects
