@@ -32,7 +32,7 @@ ul
         a(ng-if="project.status == 'Estimate'",
           ui-sref="timeline({ workId: project.id })") View your quote and begin
 
-        a(ng-if="project.status == 'Launched'",
+        a(ng-if="project.status == 'Launched' || project.status == 'Approved' ",
           ui-sref="timeline({ workId: project.id })") View project
 
         a(ng-if="project.status == 'Messaged'",
