@@ -39,7 +39,8 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
       'Incomplete': 'Setup incomplete',
       'Submitted': 'Project submitted',
       'Assigned': 'Copilot assigned',
-      'Estimate': 'Project approved',
+      'Estimate': 'Project estimated',
+      'Approved': 'Project approved',
       'Launched': 'Project launched',
       'Messaged': 'Project launched'
     };
