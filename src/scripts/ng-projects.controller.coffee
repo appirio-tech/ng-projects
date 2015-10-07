@@ -9,7 +9,8 @@ NgProjectsController = ($scope, WorkAPIService) ->
     'Incomplete': 'Setup incomplete'
     'Submitted' : 'Project submitted'
     'Assigned'  : 'Copilot assigned'
-    'Estimate'  : 'Project approved'
+    'Estimate'  : 'Project estimated'
+    'Approved'  : 'Project approved'
     'Launched'  : 'Project launched'
     'Messaged'  : 'Project launched'
 
