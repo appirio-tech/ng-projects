@@ -1,41 +1,57 @@
-ul
+ul.flex.center
   li(ng-repeat= "project in vm.projects track by $index")
-    ul.header
-      li
-        p.name {{ project.name || 'Unnamed Project' }}
+    header
+      a(ui-sref="timeline({ workId: project.id })")
+        h5 {{ project.name || 'Unnamed Project' }}
 
-      li
-        p {{ vm.typeMap[project.projectType] || '' }}
+      p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
-    .preview
+    main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
+      .icon.biggest.warning
 
-    ul.statuses
-      li.icon-house
-        .icon.checkmark.small(ng-if="project.status == 'Submitted'")
+      h6 Project submission incomplete
 
-        .icon.warning.small(ng-if="project.status == 'Incomplete'")
+      button continue setup
 
-        avatar.icon.small(ng-if="project.status != 'Incomplete' && project.status != 'Submitted'")
+    main.submitted.flex.column(ng-if="project.status == 'Submitted'")
+      .flex.column.middle.center.flex-grow
+        .icon.biggest.warning
 
-      li.message {{ vm.statusMap[project.status] || vm.statusMap['Incomplete'] }}
+        h6 Project submitted
 
-      li.action
-        a(ng-if="project.status == 'Incomplete' || !project.status",
-          ui-sref="submit-work({ id: project.id })") Continue
+      footer
+        p You are waiting for project approval
 
-        span(ng-if="project.status == 'Submitted'")
-          a(ui-sref="timeline({ workId: project.id })") Awaiting estimate
+        p This should take about 1 day
 
-        a(ng-if="project.status == 'Assigned'",
-          ui-sref="timeline({ workId: project.id })") Meet your copilot
+    main.approved(ng-if="project.status == 'Assigned'")
+      hr
 
-        a(ng-if="project.status == 'Estimate'",
-          ui-sref="timeline({ workId: project.id })") View your quote and begin
+      h6 Project approved
 
-        a(ng-if="project.status == 'Launched' || project.status == 'Approved' ",
-          ui-sref="timeline({ workId: project.id })") View project
+      avatar.icon.biggest
 
-        a(ng-if="project.status == 'Messaged'",
-          ui-sref="timeline({ workId: project.id })") View 1 unread message
+      p.name Albert Fowler
 
-a(ui-sref="view-projects.assigned", ng-show="vm.projects.length < 1") Manage your copilot projects
+      p.title Co-Pilot
+
+      button.action view quote
+
+    main.launched.flex.column(ng-if="project.status == 'Launched'")
+      .flex.column.middle.center.flex-grow
+        .icon.biggest.warning
+
+        h6 Project launched
+
+      footer
+        p Design work is in progress
+
+        p Get design submissions in several days.
+
+    main.complete.flex.column.middle.center(ng-if="project.status == 'Complete'")
+      .icon.biggest.warning
+
+      h6 Project complete!
+
+      button deploy my app
+

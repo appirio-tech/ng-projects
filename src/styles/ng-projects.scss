@@ -1,82 +1,89 @@
 @import "work-includes";
 
 ng-projects {
+  .incomplete, .complete {
+    background-color: $danger-color;
+
+    button {
+      background-color: transparent;
+      border-color: $white;
+      color: $white;
+    }
+
+    h6 {
+      color: $white;
+    }
+  }
+
+  .complete {
+    background-color: $success-color;
+  }
+
+  .submitted, .launched {
+    background-color: $neutral-color-lightest;
+  }
+
+  .approved {
+    avatar {
+      margin-top: $margin-small;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .title {
+      color: $neutral-color;
+    }
+  }
+
+  h5 {
+    height: $font-size * 2;
+    overflow: auto;
+  }
+
+  h6 {
+    font-size: $font-size-small;
+    font-weight: bold;
+  }
+
+  button {
+    margin-top: $margin;
+  }
+
+  main {
+    height    : 240px;
+    margin-top: $margin-small;
+    text-align: center;
+    overflow: auto;
+
+    avatar {
+      margin: 0 auto;
+    }
+
+    hr {
+      margin: 0;
+    }
+
+    footer {
+      background-color: $white;
+      text-align: center;
+      width: 100%;
+      padding-top: $margin;
+
+      p:last-child {
+        color: $neutral-color;
+      }
+    }
+  }
+
   > ul {
-    @include flex-center(flex-start, $spacing-big);
-
     > li {
-      width           : 240px;
-      min-width       : 240px;
-      border          : 1px solid $primary-color-darkest;
-      background-color: $primary-color-lightest;
-
-      ul.header {
-        @include flex-center(space-between, $spacing-small);
-
-        > li {
-          &:first-child {
-            max-width: 130px;
-          }
-
-          &:last-child {
-            max-width: 70px;
-          }
-
-          p {
-            @include ellipsis;
-          }
-
-          .name {
-            @include font-line($font-size-big);
-          }
-        }
-      }
-
-      .preview {
-        height             : 118px;
-        background-color   : $primary-color-darkest;
-        background-repeat  : no-repeat;
-        background-position: center;
-        background-size    : 50%;
-        background-image   : url("data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTIwMCA4MDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iIzVENUU1RSIgZD0iTTQwMy4zLDMwNy41djM3MS45SDkxNFYzMDcuNUg0MDMuM3ogTTg2My44LDYzNS4ySDQ0Ny42VjM0Ny4zaDQxNi4yVjYzNS4yeiIvPg0KCTxjaXJjbGUgZmlsbD0iIzVENUU1RSIgY3g9IjUzOS4xIiBjeT0iNDM4LjkiIHI9IjM4LjQiLz4NCgk8cG9seWdvbiBmaWxsPSIjNUQ1RTVFIiBwb2ludHM9IjgyNS40LDYxMC44IDc4NC4xLDQ2MC4zIDc0Ni44LDQ3Ny4yIDcxNi4yLDQxNi43IDYyOC42LDU2NC40IDU3Ny41LDUxMy44IDQ4OC45LDYxMC44IAkiLz4NCgk8cG9seWdvbiBmaWxsPSIjNUQ1RTVFIiBwb2ludHM9IjMyMS43LDMyNy4yIDcwOS42LDE3Ni40IDc2MC45LDMwOC4zIDgxNC43LDMwOC4zIDc0MS45LDEyMS4xIDI2NiwzMDYuMSA0MDAuNyw2NTIuNyA0MDUuNCw2NTAuOSANCgkJNDA1LjQsNTQyLjUgCSIvPg0KPC9nPg0KPC9zdmc+");
-      }
-
-      ul.statuses {
-        @include flex-center(center);
-        @include flex-direction(column);
-
-        margin-top    : -16px;
-        padding-bottom: 16px;
-        padding-right : $spacing;
-        padding-left  : $spacing;
-
-        > li {
-          margin-top: $spacing;
-
-          &:first-child {
-            margin-top: 0;
-          }
-        }
-
-        .icon-house {
-          padding         : $spacing-smallest;
-          min-width       : 20px + $spacing-smallest * 2;
-          min-height      : 20px + $spacing-smallest * 2;
-          max-width       : 20px + $spacing-smallest * 2;
-          max-height      : 20px + $spacing-smallest * 2;
-          background-color: white;
-          border-radius   : 50%;
-
-          avatar {
-            background-color: initial;
-          }
-        }
-
-        .message {
-          @include ellipsis();
-          @include font-line($font-size-big);
-        }
-      }
+      width           : 280px;
+      border          : 1px solid $black;
+      margin          : $margin-smallest;
+      background-color: $white;
+      padding         : $padding $padding-small;
     }
   }
 }
