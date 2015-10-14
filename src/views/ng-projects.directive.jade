@@ -55,3 +55,9 @@ ul.flex.center
 
       button deploy my app
 
+.no-projects(ng-if="vm.projects.length == 0")
+  p You have not started any projects.
+
+  a.button.action.wider(ui-sref="submit-work") start a new project
+
+

@@ -1,6 +1,18 @@
 @import "work-includes";
 
 ng-projects {
+  .no-projects {
+    text-align: center;
+
+    p {
+      font-size: $font-size-big;
+    }
+
+    .button {
+      margin-top: $margin-small;
+    }
+  }
+
   .incomplete, .complete {
     background-color: $danger-color;
 
