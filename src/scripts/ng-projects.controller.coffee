@@ -3,7 +3,7 @@
 NgProjectsController = ($scope, WorkAPIService) ->
   vm          = this
   vm.projects = []
-  vm.loaded   = false
+  vm.loading  = false
 
   vm.statusMap =
     'Incomplete': 'Setup incomplete'
@@ -25,6 +25,8 @@ NgProjectsController = ($scope, WorkAPIService) ->
     vm
 
   getProjects = (params) ->
+    vm.loading = true
+
     resource = WorkAPIService.get params
 
     resource.$promise.then (response) ->
@@ -34,7 +36,7 @@ NgProjectsController = ($scope, WorkAPIService) ->
       # TODO: handle error
 
     resource.$promise.finally ->
-      vm.loaded = true
+      vm.loading = false
 
   activate()
 
