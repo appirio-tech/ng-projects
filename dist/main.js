@@ -8,7 +8,7 @@
 
 }).call(this);
 
-angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/ng-projects.directive.html","<ul><li ng-repeat=\"project in vm.projects track by $index\"><ul class=\"header\"><li><p class=\"name\">{{ project.name || \'Unnamed Project\' }}</p></li><li><p>{{ vm.typeMap[project.projectType] || \'\' }}</p></li></ul><div class=\"preview\"></div><ul class=\"statuses\"><li class=\"icon-house\"><div ng-if=\"project.status == \'Submitted\'\" class=\"icon checkmark small\"></div><div ng-if=\"project.status == \'Incomplete\'\" class=\"icon warning small\"></div><avatar ng-if=\"project.status != \'Incomplete\' &amp;&amp; project.status != \'Submitted\'\" class=\"icon small\"></avatar></li><li class=\"message\">{{ vm.statusMap[project.status] || vm.statusMap[\'Incomplete\'] }}</li><li class=\"action\"><a ng-if=\"project.status == \'Incomplete\' || !project.status\" ui-sref=\"submit-work({ id: project.id })\">Continue</a><span ng-if=\"project.status == \'Submitted\'\"><a ui-sref=\"timeline({ workId: project.id })\">Awaiting estimate</a></span><a ng-if=\"project.status == \'Assigned\'\" ui-sref=\"timeline({ workId: project.id })\">Meet your copilot</a><a ng-if=\"project.status == \'Estimate\'\" ui-sref=\"timeline({ workId: project.id })\">View your quote and begin</a><a ng-if=\"project.status == \'Launched\' || project.status == \'Approved\' \" ui-sref=\"timeline({ workId: project.id })\">View project</a><a ng-if=\"project.status == \'Messaged\'\" ui-sref=\"timeline({ workId: project.id })\">View 1 unread message</a></li></ul></li></ul><a ui-sref=\"view-projects.assigned\" ng-show=\"vm.projects.length &lt; 1\">Manage your copilot projects</a>");}]);
+angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/ng-projects.directive.html","<ul class=\"flex center wrap\"><li ng-repeat=\"project in vm.projects track by $index\"><header><a ui-sref=\"timeline({ workId: project.id })\"><h5>{{ project.name || \'Unnamed Project\' }}</h5></a><p class=\"type\">{{ vm.typeMap[project.projectType] }} - {{ project.status }}</p></header><main ng-if=\"project.status == \'Incomplete\'\" class=\"incomplete flex column middle center\"><div class=\"icon biggest warning\"></div><h6>Project submission incomplete</h6><button>continue setup</button></main><main ng-if=\"project.status == \'Submitted\'\" class=\"submitted flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon biggest warning\"></div><h6>Project submitted</h6></div><footer><p>You are waiting for project approval</p><p>This should take about 1 day</p></footer></main><main ng-if=\"project.status == \'Estimate\'\" class=\"approved\"><hr/><h6>Project approved</h6><avatar class=\"icon biggest\"></avatar><p class=\"name\">Copilot name missing from API blah blah blah</p><p class=\"secondary\">Co-Pilot</p><a ui-sref=\"timeline({ workId: project.id })\" class=\"button action\">view quote</a></main><main ng-if=\"project.status == \'Launched\'\" class=\"launched flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon biggest warning\"></div><h6>Project launched</h6></div><footer><p>Design work is in progress</p><p>Get design submissions in several days.</p></footer></main><main ng-if=\"project.status == \'Complete\'\" class=\"complete flex column middle center\"><div class=\"icon biggest warning\"></div><h6>Project complete!</h6><button>deploy my app</button></main></li></ul><div ng-if=\"vm.projects.length == 0\" class=\"no-projects\"><p>You have not started any projects.</p><a ui-sref=\"submit-work\" class=\"button action wider\">start a new project</a></div>");}]);
 (function() {
   'use strict';
   var directive;
@@ -45,9 +45,9 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
       'Messaged': 'Project launched'
     };
     vm.typeMap = {
-      'DESIGN': 'Design',
-      'CODE': 'Code',
-      'DESIGN_AND_CODE': 'Design/Code'
+      'design': 'Design',
+      'code': 'Code',
+      'designAndCode': 'Design/Code'
     };
     activate = function() {
       getProjects();
