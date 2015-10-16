@@ -58,11 +58,11 @@ ng-projects {
   }
 
   button, .button {
-    margin-top: $margin;
+    margin-top: $margin-small;
   }
 
   main {
-    height    : 240px;
+    height    : 200px;
     margin-top: $margin-small;
     text-align: center;
     overflow: auto;
@@ -90,7 +90,6 @@ ng-projects {
   > ul {
     > li {
       width           : 280px;
-      border          : 1px solid $black;
       margin          : $margin-smallest;
       background-color: $white;
       padding         : $padding $padding-small;

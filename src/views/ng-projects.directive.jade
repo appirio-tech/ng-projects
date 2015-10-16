@@ -7,7 +7,7 @@ ul.flex.center.wrap
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
-      .icon.biggest.warning
+      .icon.big.warning
 
       h6 Project submission incomplete
 
@@ -15,7 +15,7 @@ ul.flex.center.wrap
 
     main.submitted.flex.column(ng-if="project.status == 'Submitted'")
       .flex.column.middle.center.flex-grow
-        .icon.biggest.warning
+        .icon.big.warning
 
         h6 Project submitted
 
@@ -29,7 +29,7 @@ ul.flex.center.wrap
 
       h6 Project approved
 
-      avatar.icon.biggest
+      avatar.icon.big
 
       p.name Copilot name missing from API blah blah blah
 
@@ -39,7 +39,7 @@ ul.flex.center.wrap
 
     main.launched.flex.column(ng-if="project.status == 'Launched'")
       .flex.column.middle.center.flex-grow
-        .icon.biggest.warning
+        .icon.big.warning
 
         h6 Project launched
 
@@ -49,7 +49,7 @@ ul.flex.center.wrap
         p Get design submissions in several days.
 
     main.complete.flex.column.middle.center(ng-if="project.status == 'Complete'")
-      .icon.biggest.warning
+      .icon.big.warning
 
       h6 Project complete!
 
