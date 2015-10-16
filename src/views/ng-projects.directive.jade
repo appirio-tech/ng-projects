@@ -1,4 +1,4 @@
-ul.flex.center
+ul.flex.center.wrap
   li(ng-repeat= "project in vm.projects track by $index")
     header
       a(ui-sref="timeline({ workId: project.id })")
@@ -24,18 +24,18 @@ ul.flex.center
 
         p This should take about 1 day
 
-    main.approved(ng-if="project.status == 'Assigned'")
+    main.approved(ng-if="project.status == 'Estimate'")
       hr
 
       h6 Project approved
 
       avatar.icon.biggest
 
-      p.name Albert Fowler
+      p.name Copilot name missing from API blah blah blah
 
       p.secondary Co-Pilot
 
-      button.action view quote
+      a.button.action(ui-sref="timeline({ workId: project.id })") view quote
 
     main.launched.flex.column(ng-if="project.status == 'Launched'")
       .flex.column.middle.center.flex-grow

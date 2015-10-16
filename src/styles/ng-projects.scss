@@ -41,6 +41,8 @@ ng-projects {
     }
 
     .name {
+      @include ellipsis;
+
       font-weight: bold;
     }
   }
@@ -55,7 +57,7 @@ ng-projects {
     font-weight: bold;
   }
 
-  button {
+  button, .button {
     margin-top: $margin;
   }
 
