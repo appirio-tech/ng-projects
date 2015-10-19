@@ -26,10 +26,21 @@ ul.flex.center.wrap
 
         p This should take about 1 day
 
+    main.approved(ng-if="project.status == 'Assigned'")
+      hr
+
+      h6 Meet your co-pilot
+
+      avatar.icon.big
+
+      p.name Copilot name missing from API blah blah blah
+
+      p.secondary Co-Pilot
+
     main.approved(ng-if="project.status == 'Estimate'")
       hr
 
-      h6 Project approved
+      h6 Quote Generated
 
       avatar.icon.big
 
@@ -38,6 +49,17 @@ ul.flex.center.wrap
       p.secondary Co-Pilot
 
       a.button.action(ui-sref="timeline({ workId: project.id })") view quote
+
+    main.launched.flex.column(ng-if="project.status == 'Approved'")
+      .flex.column.middle.center.flex-grow
+        .icon.big.warning
+
+        h6 Project Approved
+
+      footer
+        p Blah blah blah blah
+
+        p Blah blah blah blah
 
     main.launched.flex.column(ng-if="project.status == 'Launched'")
       .flex.column.middle.center.flex-grow
