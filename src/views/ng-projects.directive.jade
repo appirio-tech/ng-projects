@@ -1,6 +1,6 @@
 loader(ng-show="vm.loading")
 
-ul.flex.center.wrap
+ul.flex.wrap(fitted-width=true)
   li(ng-repeat= "project in vm.projects track by $index")
     header
       a(ui-sref="timeline({ workId: project.id })")

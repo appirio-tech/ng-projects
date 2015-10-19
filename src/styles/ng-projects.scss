@@ -88,6 +88,8 @@ ng-projects {
   }
 
   > ul {
+    margin: 0 auto;
+
     > li {
       width           : 280px;
       margin          : $margin-smallest;
