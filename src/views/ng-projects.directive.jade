@@ -13,7 +13,7 @@ ul.flex.center.wrap
 
       h6 Project submission incomplete
 
-      button continue setup
+      a.button(ui-sref="submit-work({ id: project.id })") continue setup
 
     main.submitted.flex.column(ng-if="project.status == 'Submitted'")
       .flex.column.middle.center.flex-grow
