@@ -15,9 +15,9 @@ NgProjectsController = ($scope, WorkAPIService) ->
     'Messaged'  : 'Project launched'
 
   vm.typeMap =
-    'design'       : 'Design'
-    'code'         : 'Code'
-    'designAndCode': 'Design/Code'
+    'DESIGN'       : 'Design'
+    'CODE'         : 'Code'
+    'DESIGN_AND_CODE': 'Design/Code'
 
   activate = ->
     getProjects()
