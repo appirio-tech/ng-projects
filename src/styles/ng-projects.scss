@@ -42,8 +42,6 @@ ng-projects {
 
     .name {
       @include ellipsis;
-
-      font-weight: bold;
     }
   }
 
