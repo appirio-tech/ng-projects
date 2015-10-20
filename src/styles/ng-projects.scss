@@ -46,8 +46,7 @@ ng-projects {
   }
 
   h5 {
-    height: $font-size * 2;
-    overflow: auto;
+    @include ellipsis;
   }
 
   h6 {
