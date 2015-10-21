@@ -26,8 +26,9 @@ angular.module("app.constants", [])
 }).call(this);
 
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/claimed-projects.example.html","<claimed-projects></claimed-projects>");
-$templateCache.put("views/estimate-project.example.html","<estimate-project></estimate-project>");
+$templateCache.put("views/estimate-project.example.html","<estimate-project project-id=\"123\"></estimate-project>");
 $templateCache.put("views/open-projects.example.html","<open-projects></open-projects>");
+$templateCache.put("views/project-details.example.html","<project-details project-id=\"123\"></project-details>");
 $templateCache.put("views/projects.example.html","<ng-projects></ng-projects>");}]);
 (function() {
   'use strict';
@@ -55,6 +56,11 @@ $templateCache.put("views/projects.example.html","<ng-projects></ng-projects>");
       url: '/estimate-project',
       title: 'estimate project',
       templateUrl: 'views/estimate-project.example.html'
+    };
+    states['project-details'] = {
+      url: '/project-details',
+      title: 'project details',
+      templateUrl: 'views/project-details.example.html'
     };
     results = [];
     for (key in states) {
