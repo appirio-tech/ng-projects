@@ -1,0 +1,23 @@
+loader(ng-show="vm.loading")
+
+ul.flex.wrap
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    header
+      a(ui-sref="timeline({ workId: project.id })")
+        h5 {{ project.name || 'Unnamed Project' }}
+
+      p.type {{ vm.typeMap[project.projectType] }} - 10/23/2015
+
+    hr
+
+    main.flex.column.middle.center
+      img.icon.biggest(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+
+      img.icon.biggest(src="/images/development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+
+      a.action.button(ui-sref="submit-work({ id: project.id })") claim project
+
+.no-projects(ng-if="vm.projects.length == 0")
+  p You have not started any projects.
+
+

@@ -6,7 +6,17 @@ config = ($stateProvider) ->
   states['projects'] =
     url         : '/'
     title       : 'projects'
-    templateUrl : 'views/projects.html'
+    templateUrl : 'views/projects.example.html'
+
+  states['open-projects'] =
+    url         : '/open-projects'
+    title       : 'open projects'
+    templateUrl : 'views/open-projects.example.html'
+
+  states['claimed-projects'] =
+    url         : '/claimed-projects'
+    title       : 'claimed projects'
+    templateUrl : 'views/claimed-projects.example.html'
 
   for key, state of states
     $stateProvider.state key, state

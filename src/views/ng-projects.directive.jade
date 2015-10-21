@@ -8,6 +8,8 @@ ul.flex.wrap
 
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
+    hr(ng-if="project.status == 'Assigned' || project.status == 'Estimate'")
+
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
       .icon.big.warning
 
@@ -27,8 +29,6 @@ ul.flex.wrap
         p This should take about 1 day
 
     main.approved(ng-if="project.status == 'Assigned'")
-      hr
-
       h6 Meet your co-pilot
 
       avatar.icon.big
@@ -38,8 +38,6 @@ ul.flex.wrap
       p.secondary Co-Pilot
 
     main.approved(ng-if="project.status == 'Estimate'")
-      hr
-
       h6 Quote Generated
 
       avatar.icon.big

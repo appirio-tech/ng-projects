@@ -1,0 +1,62 @@
+@import "work-includes";
+
+ng-projects, open-projects, claimed-projects {
+  button, .button {
+    margin-top: $margin-small;
+  }
+
+  h5 {
+    @include ellipsis;
+  }
+
+  h6 {
+    font-size: $font-size-small;
+    font-weight: bold;
+  }
+
+  .no-projects {
+    text-align: center;
+
+    p {
+      font-size: $font-size-big;
+    }
+
+    .button {
+      margin-top: $margin-small;
+    }
+  }
+
+  hr {
+    margin: $margin-small 0 0 0;
+    width: 100%;
+  }
+
+  main {
+    height    : 200px;
+    margin-top: $margin-small;
+    text-align: center;
+    overflow  : auto;
+
+    footer {
+      background-color: $white;
+      text-align: center;
+      width: 100%;
+      padding-top: $margin;
+
+      p:last-child {
+        color: $neutral-color;
+      }
+    }
+  }
+
+  > ul {
+    margin: 0 auto;
+
+    > li {
+      width           : 280px;
+      margin          : $margin-smallest;
+      background-color: $white;
+      padding         : $padding $padding-small;
+    }
+  }
+}

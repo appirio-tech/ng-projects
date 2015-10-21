@@ -1,0 +1,49 @@
+loader(ng-show="vm.loading")
+
+ul.flex.wrap
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    header
+      a(ui-sref="timeline({ workId: project.id })")
+        h5 {{ project.name || 'Unnamed Project' }}
+
+      p.type {{ vm.typeMap[project.projectType] }} - 10/23/2015
+
+    hr
+
+    main.flex.column.middle.center(ng-if="project.status == 'Assigned'")
+      h6 Projected Claimed
+
+      img.icon.biggest(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+
+      img.icon.biggest(src="/images/development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+
+      a.action.button(ui-sref="submit-work({ id: project.id })") estimate
+
+    main.flex.column.middle.center(ng-if="project.status == 'Estimate'")
+      h6 Projected Estimated
+
+      img.icon.biggest(src="/images/define-feature.svg")
+
+      p Client is reviewing estimate.
+
+    main.flex.column.middle.center(ng-if="project.status == 'Approved'")
+      h6 Project Approved
+
+      img.icon.biggest(src="/images/brand-reqs.svg")
+
+      a.action.button(ui-sref="submit-work({ id: project.id })") create challenges
+
+    main.flex.column.middle.center(ng-if="project.status == 'Launched'")
+      img.icon.biggest(src="/images/features.svg")
+
+      h6 Project launched
+
+    main.complete.flex.column.middle.center(ng-if="project.status == 'Complete'")
+      img.icon.biggest(src="/images/features.svg")
+
+      h6 Project complete
+
+.no-projects(ng-if="vm.projects.length == 0")
+  p You have not started any projects.
+
+

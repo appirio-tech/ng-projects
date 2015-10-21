@@ -4,17 +4,14 @@ configs =
 configs.templateCache = []
 
 configs.templateCache.push
-  files : [
-    '.tmp/views/ng-projects.directive.html'
-  ]
+  fileName: 'templates.js'
+  files : ['.tmp/views/*.directive.html']
   root  : 'views/'
   module: 'appirio-tech-ng-projects'
 
 configs.templateCache.push
   fileName: 'example-templates.js'
-  files : [
-    '.tmp/views/projects.html'
-  ]
+  files : ['.tmp/views/*.example.html']
   root  : 'views/'
   module: 'example'
 

@@ -1,18 +1,6 @@
 @import "work-includes";
 
 ng-projects {
-  .no-projects {
-    text-align: center;
-
-    p {
-      font-size: $font-size-big;
-    }
-
-    .button {
-      margin-top: $margin-small;
-    }
-  }
-
   .incomplete, .complete {
     background-color: $danger-color;
 
@@ -45,53 +33,7 @@ ng-projects {
     }
   }
 
-  h5 {
-    @include ellipsis;
-  }
-
-  h6 {
-    font-size: $font-size-small;
-    font-weight: bold;
-  }
-
-  button, .button {
-    margin-top: $margin-small;
-  }
-
-  main {
-    height    : 200px;
-    margin-top: $margin-small;
-    text-align: center;
-    overflow  : auto;
-
-    avatar {
-      margin: 0 auto;
-    }
-
-    hr {
-      margin: 0;
-    }
-
-    footer {
-      background-color: $white;
-      text-align: center;
-      width: 100%;
-      padding-top: $margin;
-
-      p:last-child {
-        color: $neutral-color;
-      }
-    }
-  }
-
-  > ul {
+  avatar {
     margin: 0 auto;
-
-    > li {
-      width           : 280px;
-      margin          : $margin-smallest;
-      background-color: $white;
-      padding         : $padding $padding-small;
-    }
   }
 }
