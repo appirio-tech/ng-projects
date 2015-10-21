@@ -1,0 +1,60 @@
+@import "work-includes";
+
+project-details {
+  > ul {
+    > li {
+      margin-top: $margin-big;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  hr {
+    margin-top: $margin-small;
+  }
+
+  h4 {
+    margin-bottom: $margin-small;
+  }
+
+  .platform {
+    max-width: 400px;
+
+    ul > li {
+      margin-top: $margin-small;
+    }
+  }
+
+  span {
+    margin-left: $margin-smallest;
+  }
+
+  .project-type {
+    display: inline-block;
+    text-align: center;
+
+    img {
+      height: 68px;
+    }
+  }
+
+  .big-a {
+    background-color: $primary-color;
+    color: $white;
+    display: inline-block;
+    padding: $padding-small;
+    font-size: $font-size-biggest;
+  }
+
+  .features-descriptions {
+    li {
+      &:last-child {
+        hr {
+          display: none;
+        }
+      }
+    }
+  }
+}

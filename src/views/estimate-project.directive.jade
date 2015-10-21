@@ -6,21 +6,21 @@ form(ng-submit="vm.submit()" ng-hide="vm.saved")
       p Cost
 
       .fields.flex.middle
-        input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true")
+        input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0")
 
         p to
 
-        input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true")
+        input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0")
 
     .duration
       p Project Duration
 
       .fields.flex.middle
-        input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true")
+        input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0")
 
         p to
 
-        input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true")
+        input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0")
 
         p weeks
 

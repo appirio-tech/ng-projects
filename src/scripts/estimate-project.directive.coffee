@@ -4,6 +4,7 @@ directive = ->
   restrict    : 'E'
   templateUrl : 'views/estimate-project.directive.html'
   controller  : 'EstimateProjectController as vm'
-  scope       : true
+  scope       :
+    projectId : '@projectId'
 
 angular.module('appirio-tech-ng-projects').directive 'estimateProject', directive

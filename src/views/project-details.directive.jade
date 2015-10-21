@@ -1,0 +1,126 @@
+loader(ng-show="vm.loading")
+
+ul
+  li
+    h3 Project Setup
+
+    hr.biggest
+
+    h4 Uploaded documents
+
+    a(href="#") abc123.doc (wip)
+
+    h4 iOS platform details
+
+    ul.platform.flex.space-between
+      li.device
+        h6 Device
+
+        ul
+          li.flex.middle(ng-repeat="device in vm.project.deviceIds")
+            img.icon(src="/images/icon-check.svg")
+
+            span {{ vm.textMap[device] || device }}
+
+      li.orientation
+        h6 Orientation
+
+        ul
+          li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
+            img.icon(src="/images/icon-check.svg")
+
+            span {{ vm.textMap[orientation] || orientation }}
+
+    h4 Project type
+
+    .project-type(ng-if="vm.project.projectType == 'DESIGN'")
+      img.biggest(src="/images/design.svg")
+
+      p Design
+
+    .project-type(ng-if="vm.project.projectType != 'DESIGN'")
+      img.biggest(src="/images/design-development.svg")
+
+      p Design &amp; Development
+
+  li
+    h3 Features
+
+    hr.biggest
+
+    h4 Uploaded documents
+
+    a(href="#") abc123.doc (wip)
+
+    h4 Features &amp; descriptions
+
+    ul.features-descriptions
+      li(ng-repeat="feature in vm.project.features")
+        p {{ feature.title }}
+
+        p {{ feature.description }}
+
+        hr
+
+  li
+    h3 Design
+
+    hr.biggest
+
+    h4 Uploaded documents
+
+    a(href="#") abc123.doc (wip)
+
+    h4 URL to get styles
+
+    a(href="{{ url }}" ng-repeat="url in vm.project.designUrls" target="_blank") {{ url }}
+
+    h4 Fonts
+
+    .flex.middle
+      .big-a A
+
+      span {{ vm.project.fontIds.join(', ') }}
+
+    h4 Colors
+
+    p {{ vm.project.colorSwatchIds.join(', ') }}
+
+    h4 Icons
+
+    .flex.middle(ng-repeat="icon in vm.project.iconsetIds")
+      img.icon.biggest(src="/images/{{ vm.imageMap[icon] }}.svg")
+
+      span {{ vm.textMap[icon] }}
+
+  li
+    h3 Development
+
+    hr.biggest
+
+    h4 Uploaded Specs
+
+    a(href="#") abc123.doc (wip)
+
+    h4 What level of security is needed?
+
+    p Security level needed: {{ vm.project.securityLevel }}
+
+    h4 Access to data offline?
+
+    p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
+
+    p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
+
+    h4 Is there any level of personal information? (stored or transmitted)?
+
+    p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
+
+    p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
+
+    h4 How many 3rd party integrations?
+
+    p There are {{ vm.project.numberOfApiIntegrations }} integrations needed.
+
+
+

@@ -1,6 +1,6 @@
 'use strict'
 
-EstimateProjectController = ($scope, CopilotProjectDetailsAPIService) ->
+EstimateProjectController = ($scope, ProjectEstimatesAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
@@ -12,11 +12,12 @@ EstimateProjectController = ($scope, CopilotProjectDetailsAPIService) ->
     duration:
       min: 0
       max: 0
+      unit: 'week'
 
   vm.submit = ->
     vm.loading = true
-    params     = projectId: $scope.projectId
-    resource   = CopilotProjectDetailsAPIService.put params, vm.payload
+    params     = id: $scope.projectId
+    resource   = ProjectEstimatesAPIService.post params, vm.payload
 
     resource.$promise.then ->
       vm.saved = true
@@ -31,6 +32,6 @@ EstimateProjectController = ($scope, CopilotProjectDetailsAPIService) ->
 
   activate()
 
-EstimateProjectController.$inject = ['$scope', 'CopilotProjectDetailsAPIService']
+EstimateProjectController.$inject = ['$scope', 'ProjectEstimatesAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'EstimateProjectController', EstimateProjectController
