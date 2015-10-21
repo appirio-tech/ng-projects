@@ -31,7 +31,7 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
   var NgProjectsController;
 
   NgProjectsController = function($scope, WorkAPIService) {
-    var activate, getProjects, vm;
+    var activate, getProjects, orderProjectsByCreationDate, vm;
     vm = this;
     vm.projects = [];
     vm.loading = false;
@@ -53,12 +53,19 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
       getProjects();
       return vm;
     };
+    orderProjectsByCreationDate = function(projects) {
+      var orderedProjects;
+      orderedProjects = projects != null ? projects.sort(function(previous, next) {
+        return new Date(next.createdAt) - new Date(previous.createdAt);
+      }) : void 0;
+      return orderedProjects;
+    };
     getProjects = function(params) {
       var resource;
       vm.loading = true;
       resource = WorkAPIService.get(params);
       resource.$promise.then(function(response) {
-        return vm.projects = response;
+        return vm.projects = orderProjectsByCreationDate(response);
       });
       resource.$promise["catch"](function(response) {});
       return resource.$promise["finally"](function() {
