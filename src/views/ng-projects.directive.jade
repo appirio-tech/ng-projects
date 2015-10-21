@@ -31,18 +31,18 @@ ul.flex.wrap
     main.approved(ng-if="project.status == 'Assigned'")
       h6 Meet your co-pilot
 
-      avatar.icon.big
+      avatar.icon.big(ng-src="{{project.copilot.avatar}}")
 
-      p.name Copilot name missing from API blah blah blah
+      p.name {{project.copilot.handle}}
 
       p.secondary Co-Pilot
 
     main.approved(ng-if="project.status == 'Estimate'")
       h6 Quote Generated
 
-      avatar.icon.big
+      avatar.icon.big(ng-src="{{project.copilot.avatar}}")
 
-      p.name Copilot name missing from API blah blah blah
+      p.name {{project.copilot.handle}}
 
       p.secondary Co-Pilot
 

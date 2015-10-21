@@ -1,6 +1,6 @@
 'use strict'
 
-NgProjectsController = ($scope, WorkAPIService) ->
+NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
@@ -33,7 +33,7 @@ NgProjectsController = ($scope, WorkAPIService) ->
   getProjects = (params) ->
     vm.loading = true
 
-    resource = WorkAPIService.get params
+    resource = ProjectsAPIService.query()
 
     resource.$promise.then (response) ->
       vm.projects = orderProjectsByCreationDate response
@@ -46,6 +46,6 @@ NgProjectsController = ($scope, WorkAPIService) ->
 
   activate()
 
-NgProjectsController.$inject = ['$scope', 'WorkAPIService']
+NgProjectsController.$inject = ['$scope', 'WorkAPIService', 'ProjectsAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'NgProjectsController', NgProjectsController
