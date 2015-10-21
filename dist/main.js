@@ -8,7 +8,10 @@
 
 }).call(this);
 
-angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/ng-projects.directive.html","<loader ng-show=\"vm.loading\"></loader><ul class=\"flex wrap\"><li ng-repeat=\"project in vm.projects track by $index\" fitted-width=\"fitted-width\"><header><a ui-sref=\"timeline({ workId: project.id })\"><h5>{{ project.name || \'Unnamed Project\' }}</h5></a><p class=\"type\">{{ vm.typeMap[project.projectType] }} - {{ project.status }}</p></header><main ng-if=\"project.status == \'Incomplete\'\" class=\"incomplete flex column middle center\"><div class=\"icon big warning\"></div><h6>Project submission incomplete</h6><a ui-sref=\"submit-work({ id: project.id })\" class=\"button\">continue setup</a></main><main ng-if=\"project.status == \'Submitted\'\" class=\"submitted flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project submitted</h6></div><footer><p>You are waiting for project approval</p><p>This should take about 1 day</p></footer></main><main ng-if=\"project.status == \'Assigned\'\" class=\"approved\"><hr/><h6>Meet your co-pilot</h6><avatar class=\"icon big\"></avatar><p class=\"name\">Copilot name missing from API blah blah blah</p><p class=\"secondary\">Co-Pilot</p></main><main ng-if=\"project.status == \'Estimate\'\" class=\"approved\"><hr/><h6>Quote Generated</h6><avatar class=\"icon big\"></avatar><p class=\"name\">Copilot name missing from API blah blah blah</p><p class=\"secondary\">Co-Pilot</p><a ui-sref=\"timeline({ workId: project.id })\" class=\"button action\">view quote</a></main><main ng-if=\"project.status == \'Approved\'\" class=\"launched flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project Approved</h6></div><footer><p>Blah blah blah blah</p><p>Blah blah blah blah</p></footer></main><main ng-if=\"project.status == \'Launched\'\" class=\"launched flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project launched</h6></div><footer><p>Design work is in progress</p><p>Get design submissions in several days.</p></footer></main><main ng-if=\"project.status == \'Complete\'\" class=\"complete flex column middle center\"><div class=\"icon big warning\"></div><h6>Project complete!</h6><button>deploy my app</button></main></li></ul><div ng-if=\"vm.projects.length == 0\" class=\"no-projects\"><p>You have not started any projects.</p></div>");}]);
+angular.module("appirio-tech-ng-projects").run(["$templateCache", function($templateCache) {$templateCache.put("views/claimed-projects.directive.html","<loader ng-show=\"vm.loading\"></loader><ul class=\"flex wrap\"><li ng-repeat=\"project in vm.projects track by $index\" fitted-width=\"fitted-width\"><header><a ui-sref=\"timeline({ workId: project.id })\"><h5>{{ project.name || \'Unnamed Project\' }}</h5></a><p class=\"type\">{{ vm.typeMap[project.projectType] }} - 10/23/2015</p></header><hr/><main ng-if=\"project.status == \'Assigned\'\" class=\"flex column middle center\"><h6>Projected Claimed</h6><img src=\"/images/design.svg\" ng-if=\"project.projectType == \'DESIGN\'\" class=\"icon biggest\"/><img src=\"/images/development.svg\" ng-if=\"project.projectType == \'DESIGN_AND_CODE\'\" class=\"icon biggest\"/><a ui-sref=\"submit-work({ id: project.id })\" class=\"action button\">estimate</a></main><main ng-if=\"project.status == \'Estimate\'\" class=\"flex column middle center\"><h6>Projected Estimated</h6><img src=\"/images/define-feature.svg\" class=\"icon biggest\"/><p>Client is reviewing estimate.</p></main><main ng-if=\"project.status == \'Approved\'\" class=\"flex column middle center\"><h6>Project Approved</h6><img src=\"/images/brand-reqs.svg\" class=\"icon biggest\"/><a ui-sref=\"submit-work({ id: project.id })\" class=\"action button\">create challenges</a></main><main ng-if=\"project.status == \'Launched\'\" class=\"flex column middle center\"><img src=\"/images/features.svg\" class=\"icon biggest\"/><h6>Project launched</h6></main><main ng-if=\"project.status == \'Complete\'\" class=\"complete flex column middle center\"><img src=\"/images/features.svg\" class=\"icon biggest\"/><h6>Project complete</h6></main></li></ul><div ng-if=\"vm.projects.length == 0\" class=\"no-projects\"><p>You have not started any projects.</p></div>");
+$templateCache.put("views/estimate-project.directive.html","<loader ng-show=\"vm.loading\"></loader><form ng-submit=\"vm.submit()\" ng-hide=\"vm.saved\"><div class=\"cost-estimate flex space-between wrap\"><div class=\"cost\"><p>Cost</p><div class=\"fields flex middle\"><input ng-model=\"vm.payload.price.min\" type=\"number\" placeholder=\"$\" required=\"true\"/><p>to</p><input ng-model=\"vm.payload.price.max\" type=\"number\" placeholder=\"$\" required=\"true\"/></div></div><div class=\"duration\"><p>Project Duration</p><div class=\"fields flex middle\"><input ng-model=\"vm.payload.duration.min\" type=\"number\" placeholder=\"$\" required=\"true\"/><p>to</p><input ng-model=\"vm.payload.duration.max\" type=\"number\" placeholder=\"$\" required=\"true\"/><p>weeks</p></div></div></div><button class=\"action wider\">save estimates</button></form><h3 ng-show=\"vm.saved\">Esimate saved</h3>");
+$templateCache.put("views/ng-projects.directive.html","<loader ng-show=\"vm.loading\"></loader><ul class=\"flex wrap\"><li ng-repeat=\"project in vm.projects track by $index\" fitted-width=\"fitted-width\"><header><a ui-sref=\"timeline({ workId: project.id })\"><h5>{{ project.name || \'Unnamed Project\' }}</h5></a><p class=\"type\">{{ vm.typeMap[project.projectType] }} - {{ project.status }}</p></header><hr ng-if=\"project.status == \'Assigned\' || project.status == \'Estimate\'\"/><main ng-if=\"project.status == \'Incomplete\'\" class=\"incomplete flex column middle center\"><div class=\"icon big warning\"></div><h6>Project submission incomplete</h6><a ui-sref=\"submit-work({ id: project.id })\" class=\"button\">continue setup</a></main><main ng-if=\"project.status == \'Submitted\'\" class=\"submitted flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project submitted</h6></div><footer><p>You are waiting for project approval</p><p>This should take about 1 day</p></footer></main><main ng-if=\"project.status == \'Assigned\'\" class=\"approved\"><h6>Meet your co-pilot</h6><avatar ng-src=\"{{project.copilot.avatar}}\" class=\"icon big\"></avatar><p class=\"name\">{{project.copilot.handle}}</p><p class=\"secondary\">Co-Pilot</p></main><main ng-if=\"project.status == \'Estimate\'\" class=\"approved\"><h6>Quote Generated</h6><avatar ng-src=\"{{project.copilot.avatar}}\" class=\"icon big\"></avatar><p class=\"name\">{{project.copilot.handle}}</p><p class=\"secondary\">Co-Pilot</p><a ui-sref=\"timeline({ workId: project.id })\" class=\"button action\">view quote</a></main><main ng-if=\"project.status == \'Approved\'\" class=\"launched flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project Approved</h6></div><footer><p>Blah blah blah blah</p><p>Blah blah blah blah</p></footer></main><main ng-if=\"project.status == \'Launched\'\" class=\"launched flex column\"><div class=\"flex column middle center flex-grow\"><div class=\"icon big warning\"></div><h6>Project launched</h6></div><footer><p>Design work is in progress</p><p>Get design submissions in several days.</p></footer></main><main ng-if=\"project.status == \'Complete\'\" class=\"complete flex column middle center\"><div class=\"icon big warning\"></div><h6>Project complete!</h6><button>deploy my app</button></main></li></ul><div ng-if=\"vm.projects.length == 0\" class=\"no-projects\"><p>You have not started any projects.</p></div>");
+$templateCache.put("views/open-projects.directive.html","<loader ng-show=\"vm.loading\"></loader><ul class=\"flex wrap\"><li ng-repeat=\"project in vm.projects track by $index\" fitted-width=\"fitted-width\"><header><a ui-sref=\"timeline({ workId: project.id })\"><h5>{{ project.name || \'Unnamed Project\' }}</h5></a><p class=\"type\">{{ vm.typeMap[project.projectType] }} - 10/23/2015</p></header><hr/><main class=\"flex column middle center\"><img src=\"/images/design.svg\" ng-if=\"project.projectType == \'DESIGN\'\" class=\"icon biggest\"/><img src=\"/images/development.svg\" ng-if=\"project.projectType == \'DESIGN_AND_CODE\'\" class=\"icon biggest\"/><a ui-sref=\"submit-work({ id: project.id })\" class=\"action button\">claim project</a></main></li></ul><div ng-if=\"vm.projects.length == 0\" class=\"no-projects\"><p>You have not started any projects.</p></div>");}]);
 (function() {
   'use strict';
   var directive;
@@ -30,7 +33,7 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
   'use strict';
   var NgProjectsController;
 
-  NgProjectsController = function($scope, WorkAPIService) {
+  NgProjectsController = function($scope, WorkAPIService, ProjectsAPIService) {
     var activate, getProjects, orderProjectsByCreationDate, vm;
     vm = this;
     vm.projects = [];
@@ -63,7 +66,7 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
     getProjects = function(params) {
       var resource;
       vm.loading = true;
-      resource = WorkAPIService.get(params);
+      resource = ProjectsAPIService.query();
       resource.$promise.then(function(response) {
         return vm.projects = orderProjectsByCreationDate(response);
       });
@@ -75,8 +78,195 @@ angular.module("appirio-tech-ng-projects").run(["$templateCache", function($temp
     return activate();
   };
 
-  NgProjectsController.$inject = ['$scope', 'WorkAPIService'];
+  NgProjectsController.$inject = ['$scope', 'WorkAPIService', 'ProjectsAPIService'];
 
   angular.module('appirio-tech-ng-projects').controller('NgProjectsController', NgProjectsController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/open-projects.directive.html',
+      controller: 'OpenProjectsController as vm',
+      scope: {
+        projectId: '@projectId'
+      }
+    };
+  };
+
+  angular.module('appirio-tech-ng-projects').directive('openProjects', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var OpenProjectsController;
+
+  OpenProjectsController = function($scope, WorkAPIService) {
+    var activate, getProjects, vm;
+    vm = this;
+    vm.projects = [];
+    vm.loading = false;
+    vm.typeMap = {
+      'DESIGN': 'Design',
+      'CODE': 'Code',
+      'DESIGN_AND_CODE': 'Design/Code'
+    };
+    activate = function() {
+      getProjects();
+      return vm;
+    };
+    getProjects = function(params) {
+      var resource;
+      vm.loading = true;
+      resource = WorkAPIService.get(params);
+      resource.$promise.then(function(response) {
+        return vm.projects = response;
+      });
+      resource.$promise["catch"](function(response) {});
+      return resource.$promise["finally"](function() {
+        return vm.loading = false;
+      });
+    };
+    return activate();
+  };
+
+  OpenProjectsController.$inject = ['$scope', 'WorkAPIService'];
+
+  angular.module('appirio-tech-ng-projects').controller('OpenProjectsController', OpenProjectsController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/claimed-projects.directive.html',
+      controller: 'ClaimedProjectsController as vm',
+      scope: true
+    };
+  };
+
+  angular.module('appirio-tech-ng-projects').directive('claimedProjects', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var ClaimedProjectsController;
+
+  ClaimedProjectsController = function($scope, WorkAPIService) {
+    var activate, getProjects, vm;
+    vm = this;
+    vm.projects = [];
+    vm.loading = false;
+    vm.statusMap = {
+      'Incomplete': 'Setup incomplete',
+      'Submitted': 'Project submitted',
+      'Assigned': 'Copilot assigned',
+      'Estimate': 'Project estimated',
+      'Approved': 'Project approved',
+      'Launched': 'Project launched',
+      'Messaged': 'Project launched'
+    };
+    vm.typeMap = {
+      'DESIGN': 'Design',
+      'CODE': 'Code',
+      'DESIGN_AND_CODE': 'Design/Code'
+    };
+    activate = function() {
+      getProjects();
+      return vm;
+    };
+    getProjects = function(params) {
+      var resource;
+      vm.loading = true;
+      resource = WorkAPIService.get(params);
+      resource.$promise.then(function(response) {
+        return vm.projects = response;
+      });
+      resource.$promise["catch"](function(response) {});
+      return resource.$promise["finally"](function() {
+        return vm.loading = false;
+      });
+    };
+    return activate();
+  };
+
+  ClaimedProjectsController.$inject = ['$scope', 'WorkAPIService'];
+
+  angular.module('appirio-tech-ng-projects').controller('ClaimedProjectsController', ClaimedProjectsController);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var directive;
+
+  directive = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'views/estimate-project.directive.html',
+      controller: 'EstimateProjectController as vm',
+      scope: true
+    };
+  };
+
+  angular.module('appirio-tech-ng-projects').directive('estimateProject', directive);
+
+}).call(this);
+
+(function() {
+  'use strict';
+  var EstimateProjectController;
+
+  EstimateProjectController = function($scope, CopilotProjectDetailsAPIService) {
+    var activate, getProjects, vm;
+    vm = this;
+    vm.projects = [];
+    vm.loading = false;
+    vm.saved = false;
+    vm.payload = {
+      price: {
+        min: 0,
+        max: 0
+      },
+      duration: {
+        min: 0,
+        max: 0
+      }
+    };
+    vm.submit = function() {
+      var params, resource;
+      vm.loading = true;
+      params = {
+        projectId: $scope.projectId
+      };
+      resource = CopilotProjectDetailsAPIService.put(params, vm.payload);
+      resource.$promise.then(function() {
+        return vm.saved = true;
+      });
+      return resource.$promise["finally"](function() {
+        return vm.loading = false;
+      });
+    };
+    activate = function() {
+      return vm;
+    };
+    getProjects = function(params) {};
+    return activate();
+  };
+
+  EstimateProjectController.$inject = ['$scope', 'CopilotProjectDetailsAPIService'];
+
+  angular.module('appirio-tech-ng-projects').controller('EstimateProjectController', EstimateProjectController);
 
 }).call(this);
