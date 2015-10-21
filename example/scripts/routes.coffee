@@ -18,6 +18,11 @@ config = ($stateProvider) ->
     title       : 'claimed projects'
     templateUrl : 'views/claimed-projects.example.html'
 
+  states['estimate-project'] =
+    url         : '/estimate-project'
+    title       : 'estimate project'
+    templateUrl : 'views/estimate-project.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 

@@ -1,0 +1,40 @@
+@import "work-includes";
+
+estimate-project {
+  button {
+    margin-top: $margin;
+  }
+
+  h3 {
+    color: $success-color;
+    text-align: center
+  }
+
+  .cost-estimate {
+    max-width: 600px;
+  }
+
+  .cost, .duration {
+    margin-top: $margin;
+
+    .fields {
+      margin-top: $margin-small;
+
+      p {
+        margin-top: 0;
+      }
+
+      input {
+        width: 100px;
+      }
+
+      > * {
+        margin-left: $margin-small;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
