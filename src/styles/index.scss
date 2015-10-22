@@ -11,7 +11,6 @@ ng-projects, open-projects, claimed-projects {
 
   h6 {
     font-size: $font-size-small;
-    font-weight: bold;
   }
 
   .no-projects {
@@ -39,9 +38,9 @@ ng-projects, open-projects, claimed-projects {
 
     footer {
       background-color: $white;
-      text-align: center;
-      width: 100%;
-      padding-top: $margin;
+      text-align      : center;
+      width           : 100%;
+      padding-top     : $margin-small;
 
       p:last-child {
         color: $neutral-color;

@@ -1,17 +1,15 @@
 loader(ng-show="vm.loading")
 
 ul.flex.wrap
-  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+  li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     header
       a(ui-sref="timeline({ workId: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
 
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
-    hr(ng-if="project.status == 'Assigned' || project.status == 'Estimate'")
-
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
-      .icon.big.warning
+      img.icon.big(src="/images/project-incomplete.svg")
 
       h6 Project submission incomplete
 
@@ -19,7 +17,7 @@ ul.flex.wrap
 
     main.submitted.flex.column(ng-if="project.status == 'Submitted'")
       .flex.column.middle.center.flex-grow
-        .icon.big.warning
+        img.icon.big(src="/images/project-submitted.svg")
 
         h6 Project submitted
 
@@ -28,25 +26,25 @@ ul.flex.wrap
 
         p This should take about 1 day
 
-    main.approved(ng-if="project.status == 'Assigned'")
-      h6 Meet your co-pilot
+    main.assigned.flex.column(ng-if="project.status == 'Assigned'")
+      .flex.column.middle.center.flex-grow
+        h6 Meet your co-pilot
 
-      avatar.icon.big(ng-src="{{project.copilot.avatar}}")
+        avatar.icon.big(ng-src="{{project.copilot.avatar}}")
 
-      p.name {{project.copilot.handle}}
+        p {{ project.copilot.handle || 'n/a' }}
 
-      p.secondary Co-Pilot
+      footer
+        a.button.action(ui-sref="messaging({ id: project.id, threadId: 'threadfor-' + project.id })") send a message
 
-    main.approved(ng-if="project.status == 'Estimate'")
-      h6 Quote Generated
+    main.estimated.flex.column(ng-if="project.status == 'Estimate'")
+      .flex.column.middle.center.flex-grow
+        .icon.big.warning
 
-      avatar.icon.big(ng-src="{{project.copilot.avatar}}")
+        h6 Quote Generated
 
-      p.name {{project.copilot.handle}}
-
-      p.secondary Co-Pilot
-
-      a.button.action(ui-sref="timeline({ workId: project.id })") view quote
+      footer
+        a.button.action(ui-sref="timeline({ workId: project.id })") view quote
 
     main.launched.flex.column(ng-if="project.status == 'Approved'")
       .flex.column.middle.center.flex-grow

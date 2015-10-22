@@ -4,7 +4,7 @@ ng-projects {
   .incomplete, .complete {
     background-color: $danger-color;
 
-    button {
+    a.button {
       background-color: transparent;
       border-color: $white;
       color: $white;
@@ -19,17 +19,13 @@ ng-projects {
     background-color: $success-color;
   }
 
-  .submitted, .launched {
-    background-color: $neutral-color-lightest;
+  main {
+    background-color: $primary-color-light;
   }
 
-  .approved {
+  .assigned {
     avatar {
       margin-top: $margin-small;
-    }
-
-    .name {
-      @include ellipsis;
     }
   }
 
