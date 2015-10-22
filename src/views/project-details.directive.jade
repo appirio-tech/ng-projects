@@ -1,126 +1,142 @@
 loader(ng-show="vm.loading")
 
-ul(ng-hide="vm.loading")
-  li
-    h3 Project Setup
+.flex.rows
+  .house.nav
+    ul
+      li
+        button.clean Project setup
 
-    hr.biggest
+      li
+        button.clean Features
 
-    h4 Uploaded documents
+      li
+        button.clean Design
 
-    a(href="#") abc123.doc (wip)
+      li
+        button.clean Development
 
-    h4 iOS platform details
 
-    ul.platform.flex.space-between
-      li.device
-        h6 Device
+  ul.requirements.flex-grow(ng-hide="vm.loading")
+    li
+      h3 Project Setup
 
-        ul
-          li.flex.middle(ng-repeat="device in vm.project.deviceIds")
-            img.icon(src="/images/icon-check.svg")
+      hr.biggest
 
-            span {{ vm.textMap[device] || device }}
+      h4 Uploaded documents
 
-      li.orientation
-        h6 Orientation
+      a(href="#") abc123.doc (wip)
 
-        ul
-          li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
-            img.icon(src="/images/icon-check.svg")
+      h4 iOS platform details
 
-            span {{ vm.textMap[orientation] || orientation }}
+      ul.platform.flex.space-between
+        li.device
+          h6 Device
 
-    h4 Project type
+          ul
+            li.flex.middle(ng-repeat="device in vm.project.deviceIds")
+              img.icon(src="/images/icon-check.svg")
 
-    .project-type(ng-if="vm.project.projectType == 'DESIGN'")
-      img.biggest(src="/images/design.svg")
+              span {{ vm.textMap[device] || device }}
 
-      p Design
+        li.orientation
+          h6 Orientation
 
-    .project-type(ng-if="vm.project.projectType != 'DESIGN'")
-      img.biggest(src="/images/design-development.svg")
+          ul
+            li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
+              img.icon(src="/images/icon-check.svg")
 
-      p Design &amp; Development
+              span {{ vm.textMap[orientation] || orientation }}
 
-  li
-    h3 Features
+      h4 Project type
 
-    hr.biggest
+      .project-type(ng-if="vm.project.projectType == 'DESIGN'")
+        img.biggest(src="/images/design.svg")
 
-    h4 Uploaded documents
+        p Design
 
-    a(href="#") abc123.doc (wip)
+      .project-type(ng-if="vm.project.projectType != 'DESIGN'")
+        img.biggest(src="/images/design-development.svg")
 
-    h4 Features &amp; descriptions
+        p Design &amp; Development
 
-    ul.features-descriptions
-      li(ng-repeat="feature in vm.project.features")
-        p {{ feature.title }}
+    li
+      h3 Features
 
-        p {{ feature.description }}
+      hr.biggest
 
-        hr
+      h4 Uploaded documents
 
-  li
-    h3 Design
+      a(href="#") abc123.doc (wip)
 
-    hr.biggest
+      h4 Features &amp; descriptions
 
-    h4 Uploaded documents
+      ul.features-descriptions
+        li(ng-repeat="feature in vm.project.features")
+          p {{ feature.title }}
 
-    a(href="#") abc123.doc (wip)
+          p {{ feature.description }}
 
-    h4 URL to get styles
+          hr
 
-    a(href="{{ url }}" ng-repeat="url in vm.project.designUrls" target="_blank") {{ url }}
+    li
+      h3 Design
 
-    h4 Fonts
+      hr.biggest
 
-    .flex.middle
-      .big-a A
+      h4 Uploaded documents
 
-      span {{ vm.project.fontIds.join(', ') }}
+      a(href="#") abc123.doc (wip)
 
-    h4 Colors
+      h4 URL to get styles
 
-    p {{ vm.project.colorSwatchIds.join(', ') }}
+      a(href="{{ url }}" ng-repeat="url in vm.project.designUrls" target="_blank") {{ url }}
 
-    h4 Icons
+      h4 Fonts
 
-    .flex.middle(ng-repeat="icon in vm.project.iconsetIds")
-      img.icon.biggest(src="/images/{{ vm.imageMap[icon] }}.svg")
+      .flex.middle
+        .big-a A
 
-      span {{ vm.textMap[icon] }}
+        span {{ vm.project.fontIds.join(', ') }}
 
-  li
-    h3 Development
+      h4 Colors
 
-    hr.biggest
+      p {{ vm.project.colorSwatchIds.join(', ') }}
 
-    h4 Uploaded Specs
+      h4 Icons
 
-    a(href="#") abc123.doc (wip)
+      .flex.middle(ng-repeat="icon in vm.project.iconsetIds")
+        img.icon.biggest(src="/images/{{ vm.imageMap[icon] }}.svg")
 
-    h4 What level of security is needed?
+        span {{ vm.textMap[icon] }}
 
-    p Security level needed: {{ vm.project.securityLevel }}
+    li
+      h3 Development
 
-    h4 Access to data offline?
+      hr.biggest
 
-    p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
+      h4 Uploaded Specs
 
-    p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
+      a(href="#") abc123.doc (wip)
 
-    h4 Is there any level of personal information? (stored or transmitted)?
+      h4 What level of security is needed?
 
-    p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
+      p Security level needed: {{ vm.project.securityLevel }}
 
-    p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
+      h4 Access to data offline?
 
-    h4 How many 3rd party integrations?
+      p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
 
-    p There are {{ vm.project.numberOfApiIntegrations }} integrations needed.
+      p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
+
+      h4 Is there any level of personal information? (stored or transmitted)?
+
+      p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
+
+      p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
+
+      h4 How many 3rd party integrations?
+
+      p There are {{ vm.project.numberOfApiIntegrations }} integrations needed.
 
 
 

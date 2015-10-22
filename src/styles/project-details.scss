@@ -1,7 +1,28 @@
 @import "work-includes";
 
 project-details {
-  > ul {
+  display: block;
+  overflow: hidden;
+
+  .nav {
+    width: 200px;
+
+    ul {
+      border-right: 2px solid $neutral-color-light;
+
+      li {
+        margin-top: $margin;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .requirements {
+    margin-left: $margin;
+
     > li {
       margin-top: $margin-big;
 
