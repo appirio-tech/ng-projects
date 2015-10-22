@@ -283,7 +283,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       templateUrl: 'views/project-details.directive.html',
       controller: 'ProjectDetailsController as vm',
       scope: {
-        projectId: '@projectId'
+        id: '@id'
       }
     };
   };
@@ -320,7 +320,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       var params, resource;
       vm.loading = true;
       params = {
-        id: $scope.projectId
+        id: $scope.id
       };
       resource = ProjectsAPIService.get(params);
       resource.$promise.then(function(response) {
