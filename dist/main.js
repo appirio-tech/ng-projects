@@ -283,7 +283,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       templateUrl: 'views/project-details.directive.html',
       controller: 'ProjectDetailsController as vm',
       scope: {
-        id: '@id'
+        id: '@projectId'
       }
     };
   };
