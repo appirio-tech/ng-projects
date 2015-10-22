@@ -1,6 +1,8 @@
 @import "work-includes";
 
 ng-projects {
+  display: block;
+
   .incomplete, .complete {
     background-color: $danger-color;
 
