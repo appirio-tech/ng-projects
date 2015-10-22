@@ -21,7 +21,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService) ->
 
   activate = ->
     vm.loading = true
-    params     = id: $scope.projectId
+    params     = id: $scope.id
     resource   = ProjectsAPIService.get params
 
     resource.$promise.then (response) ->

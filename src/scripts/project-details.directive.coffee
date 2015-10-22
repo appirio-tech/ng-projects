@@ -5,6 +5,6 @@ directive = ->
   templateUrl : 'views/project-details.directive.html'
   controller  : 'ProjectDetailsController as vm'
   scope       :
-    projectId : '@projectId'
+    id: '@id'
 
 angular.module('appirio-tech-ng-projects').directive 'projectDetails', directive
