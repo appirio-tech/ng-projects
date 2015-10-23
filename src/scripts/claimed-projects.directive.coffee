@@ -5,6 +5,6 @@ directive = ->
   templateUrl : 'views/claimed-projects.directive.html'
   controller  : 'ClaimedProjectsController as vm'
   scope       :
-    copilotId : '@copilotId'
+    copilotId : '&copilotId'
 
 angular.module('appirio-tech-ng-projects').directive 'claimedProjects', directive
