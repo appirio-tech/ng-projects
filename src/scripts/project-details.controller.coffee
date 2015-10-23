@@ -4,7 +4,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
-  vm.textMap = # this is retarted!
+  vm.id       = $scope.id
+  vm.textMap  = # this is retarted!
     'IWATCH'     : 'iWatch'
     'IPHONE'     : 'iPhone'
     'IPad'       : 'iPad'
@@ -20,6 +21,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService) ->
     'THIN_LINE': 'icon-solid'
 
   activate = ->
+    $scope.userType ||= 'customer'
+
     vm.loading = true
     params     = id: $scope.id
     resource   = ProjectsAPIService.get params

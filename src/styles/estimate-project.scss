@@ -1,13 +1,21 @@
 @import "work-includes";
 
 estimate-project {
+  display         : block;
+  background-color: $neutral-color-lightest;
+  padding         : $padding;
+
   button {
     margin-top: $margin;
   }
 
-  h3 {
+  h3.success {
     color: $success-color;
     text-align: center
+  }
+
+  hr {
+    margin: $margin-small 0 0 0;
   }
 
   .cost-estimate {
@@ -15,7 +23,7 @@ estimate-project {
   }
 
   .cost, .duration {
-    margin-top: $margin;
+    margin-top: $margin-small;
 
     .fields {
       margin-top: $margin-small;

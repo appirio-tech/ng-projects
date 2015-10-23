@@ -4,9 +4,13 @@ project-details {
   display: block;
   overflow: hidden;
 
+  estimate-project {
+    margin-bottom: $margin;
+  }
+
   .nav {
     width: 200px;
-    margin-top: $margin-big;
+    margin-top: $margin-smallest;
 
     ul {
       border-right: 2px solid $neutral-color-light;

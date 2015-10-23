@@ -1,9 +1,11 @@
-loader(ng-show="vm.loading")
+h3 Project Estimate
+
+hr.biggest
 
 form(ng-submit="vm.submit()" ng-hide="vm.saved")
   .cost-estimate.flex.space-between.wrap
     .cost
-      p Cost
+      label Cost
 
       .fields.flex.middle
         input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0")
@@ -13,7 +15,7 @@ form(ng-submit="vm.submit()" ng-hide="vm.saved")
         input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0")
 
     .duration
-      p Project Duration
+      label Project Duration
 
       .fields.flex.middle
         input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0")
@@ -26,4 +28,6 @@ form(ng-submit="vm.submit()" ng-hide="vm.saved")
 
   button.action.wider save estimates
 
-h3(ng-show="vm.saved") Esimate saved
+h3.success(ng-show="vm.saved") Esimate saved
+
+loader(ng-show="vm.loading")

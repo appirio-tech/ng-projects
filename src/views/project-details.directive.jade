@@ -1,5 +1,7 @@
 loader(ng-show="vm.loading")
 
+estimate-project(project-id="{{ vm.id }}" ng-if="userType == 'copilot' && vm.project.status == 'Assigned'")
+
 .flex.rows
   .house.nav
     ul
