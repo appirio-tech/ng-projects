@@ -46,9 +46,9 @@ ul.flex.wrap
       footer
         a.button.action(ui-sref="timeline({ workId: project.id })") view quote
 
-    main.launched.flex.column(ng-if="project.status == 'Approved'")
+    main.approved.flex.column(ng-if="project.status == 'Approved'")
       .flex.column.middle.center.flex-grow
-        .icon.big.warning
+        img.icon.big(src="/images/project-approved.svg")
 
         h6 Project Approved
 
@@ -59,7 +59,7 @@ ul.flex.wrap
 
     main.launched.flex.column(ng-if="project.status == 'Launched'")
       .flex.column.middle.center.flex-grow
-        .icon.big.warning
+        img.icon.big(src="/images/project-launched.svg")
 
         h6 Project launched
 
