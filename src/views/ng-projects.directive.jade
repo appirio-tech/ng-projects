@@ -9,11 +9,13 @@ ul.flex.wrap
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
-      img.icon.big(src="/images/project-incomplete.svg")
+      .flex.column.middle.center.flex-grow
+        img.icon.big(src="/images/project-incomplete.svg")
 
-      h6 Project submission incomplete
+        h6 Project setup incomplete
 
-      a.button(ui-sref="submit-work({ id: project.id })") continue setup
+      footer
+        a.button.action(ui-sref="submit-work({ id: project.id })") continue setup
 
     main.submitted.flex.column(ng-if="project.status == 'Submitted'")
       .flex.column.middle.center.flex-grow

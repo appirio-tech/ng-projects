@@ -6,12 +6,6 @@ ng-projects {
   .incomplete, .complete {
     background-color: $danger-color;
 
-    a.button {
-      background-color: transparent;
-      border-color: $white;
-      color: $white;
-    }
-
     h6 {
       color: $white;
     }
