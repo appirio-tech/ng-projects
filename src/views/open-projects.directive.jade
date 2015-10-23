@@ -3,7 +3,7 @@ loader(ng-show="vm.loading")
 ul.flex.wrap
   li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     header
-      a(ui-sref="timeline({ workId: project.id })")
+      a(ui-sref="copilotProjectDetails({ id: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
 
       p.type {{ vm.typeMap[project.projectType] }} - 10/23/2015
