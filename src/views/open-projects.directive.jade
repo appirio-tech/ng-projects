@@ -2,6 +2,8 @@ loader(ng-show="vm.loading")
 
 ul.flex.wrap
   li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    loader(ng-show="vm.claiming[project.id]")
+
     header
       a(ui-sref="copilot-project-details({ id: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
@@ -11,11 +13,18 @@ ul.flex.wrap
     hr
 
     main.flex.column.middle.center
-      img.icon.biggest(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+      img.flex-grow(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
 
-      img.icon.biggest(src="/images/development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+      img.flex-grow(src="/images/design-development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
-      a.action.button(ui-sref="submit-work({ id: project.id })") claim project
+      footer
+        button.action.button(ng-click="vm.claim(project.id)" ng-hide="vm.claimed[project.id]") claim project
+
+        .flex.middle.center(ng-show="vm.claimed[project.id]")
+          .checkmark-white-house
+            .icon.checkmark-white.small
+
+          .claimed project claimed
 
 .no-projects(ng-if="vm.projects.length == 0")
   p You have not started any projects.

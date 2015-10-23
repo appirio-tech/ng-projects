@@ -2,4 +2,31 @@
 
 open-projects {
   display: block;
+
+  > ul > li {
+    position: relative;
+  }
+
+  img {
+    height: 68px;
+  }
+
+  .claimed {
+    text-transform: uppercase;
+    margin-left: $margin-smallest;
+  }
+
+  .checkmark-white-house {
+    background-color: $primary-color;
+    border-radius   : 50%;
+    padding         : $padding-smallest;
+  }
+
+  footer {
+    height: 52px;
+  }
+
+  .button {
+    margin-top: 0;
+  }
 }
