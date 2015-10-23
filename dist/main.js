@@ -2,7 +2,7 @@
   'use strict';
   var dependencies;
 
-  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components', 'appirio-tech-ng-api-services'];
+  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components', 'appirio-tech-ng-api-services', 'appirio-tech-ng-auth'];
 
   angular.module('appirio-tech-ng-projects', dependencies);
 
@@ -106,7 +106,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
   'use strict';
   var OpenProjectsController;
 
-  OpenProjectsController = function($scope, WorkAPIService) {
+  OpenProjectsController = function($scope, ProjectsAPIService) {
     var activate, getProjects, vm;
     vm = this;
     vm.projects = [];
@@ -120,10 +120,13 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       getProjects();
       return vm;
     };
-    getProjects = function(params) {
-      var resource;
+    getProjects = function() {
+      var params, resource;
       vm.loading = true;
-      resource = WorkAPIService.get(params);
+      params = {
+        filter: 'status=Submitted'
+      };
+      resource = ProjectsAPIService.query(params);
       resource.$promise.then(function(response) {
         return vm.projects = response;
       });
@@ -135,7 +138,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
     return activate();
   };
 
-  OpenProjectsController.$inject = ['$scope', 'WorkAPIService'];
+  OpenProjectsController.$inject = ['$scope', 'ProjectsAPIService'];
 
   angular.module('appirio-tech-ng-projects').controller('OpenProjectsController', OpenProjectsController);
 
@@ -162,8 +165,8 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
   'use strict';
   var ClaimedProjectsController;
 
-  ClaimedProjectsController = function($scope, WorkAPIService) {
-    var activate, getProjects, vm;
+  ClaimedProjectsController = function($scope, ProjectsAPIService, UserV3Service) {
+    var activate, setProjects, vm;
     vm = this;
     vm.projects = [];
     vm.loading = false;
@@ -182,13 +185,22 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       'DESIGN_AND_CODE': 'Design/Code'
     };
     activate = function() {
-      getProjects();
+      vm.loading = true;
+      $scope.$watch(UserV3Service.getCurrentUser, function() {
+        var user;
+        user = UserV3Service.getCurrentUser();
+        if (user) {
+          return setProjects(user.id);
+        }
+      });
       return vm;
     };
-    getProjects = function(params) {
-      var resource;
-      vm.loading = true;
-      resource = WorkAPIService.get(params);
+    setProjects = function(copilotId) {
+      var params, resource;
+      params = {
+        filter: "copilotId=" + copilotId
+      };
+      resource = ProjectsAPIService.query(params);
       resource.$promise.then(function(response) {
         return vm.projects = response;
       });
@@ -200,7 +212,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
     return activate();
   };
 
-  ClaimedProjectsController.$inject = ['$scope', 'WorkAPIService'];
+  ClaimedProjectsController.$inject = ['$scope', 'ProjectsAPIService', 'UserV3Service'];
 
   angular.module('appirio-tech-ng-projects').controller('ClaimedProjectsController', ClaimedProjectsController);
 
