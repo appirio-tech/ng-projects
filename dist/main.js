@@ -154,7 +154,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       templateUrl: 'views/claimed-projects.directive.html',
       controller: 'ClaimedProjectsController as vm',
       scope: {
-        copilotId: '&copilotId'
+        copilotId: '@copilotId'
       }
     };
   };
@@ -187,25 +187,27 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       'DESIGN_AND_CODE': 'Design/Code'
     };
     activate = function() {
-      vm.loading = true;
       $scope.$watch('copilotId', function() {
         return setProjects();
       });
       return vm;
     };
-    setProjects = function(copilotId) {
+    setProjects = function() {
       var params, resource;
-      params = {
-        filter: "copilotId=" + $scope.copilotId
-      };
-      resource = ProjectsAPIService.query(params);
-      resource.$promise.then(function(response) {
-        return vm.projects = response;
-      });
-      resource.$promise["catch"](function(response) {});
-      return resource.$promise["finally"](function() {
-        return vm.loading = false;
-      });
+      if ($scope.copilotId) {
+        vm.loading = true;
+        params = {
+          filter: "copilotId=" + $scope.copilotId
+        };
+        resource = ProjectsAPIService.query(params);
+        resource.$promise.then(function(response) {
+          return vm.projects = response;
+        });
+        resource.$promise["catch"](function(response) {});
+        return resource.$promise["finally"](function() {
+          return vm.loading = false;
+        });
+      }
     };
     return activate();
   };
