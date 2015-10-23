@@ -2,7 +2,7 @@
   'use strict';
   var dependencies;
 
-  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components', 'appirio-tech-ng-api-services', 'appirio-tech-ng-auth'];
+  dependencies = ['ui.router', 'ngResource', 'app.constants', 'appirio-tech-ng-ui-components', 'appirio-tech-ng-api-services'];
 
   angular.module('appirio-tech-ng-projects', dependencies);
 
@@ -153,7 +153,9 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       restrict: 'E',
       templateUrl: 'views/claimed-projects.directive.html',
       controller: 'ClaimedProjectsController as vm',
-      scope: true
+      scope: {
+        copilotId: '@copilotId'
+      }
     };
   };
 
@@ -165,7 +167,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
   'use strict';
   var ClaimedProjectsController;
 
-  ClaimedProjectsController = function($scope, ProjectsAPIService, UserV3Service) {
+  ClaimedProjectsController = function($scope, ProjectsAPIService) {
     var activate, setProjects, vm;
     vm = this;
     vm.projects = [];
@@ -186,19 +188,15 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
     };
     activate = function() {
       vm.loading = true;
-      $scope.$watch(UserV3Service.getCurrentUser, function() {
-        var user;
-        user = UserV3Service.getCurrentUser();
-        if (user) {
-          return setProjects(user.id);
-        }
+      $scope.$watch('copilotId', function() {
+        return setProjects();
       });
       return vm;
     };
     setProjects = function(copilotId) {
       var params, resource;
       params = {
-        filter: "copilotId=" + copilotId
+        filter: "copilotId=" + $scope.copilotId
       };
       resource = ProjectsAPIService.query(params);
       resource.$promise.then(function(response) {
@@ -212,7 +210,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
     return activate();
   };
 
-  ClaimedProjectsController.$inject = ['$scope', 'ProjectsAPIService', 'UserV3Service'];
+  ClaimedProjectsController.$inject = ['$scope', 'ProjectsAPIService'];
 
   angular.module('appirio-tech-ng-projects').controller('ClaimedProjectsController', ClaimedProjectsController);
 
