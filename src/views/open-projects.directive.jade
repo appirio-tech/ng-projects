@@ -1,7 +1,7 @@
 loader(ng-show="vm.loading")
 
 ul.flex.wrap
-  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+  li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     loader(ng-show="vm.claiming[project.id]")
 
     header
