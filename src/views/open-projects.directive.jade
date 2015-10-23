@@ -26,7 +26,7 @@ ul.flex.wrap
 
           .claimed project claimed
 
-.no-projects(ng-if="vm.projects.length == 0")
+.no-projects(ng-hide="vm.loading || vm.projects.length == 0")
   p You have not started any projects.
 
 
