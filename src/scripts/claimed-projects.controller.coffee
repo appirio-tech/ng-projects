@@ -20,27 +20,28 @@ ClaimedProjectsController = ($scope, ProjectsAPIService) ->
     'DESIGN_AND_CODE': 'Design/Code'
 
   activate = ->
-    vm.loading = true
-
     $scope.$watch 'copilotId', ->
       setProjects()
 
     vm
 
-  setProjects = (copilotId) ->
-    params =
-      filter: "copilotId=#{$scope.copilotId}"
+  setProjects = ->
+    if $scope.copilotId
+      vm.loading = true
 
-    resource = ProjectsAPIService.query params
+      params =
+        filter: "copilotId=#{$scope.copilotId}"
 
-    resource.$promise.then (response) ->
-      vm.projects = response
+      resource = ProjectsAPIService.query params
 
-    resource.$promise.catch (response) ->
-      # TODO: handle error
+      resource.$promise.then (response) ->
+        vm.projects = response
 
-    resource.$promise.finally ->
-      vm.loading = false
+      resource.$promise.catch (response) ->
+        # TODO: handle error
+
+      resource.$promise.finally ->
+        vm.loading = false
 
   activate()
 
