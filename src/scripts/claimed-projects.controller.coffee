@@ -1,6 +1,6 @@
 'use strict'
 
-ClaimedProjectsController = ($scope, ProjectsAPIService, UserV3Service) ->
+ClaimedProjectsController = ($scope, ProjectsAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
@@ -22,16 +22,14 @@ ClaimedProjectsController = ($scope, ProjectsAPIService, UserV3Service) ->
   activate = ->
     vm.loading = true
 
-    $scope.$watch UserV3Service.getCurrentUser, ->
-      user = UserV3Service.getCurrentUser()
-
-      setProjects(user.id) if user
+    $scope.$watch 'copilotId', ->
+      setProjects()
 
     vm
 
   setProjects = (copilotId) ->
     params =
-      filter: "copilotId=#{copilotId}"
+      filter: "copilotId=#{$scope.copilotId}"
 
     resource = ProjectsAPIService.query params
 
@@ -46,6 +44,6 @@ ClaimedProjectsController = ($scope, ProjectsAPIService, UserV3Service) ->
 
   activate()
 
-ClaimedProjectsController.$inject = ['$scope', 'ProjectsAPIService', 'UserV3Service']
+ClaimedProjectsController.$inject = ['$scope', 'ProjectsAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'ClaimedProjectsController', ClaimedProjectsController
