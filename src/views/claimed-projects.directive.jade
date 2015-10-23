@@ -1,7 +1,7 @@
 loader(ng-show="vm.loading")
 
 ul.flex.wrap
-  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+  li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     header
       a(ui-sref="copilot-project-details({ id: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
