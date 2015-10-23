@@ -154,7 +154,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       templateUrl: 'views/claimed-projects.directive.html',
       controller: 'ClaimedProjectsController as vm',
       scope: {
-        copilotId: '@copilotId'
+        copilotId: '&copilotId'
       }
     };
   };
