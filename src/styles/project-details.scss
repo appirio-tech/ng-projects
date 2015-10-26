@@ -12,6 +12,11 @@ project-details {
     width: 200px;
     margin-top: $margin-smallest;
 
+    button {
+      width: 100%;
+      text-align: left;
+    }
+
     ul {
       border-right: 2px solid $neutral-color-light;
 
@@ -39,10 +44,12 @@ project-details {
 
   hr {
     margin-top: $margin-small;
+    background-color: $neutral-color-lightest;
   }
 
   h4 {
     margin-bottom: $margin-small;
+    margin-top: $margin;
   }
 
   .platform {
@@ -58,11 +65,13 @@ project-details {
   }
 
   .project-type {
-    display: inline-block;
-    text-align: center;
-
     img {
       height: 68px;
+    }
+
+    p {
+      margin-left: $margin-small;
+      text-transform: uppercase;
     }
   }
 
