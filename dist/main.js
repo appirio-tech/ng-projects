@@ -145,7 +145,7 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
       var params, resource;
       vm.loading = true;
       params = {
-        filter: 'status=Submitted'
+        filter: 'copilotId=unassigned'
       };
       resource = ProjectsAPIService.query(params);
       resource.$promise.then(function(response) {

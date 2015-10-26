@@ -32,7 +32,7 @@ OpenProjectsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPISe
     vm.loading = true
 
     params =
-      filter: 'status=Submitted'
+      filter: 'copilotId=unassigned'
 
     resource = ProjectsAPIService.query params
 
