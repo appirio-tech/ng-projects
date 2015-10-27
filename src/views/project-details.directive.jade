@@ -24,7 +24,7 @@ estimate-project(
 .flex.rows
   .house.nav
     button.action.claim(
-      ng-if="userType == 'copilot' && vm.project.copilotId = 'unassigned' "
+      ng-if="userType == 'copilot' && vm.project && vm.project.copilotId = 'unassigned' "
       ng-hide="vm.showConfirmClaim"
       ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
     ) claim project
