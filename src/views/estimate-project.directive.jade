@@ -1,4 +1,4 @@
-main(ng-hide="vm.saved")
+main(ng-hide="vm.costEstimate")
   h3 Project Estimate
 
   hr.biggest
@@ -29,9 +29,23 @@ main(ng-hide="vm.saved")
 
     button.action.wider save estimates
 
-.success-message.flex.center.bottom(ng-show="vm.saved")
-  .icon.checkmark-white
+.success-message(ng-show="vm.costEstimate")
+  .flex.middle
+    .icon.checkmark.small
 
-  h3 Esimate saved
+    h3 Project Estimates
+
+  hr.biggest
+
+  .estimates.flex.space-between
+    .costs
+      h6 Costs
+
+      p ${{ vm.costEstimate.price.min }} - ${{ vm.costEstimate.price.max }}
+
+    .duration
+      h6 Duration
+
+      p {{ vm.costEstimate.duration.min }} - {{ vm.costEstimate.duration.max }} {{ vm.costEstimate.duration.unit }}s
 
 loader(ng-show="vm.loading")

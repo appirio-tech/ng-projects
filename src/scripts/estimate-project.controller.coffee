@@ -1,10 +1,9 @@
 'use strict'
 
-EstimateProjectController = ($scope, ProjectEstimatesAPIService) ->
+EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
-  vm.saved    = false
   vm.payload  =
     price:
       min: 0
@@ -20,18 +19,26 @@ EstimateProjectController = ($scope, ProjectEstimatesAPIService) ->
     resource   = ProjectEstimatesAPIService.post params, param: vm.payload
 
     resource.$promise.then ->
-      vm.saved = true
+      vm.costEstimate = vm.payload
 
     resource.$promise.finally ->
       vm.loading = false
 
   activate = ->
-    vm
+    vm.loading = true
+    params     = id: $scope.projectId
+    resource   = ProjectsAPIService.get params
 
-  getProjects = (params) ->
+    resource.$promise.then (response) ->
+      vm.costEstimate = response.costEstimate
+
+    resource.$promise.finally ->
+      vm.loading = false
+
+    vm
 
   activate()
 
-EstimateProjectController.$inject = ['$scope', 'ProjectEstimatesAPIService']
+EstimateProjectController.$inject = ['$scope', 'ProjectsAPIService', 'ProjectEstimatesAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'EstimateProjectController', EstimateProjectController
