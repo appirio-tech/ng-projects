@@ -358,9 +358,11 @@ $templateCache.put("views/project-details.directive.html","<loader ng-show=\"vm.
     };
     activate = function() {
       var params, resource;
-      if ($scope.copilotId) {
-        vm.userType = 'COPILOT';
-      }
+      $scope.$watch('copilotId', function() {
+        if ($scope.copilotId) {
+          return vm.userType = 'COPILOT';
+        }
+      });
       vm.loading = true;
       params = {
         id: $scope.id

@@ -36899,7 +36899,7 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
         transformResponse: transformResponse
       }
     };
-    return $resource(url, params);
+    return $resource(url, params, actions);
   };
 
   srv.$inject = ['$resource', 'API_URL'];
