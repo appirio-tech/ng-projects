@@ -7,6 +7,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.id               = $scope.id
   vm.showConfirmClaim = false
   vm.claiming         = false
+  vm.claimed          = false
   vm.userType         = 'CUSTOMER'
 
   vm.textMap  = # this is retarted!
@@ -28,17 +29,16 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     payload     = id: $scope.id
     params      = userId: $scope.copilotId
     resource    = CopilotProjectDetailsAPIService.post params, payload
-    vm.claiming = 'WORKING'
+    vm.claiming = true
 
     resource.$promise.then (response) ->
-      vm.claiming = 'CLAIMED'
-      vm.project.status = 'Assigned'
+      vm.claimed = true
 
     resource.$promise.catch (response) ->
       # TODO: handle error
 
     resource.$promise.finally ->
-      vm.claiming = false unless vm.claiming == 'CLAIMED'
+      vm.claiming = false
 
   activate = ->
     $scope.$watch 'copilotId', ->
@@ -50,6 +50,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
 
     resource.$promise.then (response) ->
       vm.project = response
+      vm.claimed = response.copilotId != 'unassigned'
 
     resource.$promise.catch (response) ->
       # TODO: handle error
