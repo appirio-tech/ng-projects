@@ -8,35 +8,44 @@ ul.flex.wrap
 
       p.type {{ vm.typeMap[project.projectType] }} - 10/23/2015
 
-    hr
-
     main.flex.column.middle.center(ng-if="project.status == 'Assigned'")
-      h6 Projected Claimed
+      .flex.column.middle.center.flex-grow
+        img.icon.biggest(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
 
-      img.icon.biggest(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+        img.icon.biggest(src="/images/development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
-      img.icon.biggest(src="/images/development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+        h6 Project Claimed
 
-      a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
+      footer.flex.bottom.center
+        a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
 
     main.flex.column.middle.center(ng-if="project.status == 'Estimate'")
-      h6 Projected Estimated
+      .flex.column.middle.center.flex-grow
+        img.icon.biggest(src="/images/define-feature.svg")
 
-      img.icon.biggest(src="/images/define-feature.svg")
+        h6 Projected Estimated
 
-      p Client is reviewing estimate.
+      footer.flex.bottom.center
+        p Client is reviewing estimate.
 
     main.flex.column.middle.center(ng-if="project.status == 'Approved'")
-      h6 Project Approved
+      .flex.column.middle.center.flex-grow
 
-      img.icon.biggest(src="/images/brand-reqs.svg")
+        img.icon.biggest(src="/images/brand-reqs.svg")
 
-      a.action.button(ui-sref="copilot-project-details({ id: project.id })") create challenges
+        h6 Project Approved
+
+      footer.flex.bottom.center
+        a.action.button(ui-sref="copilot-project-details({ id: project.id })") create challenges
 
     main.flex.column.middle.center(ng-if="project.status == 'Launched'")
-      img.icon.biggest(src="/images/features.svg")
+      .flex.column.middle.center.flex-grow
+        img.icon.biggest(src="/images/features.svg")
 
-      h6 Project launched
+        h6 Project launched
+
+      footer.flex.bottom.center
+        p Relax, have a beer.
 
     main.complete.flex.column.middle.center(ng-if="project.status == 'Complete'")
       img.icon.biggest(src="/images/features.svg")

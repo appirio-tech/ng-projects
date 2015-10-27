@@ -1,16 +1,12 @@
 @import "work-includes";
 
 ng-projects, open-projects, claimed-projects {
-  button, .button {
-    margin-top: $margin-small;
-  }
-
   h5 {
     @include ellipsis;
   }
 
   h6 {
-    font-size: $font-size-small;
+    margin-top: $margin-small;
   }
 
   .no-projects {
@@ -30,17 +26,22 @@ ng-projects, open-projects, claimed-projects {
     width: 100%;
   }
 
+  .content-end {
+    @include align-content(flex-end);
+  }
+
   main {
-    height    : 200px;
-    margin-top: $margin-small;
-    text-align: center;
-    overflow  : auto;
+    height          : 200px;
+    margin-top      : $margin-small;
+    text-align      : center;
+    overflow        : auto;
+    background-color: $primary-color-light;
 
     footer {
       background-color: $white;
       text-align      : center;
       width           : 100%;
-      padding-top     : $margin-small;
+      height          : 50px;
 
       p:last-child {
         color: $neutral-color;

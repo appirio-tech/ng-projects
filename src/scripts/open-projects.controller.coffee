@@ -16,17 +16,17 @@ OpenProjectsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPISe
 
     vm
 
-  vm.claim = (id) ->
-    vm.claiming[id] = true
-    payload  = id: id
+  vm.claim = (projectId) ->
+    vm.claiming[projectId] = true
+    payload  = id: projectId
     params   = userId: $scope.copilotId
     resource = CopilotProjectDetailsAPIService.post params, payload
 
     resource.$promise.then (response) ->
-      vm.claimed[id] = true
+      vm.claimed[projectId] = true
 
     resource.$promise.finally ->
-      vm.claiming[id] = false
+      vm.claiming[projectId] = false
 
   getProjects = ->
     vm.loading = true

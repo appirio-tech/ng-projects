@@ -32,31 +32,31 @@ estimate-project(project-id="{{ vm.id }}" ng-if="userType == 'copilot' && vm.pro
 
       ul.platform.flex.space-between
         li.device
-          h6 Device
+          h5 Device
 
           ul
             li.flex.middle(ng-repeat="device in vm.project.deviceIds")
-              img.icon(src="/images/icon-check.svg")
+              img.icon.small(src="/images/icon-check.svg")
 
               span {{ vm.textMap[device] || device }}
 
         li.orientation
-          h6 Orientation
+          h5 Orientation
 
           ul
             li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
-              img.icon(src="/images/icon-check.svg")
+              img.icon.small(src="/images/icon-check.svg")
 
               span {{ vm.textMap[orientation] || orientation }}
 
       h4 Project type
 
-      .project-type(ng-if="vm.project.projectType == 'DESIGN'")
+      .project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
         img.biggest(src="/images/design.svg")
 
         p Design
 
-      .project-type(ng-if="vm.project.projectType != 'DESIGN'")
+      .project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
         img.biggest(src="/images/design-development.svg")
 
         p Design &amp; Development

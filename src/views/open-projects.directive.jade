@@ -10,14 +10,13 @@ ul.flex.wrap
 
       p.type {{ vm.typeMap[project.projectType] }} - 10/23/2015
 
-    hr
-
     main.flex.column.middle.center
-      img.flex-grow(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+      .flex.column.middle.center.flex-grow
+        img.flex-grow(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
 
-      img.flex-grow(src="/images/design-development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+        img.flex-grow(src="/images/design-development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
-      footer
+      footer.flex.bottom.center
         button.action.button(ng-click="vm.claim(project.id)" ng-hide="vm.claimed[project.id]") claim project
 
         .flex.middle.center(ng-show="vm.claimed[project.id]")
