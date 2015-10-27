@@ -17,7 +17,7 @@ EstimateProjectController = ($scope, ProjectEstimatesAPIService) ->
   vm.submit = ->
     vm.loading = true
     params     = id: $scope.projectId
-    resource   = ProjectEstimatesAPIService.post params, vm.payload
+    resource   = ProjectEstimatesAPIService.post params, param: vm.payload
 
     resource.$promise.then ->
       vm.saved = true

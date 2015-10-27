@@ -1,33 +1,37 @@
-h3 Project Estimate
+main(ng-hide="vm.saved")
+  h3 Project Estimate
 
-hr.biggest
+  hr.biggest
 
-form(ng-submit="vm.submit()" ng-hide="vm.saved")
-  .cost-estimate.flex.space-between.wrap
-    .cost
-      label Cost
+  form(ng-submit="vm.submit()")
+    .cost-estimate.flex.space-between.wrap
+      .cost
+        label Cost
 
-      .fields.flex.middle
-        input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0")
+        .fields.flex.middle
+          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0")
 
-        p to
+          p to
 
-        input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0")
 
-    .duration
-      label Project Duration
+      .duration
+        label Project Duration
 
-      .fields.flex.middle
-        input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0")
+        .fields.flex.middle
+          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0")
 
-        p to
+          p to
 
-        input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0")
 
-        p weeks
+          p weeks
 
-  button.action.wider save estimates
+    button.action.wider save estimates
 
-h3.success(ng-show="vm.saved") Esimate saved
+.success-message.flex.center.bottom(ng-show="vm.saved")
+  .icon.checkmark-white
+
+  h3 Esimate saved
 
 loader(ng-show="vm.loading")

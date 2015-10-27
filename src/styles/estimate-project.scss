@@ -9,9 +9,17 @@ estimate-project {
     margin-top: $margin;
   }
 
-  h3.success {
-    color: $success-color;
-    text-align: center
+  .success-message {
+    background-color: $success-color;
+    padding: $padding;
+
+    h3 {
+      margin-left: $margin-smallest;
+    }
+
+    > * {
+      color: $white;
+    }
   }
 
   hr {
