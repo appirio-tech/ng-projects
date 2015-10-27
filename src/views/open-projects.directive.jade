@@ -2,8 +2,6 @@ loader(ng-show="vm.loading")
 
 ul.flex.wrap
   li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
-    loader(ng-show="vm.claiming[project.id]")
-
     header
       a(ui-sref="copilot-project-details({ id: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
@@ -17,13 +15,7 @@ ul.flex.wrap
         img.flex-grow(src="/images/design-development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
       footer.flex.bottom.center
-        button.action.button(ng-click="vm.claim(project.id)" ng-hide="vm.claimed[project.id]") claim project
-
-        .flex.middle.center(ng-show="vm.claimed[project.id]")
-          .checkmark-white-house
-            .icon.checkmark-white.small
-
-          .claimed project claimed
+        a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p There are no open projects.
