@@ -10,9 +10,9 @@ ul.flex.wrap
 
     main.flex.column.middle.center
       .flex.column.middle.center.flex-grow
-        img.flex-grow(src="/images/design.svg" ng-if="project.projectType == 'DESIGN'")
+        img.flex-grow(src="/images/design-colored.svg" ng-if="project.projectType == 'DESIGN'")
 
-        img.flex-grow(src="/images/design-development.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+        img.flex-grow(src="/images/design-development-colored.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
       footer.flex.bottom.center
         a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
