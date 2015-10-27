@@ -1,9 +1,34 @@
 loader(ng-show="vm.loading")
 
-estimate-project(project-id="{{ vm.id }}" ng-if="userType == 'copilot' && vm.project.status == 'Assigned'")
+.confirm-claim.flex.middle.center(ng-class="{ active: vm.showConfirmClaim }")
+  p(ng-hide="vm.claiming == 'CLAIMED'") Are you sure you want to claim this project?
+
+  .flex.bottom(ng-show="vm.claiming == 'CLAIMED'")
+    .icon.checkmark-white.small
+
+    h5 Project claimed!
+
+  button(ng-click="vm.claim()" ng-hide="vm.claiming") yes, claim it!
+
+  button(ng-click="vm.showConfirmClaim = !vm.showConfirmClaim" ng-hide="vm.claiming") cancel
+
+  .loader-house(ng-show="vm.claiming == 'WORKING'")
+    loader
+
+estimate-project(
+  project-id="{{ vm.id }}"
+  ng-if="userType == 'copilot'"
+  ng-class="{ active: vm.project.status == 'Assigned' }"
+)
 
 .flex.rows
   .house.nav
+    button.action.claim(
+      ng-if="userType == 'copilot' && vm.project.copilotId = 'unassigned' "
+      ng-hide="vm.showConfirmClaim"
+      ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
+    ) claim project
+
     ul
       li
         button.clean Project setup

@@ -5,20 +5,71 @@ project-details {
   overflow: hidden;
 
   estimate-project {
-    margin-bottom: $margin;
+    @include transition (all 0.4s ease-in-out);
+
+    max-height: 0px;
+    overflow  : hidden;
+    padding   : 0;
+
+    &.active {
+      max-height   : 300px;
+      margin-bottom: $margin;
+      padding      : $padding;
+    }
+  }
+
+  .confirm-claim {
+    @include transition (all 0.4s ease-in-out);
+
+    background-color: $primary-color;
+    color           : $white;
+    max-height      : 0px;
+    overflow        : hidden;
+
+    h5 {
+      margin-left: $margin-smallest;
+    }
+
+    .loader-house {
+      position: relative;
+
+      .loader {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &.active {
+      max-height: 100px;
+      margin-bottom: $margin;
+    }
+
+    > * {
+      margin: $margin-small;
+    }
+
+    button {
+      background-color: transparent;
+      color           : $white;
+      border-color    : $white;
+    }
   }
 
   .nav {
     width: 200px;
     margin-top: $margin-smallest;
 
-    button {
-      width: 100%;
-      text-align: left;
+    .claim {
+      margin-bottom: $margin;
     }
 
     ul {
       border-right: 2px solid $neutral-color-lightest;
+
+      button {
+        width: 100%;
+        text-align: left;
+      }
 
       li {
         margin-top: $margin;
