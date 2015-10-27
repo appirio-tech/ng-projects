@@ -24,6 +24,10 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     'FLAT_COLORS': 'icon-flat-color'
     'SOLID_LINE' : 'icon-solid'
     'THIN_LINE'  : 'icon-solid'
+    'BLUE'       : 'colors-blue'
+    'RED'        : 'colors-red'
+    'GREEN'      : 'colors-green'
+    'ORANGE'     : 'colors-orange'
 
   vm.claim = ->
     payload     = id: $scope.id

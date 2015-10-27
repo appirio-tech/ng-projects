@@ -133,6 +133,21 @@ project-details {
     font-size: $font-size-biggest;
   }
 
+  .color-swatches {
+    li {
+      display: inline-block;
+      margin-left: $margin-smallest;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    img {
+      height: 68px;
+    }
+  }
+
   .features-descriptions {
     li {
       &:last-child {

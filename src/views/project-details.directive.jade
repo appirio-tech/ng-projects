@@ -61,7 +61,7 @@ estimate-project(
 
           ul
             li.flex.middle(ng-repeat="device in vm.project.deviceIds")
-              img.icon.small(src="/images/icon-check.svg")
+              img.icon.small(ng-src="/images/icon-check.svg")
 
               span {{ vm.textMap[device] || device }}
 
@@ -70,19 +70,19 @@ estimate-project(
 
           ul
             li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
-              img.icon.small(src="/images/icon-check.svg")
+              img.icon.small(ng-src="/images/icon-check.svg")
 
               span {{ vm.textMap[orientation] || orientation }}
 
       h4 Project type
 
       .project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
-        img.biggest(src="/images/design.svg")
+        img.biggest(ng-src="/images/design-colored.svg")
 
         p Design
 
       .project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
-        img.biggest(src="/images/design-development.svg")
+        img.biggest(ng-src="/images/design-development-colored.svg")
 
         p Design &amp; Development
 
@@ -127,12 +127,14 @@ estimate-project(
 
       h4 Colors
 
-      p {{ vm.project.colorSwatchIds.join(', ') }}
+      ul.color-swatches
+        li(ng-repeat="color in vm.project.colorSwatchIds")
+          img(ng-src="/images/{{ vm.imageMap[color] }}.png")
 
       h4 Icons
 
       .flex.middle(ng-repeat="icon in vm.project.iconsetIds")
-        img.icon.biggest(src="/images/{{ vm.imageMap[icon] }}.svg")
+        img.icon.biggest(ng-src="/images/{{ vm.imageMap[icon] }}.svg")
 
         span {{ vm.textMap[icon] }}
 
