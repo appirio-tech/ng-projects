@@ -28,6 +28,11 @@ config = ($stateProvider) ->
     title       : 'project details'
     templateUrl : 'views/project-details.example.html'
 
+  states['copilot-project-details'] =
+    url         : '/copilot-project-details'
+    title       : 'copilot project details'
+    templateUrl : 'views/copilot-project-details.example.html'
+
   for key, state of states
     $stateProvider.state key, state
 

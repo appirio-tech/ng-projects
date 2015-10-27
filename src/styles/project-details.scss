@@ -33,6 +33,11 @@ project-details {
   .requirements {
     margin-left: $margin;
 
+    hr {
+      margin-top: $margin-small;
+      background-color: $neutral-color-lightest;
+    }
+
     > li {
       margin-top: $margin-big;
 
@@ -40,11 +45,6 @@ project-details {
         margin-top: 0;
       }
     }
-  }
-
-  hr {
-    margin-top: $margin-small;
-    background-color: $neutral-color-lightest;
   }
 
   h4 {
