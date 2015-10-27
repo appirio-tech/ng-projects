@@ -41,7 +41,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       vm.claiming = false unless vm.claiming == 'CLAIMED'
 
   activate = ->
-    vm.userType = 'COPILOT' if $scope.copilotId
+    $scope.$watch 'copilotId', ->
+      vm.userType = 'COPILOT' if $scope.copilotId
 
     vm.loading = true
     params     = id: $scope.id
