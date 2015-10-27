@@ -7,6 +7,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.id               = $scope.id
   vm.showConfirmClaim = false
   vm.claiming         = false
+  vm.userType         = 'CUSTOMER'
 
   vm.textMap  = # this is retarted!
     'IWATCH'     : 'iWatch'
@@ -40,7 +41,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       vm.claiming = false unless vm.claiming == 'CLAIMED'
 
   activate = ->
-    $scope.userType = 'copilot' if $scope.copilotId
+    vm.userType = 'COPILOT' if $scope.copilotId
 
     vm.loading = true
     params     = id: $scope.id

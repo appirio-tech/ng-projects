@@ -17,14 +17,14 @@ loader(ng-show="vm.loading")
 
 estimate-project(
   project-id="{{ vm.id }}"
-  ng-if="userType == 'copilot'"
+  ng-if="vm.userType == 'COPILOT'"
   ng-class="{ active: vm.project.status == 'Assigned' }"
 )
 
 .flex.rows
   .house.nav
     button.action.claim(
-      ng-if="userType == 'copilot' && vm.project && vm.project.copilotId = 'unassigned' "
+      ng-if="vm.userType == 'COPILOT' && vm.project.copilotId = 'unassigned' "
       ng-hide="vm.showConfirmClaim"
       ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
     ) claim project
