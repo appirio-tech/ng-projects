@@ -26,7 +26,7 @@ angular.module("app.constants", [])
 }).call(this);
 
 angular.module("example").run(["$templateCache", function($templateCache) {$templateCache.put("views/claimed-projects.example.html","<claimed-projects copilot-id=\"123\"></claimed-projects>");
-$templateCache.put("views/copilot-project-details.example.html","<div class=\"project-details-layout\"><project-details project-id=\"123\" user-type=\"copilot\"></project-details></div>");
+$templateCache.put("views/copilot-project-details.example.html","<div class=\"project-details-layout\"><project-details project-id=\"123\" copilot-id=\"123\"></project-details></div>");
 $templateCache.put("views/estimate-project.example.html","<estimate-project project-id=\"123\"></estimate-project>");
 $templateCache.put("views/open-projects.example.html","<open-projects copilot-id=\"123\"></open-projects>");
 $templateCache.put("views/project-details.example.html","<div class=\"project-details-layout\"><project-details project-id=\"123\"></project-details></div>");
