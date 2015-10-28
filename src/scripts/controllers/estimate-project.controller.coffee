@@ -32,8 +32,6 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
     resource.$promise.then (response) ->
       vm.costEstimate = response.costEstimate
 
-      $scope.onEstimated? response.costEstimate
-
     resource.$promise.finally ->
       vm.loading = false
 

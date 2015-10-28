@@ -11,7 +11,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.claimed           = false
   vm.launching         = false
   vm.launched          = false
-  vm.estimated         = false
+  vm.estimateAccepted  = false
   vm.userType          = 'CUSTOMER'
 
   vm.textMap  = # this is retarted!
@@ -54,7 +54,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       projectId: $scope.id
       userId   : $scope.copilotId
 
-    payload      = status: 'launched'
+    payload      = status: 'Launched'
     resource     = CopilotProjectDetailsAPIService.put params, payload
     vm.launching = true
 
@@ -67,9 +67,6 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource.$promise.finally ->
       vm.launching = false
 
-  vm.onEstimated = ->
-    vm.estimated = true
-
   activate = ->
     $scope.$watch 'copilotId', ->
       vm.userType = 'COPILOT' if $scope.copilotId
@@ -79,10 +76,10 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource   = ProjectsAPIService.get params
 
     resource.$promise.then (response) ->
-      vm.project   = response
-      vm.claimed   = response.copilotId != 'unassigned'
-      vm.launched  = response.status == 'launched'
-      vm.estimated = response.costEstimate?
+      vm.project          = response
+      vm.claimed          = response.copilotId != 'unassigned'
+      vm.launched         = response.status == 'Launched'
+      vm.estimateAccepted = response.status == 'Approved'
 
     resource.$promise.catch (response) ->
       # TODO: handle error

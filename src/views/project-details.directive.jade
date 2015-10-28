@@ -34,7 +34,6 @@ estimate-project(
   project-id="{{ vm.id }}"
   ng-if="vm.userType == 'COPILOT'"
   ng-class="{ active: vm.claimed }"
-  on-estimated="vm.onEstimated()"
 )
 
 .flex.rows
@@ -46,7 +45,7 @@ estimate-project(
     ) claim project
 
     button.action.launch(
-      ng-if="vm.userType == 'COPILOT' && vm.estimated"
+      ng-if="vm.userType == 'COPILOT' && vm.estimateAccepted"
       ng-hide="vm.showConfirmLaunch"
       ng-click="vm.showConfirmLaunch = !vm.showConfirmLaunch; vm.showConfirmClaim = false"
     ) launch project
