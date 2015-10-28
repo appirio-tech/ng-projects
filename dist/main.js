@@ -404,7 +404,7 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
     vm.launch = function() {
       var params, payload, resource;
       params = {
-        workId: $scope.id,
+        projectId: $scope.id,
         userId: $scope.copilotId
       };
       payload = {
