@@ -3,7 +3,10 @@ loader(ng-show="vm.loading")
 ul.flex.wrap
   li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     header
-      a(ui-sref="timeline({ workId: project.id })")
+      a(ng-if="project.status != 'Incomplete' " ui-sref="timeline({ workId: project.id })")
+        h5 {{ project.name || 'Unnamed Project' }}
+
+      a(ng-if="project.status == 'Incomplete' " ui-sref="submit-work({ id: project.id })")
         h5 {{ project.name || 'Unnamed Project' }}
 
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
