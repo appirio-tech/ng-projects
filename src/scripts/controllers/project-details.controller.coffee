@@ -33,6 +33,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     'GREEN'      : 'colors-green'
     'ORANGE'     : 'colors-orange'
 
+  #TODO: Combine code with launch
   vm.claim = ->
     payload     = id: $scope.id
     params      = userId: $scope.copilotId
@@ -49,8 +50,11 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       vm.claiming = false
 
   vm.launch = ->
+    params       =
+      workId: $scope.id
+      userId: $scope.copilotId
+
     payload      = status: 'launched'
-    params       = userId: $scope.copilotId
     resource     = CopilotProjectDetailsAPIService.post params, payload
     vm.launching = true
 
