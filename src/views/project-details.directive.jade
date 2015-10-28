@@ -1,6 +1,6 @@
 loader(ng-show="vm.loading")
 
-.confirm-claim.flex.middle.center(ng-class="{ active: vm.showConfirmClaim }")
+.confirm.claim.flex.middle.center(ng-class="{ active: vm.showConfirmClaim }")
   p(ng-hide="vm.claimed") Are you sure you want to claim this project?
 
   .flex.bottom(ng-show="vm.claimed")
@@ -15,10 +15,26 @@ loader(ng-show="vm.loading")
   .loader-house(ng-show="vm.claiming")
     loader
 
+.confirm.launch.flex.middle.center(ng-class="{ active: vm.showConfirmLaunch }")
+  p(ng-hide="vm.launched") Are you sure you want to launch this project?
+
+  .flex.bottom(ng-show="vm.launched")
+    .icon.checkmark-white.small
+
+    h5 Project launched!
+
+  button.hollow(ng-click="vm.launch()" ng-hide="vm.launching || vm.launched") yes, launch it!
+
+  button.hollow(ng-click="vm.showConfirmlaunch = !vm.showConfirmlaunch" ng-hide="vm.launching || vm.launched") cancel
+
+  .loader-house(ng-show="vm.launching")
+    loader
+
 estimate-project(
   project-id="{{ vm.id }}"
   ng-if="vm.userType == 'COPILOT'"
   ng-class="{ active: vm.claimed }"
+  on-estimated="vm.onEstimated()"
 )
 
 .flex.rows
@@ -28,6 +44,12 @@ estimate-project(
       ng-hide="vm.showConfirmClaim"
       ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
     ) claim project
+
+    button.action.launch(
+      ng-if="vm.userType == 'COPILOT' && vm.estimated"
+      ng-hide="vm.showConfirmLaunch"
+      ng-click="vm.showConfirmLaunch = !vm.showConfirmLaunch; vm.showConfirmClaim = false"
+    ) launch project
 
     ul
       li
@@ -41,7 +63,6 @@ estimate-project(
 
       li
         button.clean(scroll-element="development") Development
-
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
     li(id="projectSetup")

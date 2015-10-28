@@ -1,14 +1,18 @@
 'use strict'
 
 ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPIService) ->
-  vm                  = this
-  vm.projects         = []
-  vm.loading          = false
-  vm.id               = $scope.id
-  vm.showConfirmClaim = false
-  vm.claiming         = false
-  vm.claimed          = false
-  vm.userType         = 'CUSTOMER'
+  vm                   = this
+  vm.projects          = []
+  vm.loading           = false
+  vm.id                = $scope.id
+  vm.showConfirmClaim  = false
+  vm.showConfirmLaunch = false
+  vm.claiming          = false
+  vm.claimed           = false
+  vm.launching         = false
+  vm.launched          = false
+  vm.estimated         = false
+  vm.userType          = 'CUSTOMER'
 
   vm.textMap  = # this is retarted!
     'IWATCH'     : 'iWatch'
@@ -44,6 +48,24 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource.$promise.finally ->
       vm.claiming = false
 
+  vm.launch = ->
+    payload      = status: 'launched'
+    params       = userId: $scope.copilotId
+    resource     = CopilotProjectDetailsAPIService.post params, payload
+    vm.launching = true
+
+    resource.$promise.then (response) ->
+      vm.launched = true
+
+    resource.$promise.catch (response) ->
+      # TODO: handle error
+
+    resource.$promise.finally ->
+      vm.launching = false
+
+  vm.onEstimated = ->
+    vm.estimated = true
+
   activate = ->
     $scope.$watch 'copilotId', ->
       vm.userType = 'COPILOT' if $scope.copilotId
@@ -53,8 +75,10 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource   = ProjectsAPIService.get params
 
     resource.$promise.then (response) ->
-      vm.project = response
-      vm.claimed = response.copilotId != 'unassigned'
+      vm.project   = response
+      vm.claimed   = response.copilotId != 'unassigned'
+      vm.launched  = response.status == 'launched'
+      vm.estimated = response.costEstimate?
 
     resource.$promise.catch (response) ->
       # TODO: handle error

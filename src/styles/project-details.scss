@@ -18,7 +18,7 @@ project-details {
     }
   }
 
-  .confirm-claim {
+  .confirm {
     @include transition (all 0.4s ease-in-out);
 
     background-color: $primary-color;
@@ -53,7 +53,7 @@ project-details {
     width: 200px;
     margin-top: $margin-smallest;
 
-    .claim {
+    .claim, .launch {
       margin-bottom: $margin;
     }
 
