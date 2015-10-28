@@ -403,11 +403,12 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
     };
     vm.launch = function() {
       var params, payload, resource;
+      params = {
+        workId: $scope.id,
+        userId: $scope.copilotId
+      };
       payload = {
         status: 'launched'
-      };
-      params = {
-        userId: $scope.copilotId
       };
       resource = CopilotProjectDetailsAPIService.post(params, payload);
       vm.launching = true;
