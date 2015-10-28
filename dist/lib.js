@@ -36876,38 +36876,6 @@ $templateCache.put("views/selected-button.directive.html","<button ng-class=\"{\
 
 }).call(this);
 
-(function() {
-  'use strict';
-  var srv, transformResponse;
-
-  transformResponse = function(response) {
-    var parsed, ref;
-    parsed = JSON.parse(response);
-    return (parsed != null ? (ref = parsed.result) != null ? ref.content : void 0 : void 0) || {};
-  };
-
-  srv = function($resource, API_URL) {
-    var actions, params, url;
-    url = API_URL + '/v3/profiles/:id';
-    params = {
-      id: '@id'
-    };
-    actions = {
-      get: {
-        method: 'GET',
-        isArray: false,
-        transformResponse: transformResponse
-      }
-    };
-    return $resource(url, params, actions);
-  };
-
-  srv.$inject = ['$resource', 'API_URL'];
-
-  angular.module('appirio-tech-ng-api-services').factory('profilesAPIService', srv);
-
-}).call(this);
-
 /**
   * x is a value between 0 and 1, indicating where in the animation you are.
   */
