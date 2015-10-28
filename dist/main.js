@@ -410,7 +410,7 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
       payload = {
         status: 'launched'
       };
-      resource = CopilotProjectDetailsAPIService.post(params, payload);
+      resource = CopilotProjectDetailsAPIService.put(params, payload);
       vm.launching = true;
       resource.$promise.then(function(response) {
         return vm.launched = true;
