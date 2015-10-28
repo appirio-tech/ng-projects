@@ -31,20 +31,20 @@ estimate-project(
 
     ul
       li
-        button.clean Project setup
+        button.clean(scroll-element="projectSetup") Project setup
 
       li
-        button.clean Features
+        button.clean(scroll-element="features") Features
 
       li
-        button.clean Design
+        button.clean(scroll-element="design") Design
 
       li
-        button.clean Development
+        button.clean(scroll-element="development") Development
 
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
-    li
+    li(id="projectSetup")
       h3 Project Setup
 
       hr.biggest
@@ -86,7 +86,7 @@ estimate-project(
 
         p Design &amp; Development
 
-    li
+    li(id="features")
       h3 Features
 
       hr.biggest
@@ -105,7 +105,7 @@ estimate-project(
 
           hr
 
-    li
+    li(id="design")
       h3 Design
 
       hr.biggest
@@ -138,7 +138,7 @@ estimate-project(
 
         span {{ vm.textMap[icon] }}
 
-    li
+    li(id="development")
       h3 Development
 
       hr.biggest
