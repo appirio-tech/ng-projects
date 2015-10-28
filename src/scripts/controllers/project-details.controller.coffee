@@ -55,7 +55,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       userId   : $scope.copilotId
 
     payload      = status: 'launched'
-    resource     = CopilotProjectDetailsAPIService.post params, payload
+    resource     = CopilotProjectDetailsAPIService.put params, payload
     vm.launching = true
 
     resource.$promise.then (response) ->
