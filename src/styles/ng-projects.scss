@@ -13,6 +13,16 @@ ng-projects {
 
   .complete {
     background-color: $success-color;
+
+    .house {
+      padding: $padding-small;
+      border: 4px solid $white;
+      border-radius: 50%;
+    }
+
+    button {
+      margin-top: $margin-small;
+    }
   }
 
   .assigned {
@@ -23,5 +33,45 @@ ng-projects {
 
   avatar {
     margin: 0 auto;
+  }
+
+  .winners {
+    .winner {
+      text-align: left;
+
+      avatar {
+        min-width: 35px;
+      }
+
+      > * {
+        margin: $margin-smallest;
+      }
+
+      .rank {
+        color: $primary-color;
+      }
+    }
+  }
+
+  main.winner {
+    avatar {
+      width: 48px;
+      height: 48px;
+    }
+
+    h5 {
+      margin-top: $margin-small;
+      color: $primary-color;
+    }
+
+    .name {
+      margin-top: $margin-smallest;
+    }
+
+    .house {
+      border-radius: 50%;
+      border       : 1px solid $success-color;
+      padding      : $padding-small;
+    }
   }
 }

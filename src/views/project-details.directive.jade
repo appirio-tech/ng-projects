@@ -8,9 +8,9 @@ loader(ng-show="vm.loading")
 
     h5 Project claimed!
 
-  button(ng-click="vm.claim()" ng-hide="vm.claiming || vm.claimed") yes, claim it!
+  button.hollow(ng-click="vm.claim()" ng-hide="vm.claiming || vm.claimed") yes, claim it!
 
-  button(ng-click="vm.showConfirmClaim = !vm.showConfirmClaim" ng-hide="vm.claiming || vm.claimed") cancel
+  button.hollow(ng-click="vm.showConfirmClaim = !vm.showConfirmClaim" ng-hide="vm.claiming || vm.claimed") cancel
 
   .loader-house(ng-show="vm.claiming")
     loader

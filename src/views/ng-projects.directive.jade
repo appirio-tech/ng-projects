@@ -9,73 +9,52 @@ ul.flex.wrap
       p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'Incomplete'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-incomplete.svg")
-
-        h6 Project setup incomplete
-
-      footer.flex.bottom.center
-        a.button.action(ui-sref="submit-work({ id: project.id })") continue setup
+      include cards/incomplete
 
     main.submitted.flex.column(ng-if="project.status == 'Submitted'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-submitted.svg")
-
-        h6 Project submitted
-
-      footer.flex.column.end
-        p You are waiting for project approval
-
-        p This should take about 1 day
+      include cards/submitted
 
     main.assigned.flex.column(ng-if="project.status == 'Assigned'")
-      .flex.column.middle.center.flex-grow
-        h6 Meet your co-pilot
-
-        avatar.icon.big(avatar-url="{{ project.copilot.avatar }}")
-
-        p {{ project.copilot.handle || 'n/a' }}
-
-      footer.flex.bottom.center
-        a.button.action(ui-sref="messaging({ id: project.id, threadId: 'threadfor-' + project.id })") send a message
+      include cards/assigned
 
     main.estimated.flex.column(ng-if="project.status == 'Estimate'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/quote-generated.svg")
-
-        h6 Quote Generated
-
-      footer.flex.bottom.center
-        a.button.action(ui-sref="timeline({ workId: project.id })") view quote
+      include cards/estimated
 
     main.approved.flex.column(ng-if="project.status == 'Approved'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-approved.svg")
+      include cards/approved
 
-        h6 Project Approved
-
-      footer.flex.column.end
-        p Blah blah blah blah
-
-        p Blah blah blah blah
-
-    main.launched.flex.column(ng-if="project.status == 'Launched'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-launched.svg")
-
-        h6 Project launched
-
-      footer.flex.column.end
-        p Design work is in progress
-
-        p Get design submissions in several days.
+    main.launched.flex.column(
+      ng-if="project.status == 'Launched' && !project.activeWorkStep"
+    )
+      include cards/launched
 
     main.complete.flex.column.middle.center(ng-if="project.status == 'Complete'")
-      .icon.big.warning
+      include cards/completed
 
-      h6 Project complete!
+    main.flex(
+      ng-if="project.status == 'Launched' && project.activeWorkStep.name == 'Design Concepts' && !project.activeWorkStep.winners"
+    )
+      submission-card.flex.flex-grow.column.middle.center(phase="DESIGN")
 
-      button deploy my app
+    main.flex(
+      ng-if="project.status == 'Launched' && project.activeWorkStep.name == 'Final Designs' && !project.activeWorkStep.winners"
+    )
+      submission-card.flex.flex-grow.column.middle.center(phase="FINAL_DESIGN")
+
+    main.winner.flex.column.middle.center(
+      ng-if="project.status == 'Launched' && project.activeWorkStep.winners.length == 1"
+    )
+      include cards/winner
+
+    main.flex.column.middle.center(
+      ng-if="project.status == 'Launched' && project.activeWorkStep.name == 'Final Fixes' && !project.activeWorkStep.winners"
+    )
+      include cards/fixes
+
+    main.winners.flex.column.middle.center(
+      ng-if="project.status == 'Launched' && project.activeWorkStep.winners.length == 3"
+    )
+      include cards/ranks
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p You have not started any projects.
