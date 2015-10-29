@@ -407,7 +407,7 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
         userId: $scope.copilotId
       };
       payload = {
-        status: 'Launched'
+        status: 'LAUNCHED'
       };
       resource = CopilotProjectDetailsAPIService.put(params, payload);
       vm.launching = true;
@@ -434,8 +434,8 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
       resource.$promise.then(function(response) {
         vm.project = response;
         vm.claimed = response.copilotId !== 'unassigned';
-        vm.launched = response.status === 'Launched';
-        return vm.estimateAccepted = response.status === 'Approved';
+        vm.launched = response.status === 'LAUNCHED';
+        return vm.estimateAccepted = response.status === 'APPROVED';
       });
       resource.$promise["catch"](function(response) {});
       resource.$promise["finally"](function() {
