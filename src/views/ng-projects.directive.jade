@@ -44,15 +44,20 @@ ul.flex.wrap
     )
       include cards/winner
 
-    main.flex.column.middle.center(
-      ng-if="project.status == 'STEP_OPEN' && project.activeWorkStep.name == 'Final Fixes' "
-    )
-      include cards/fixes
+    //- main.flex.column.middle.center(
+    //-   ng-if="project.status == 'CHOOSE_WINNERS' && project.activeWorkStep.name == 'Final Fixes' "
+    //- )
+    //-   include cards/fixes
 
     main.winners.flex.column.middle.center(
       ng-if="project.status == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Design Concepts'"
     )
       include cards/ranks
+
+    main.flex.column.middle.center(
+      ng-if="project.status == 'STEP_OPEN' "
+    )
+      include cards/awaiting-submissions
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p You have not started any projects.
