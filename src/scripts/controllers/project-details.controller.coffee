@@ -54,7 +54,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       projectId: $scope.id
       userId   : $scope.copilotId
 
-    payload      = status: 'Launched'
+    payload      = status: 'LAUNCHED'
     resource     = CopilotProjectDetailsAPIService.put params, payload
     vm.launching = true
 
@@ -78,8 +78,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource.$promise.then (response) ->
       vm.project          = response
       vm.claimed          = response.copilotId != 'unassigned'
-      vm.launched         = response.status == 'Launched'
-      vm.estimateAccepted = response.status == 'Approved'
+      vm.launched         = response.status == 'LAUNCHED'
+      vm.estimateAccepted = response.status == 'APPROVED'
 
     resource.$promise.catch (response) ->
       # TODO: handle error
