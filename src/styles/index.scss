@@ -1,10 +1,6 @@
 @import "work-includes";
 
 ng-projects, open-projects, claimed-projects {
-  h5 {
-    @include ellipsis;
-  }
-
   h6 {
     margin-top: $margin-small;
   }
@@ -53,14 +49,37 @@ ng-projects, open-projects, claimed-projects {
     margin: 0 auto;
 
     > li {
-      width           : 280px;
+      $card-width: 280px;
+
+      width           : $card-width;
       margin          : $margin-smallest;
       background-color: $white;
       padding         : $padding $padding-small;
 
       > header {
-        > a {
-          display: block;
+        @include clearfix;
+
+        .project-name {
+          float: left;
+          width: $card-width - ($padding-small * 2) - 35px; /* .message-notification width */
+
+          a {
+            display: block;
+          }
+
+          * {
+            @include ellipsis;
+          }
+        }
+
+        .message-notification {
+          position: relative;
+          float   : right;
+          width   : 35px;
+
+          .notification {
+            font-size: $font-size-smallest;
+          }
         }
       }
     }

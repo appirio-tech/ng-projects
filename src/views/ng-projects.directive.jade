@@ -3,13 +3,21 @@ loader(ng-show="vm.loading")
 ul.flex.wrap
   li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
     header
-      a(ng-if="project.status != 'INCOMPLETE' " ui-sref="timeline({ workId: project.id })")
-        h5 {{ project.name || 'Unnamed Project' }}
+      .project-name
+        a(ng-if="project.status != 'INCOMPLETE' " ui-sref="timeline({ workId: project.id })")
+          h5 {{ project.name || 'unnamed project' }}
 
-      a(ng-if="project.status == 'INCOMPLETE' " ui-sref="submit-work({ id: project.id })")
-        h5 {{ project.name || 'Unnamed Project' }}
+        a(ng-if="project.status == 'INCOMPLETE' " ui-sref="submit-work({ id: project.id })")
+          h5 {{ project.name || 'unnamed project' }}
 
-      p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
+        p.type {{ project.status || 'No status' }}
+        //- too messy, lets see if product notices this is missing
+        //- p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
+
+      button.clean.message-notification
+        avatar.icon
+
+        .notification.absolute 12
 
     main.incomplete.flex.column.middle.center(ng-if="project.status == 'INCOMPLETE'")
       include cards/incomplete

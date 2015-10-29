@@ -1,11 +1,10 @@
-.flex.column.middle.center.flex-grow
-  ul.flex-grow.flex.column.space-between
-    li.winner.flex.middle.center(ng-repeat= "winner in project.activeWorkStep.winners")
-        avatar
+ul.flex-grow.flex.column
+  li.winner.flex.middle(ng-repeat= "winner in project.activeWorkStep.winners")
+      avatar
 
-        p.name {{winner.handle}}
+      p.name.flex-grow {{ winner.handle }}
 
-        .rank {{winner.rank}}
+      .rank {{ winner.rank }}
 
 footer.flex.column.end.middle
-  p.secondary {{project.activeWorkStep.nextPhase.name}} phase next
+  p.secondary {{ project.activeWorkStep.nextPhase.name }} phase next
