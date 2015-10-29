@@ -2,9 +2,9 @@
   .house
     avatar
 
-  p.name Albert a really really really really long name
+  p.name {{project.activeWorkStep.winners[0].handle}}
 
   h5 Winner!
 
 footer.flex.column.end.middle
-  p.secondary Final design phase next
+  p.secondary {{project.activeWorkStep.nextPhase.name}} phase next

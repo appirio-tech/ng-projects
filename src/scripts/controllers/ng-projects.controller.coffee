@@ -6,13 +6,14 @@ NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
   vm.loading  = false
 
   vm.statusMap =
-    'Incomplete': 'Setup incomplete'
-    'Submitted' : 'Project submitted'
-    'Assigned'  : 'Copilot assigned'
-    'Estimate'  : 'Project estimated'
-    'Approved'  : 'Project approved'
-    'Launched'  : 'Project launched'
-    'Messaged'  : 'Project launched'
+    'INCOMPLETE': 'Setup incomplete'
+    'SUBMITTED' : 'Project submitted'
+    'ASSIGNED'  : 'Copilot assigned'
+    'ESTIMATED' : 'Project estimated'
+    'APPROVED'  : 'Project approved'
+    'LAUNCHED'  : 'Project launched'
+    'MESSAGED'  : 'Project launched'
+    'COMPLETE'  : 'Project completed'
 
   vm.typeMap =
     'DESIGN'       : 'Design'

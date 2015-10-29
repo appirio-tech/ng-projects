@@ -1,11 +1,11 @@
 .flex.column.middle.center.flex-grow
   ul.flex-grow.flex.column.space-between
-    li.winner.flex.middle.center(ng-repeat= "i in [0, 1, 2]")
+    li.winner.flex.middle.center(ng-repeat= "winner in project.activeWorkStep.winners")
         avatar
 
-        p.name Karen Campbell a really really really long name
+        p.name {{winner.handle}}
 
-        .rank 1st
+        .rank {{winner.rank}}
 
 footer.flex.column.end.middle
-  p.secondary Final design phase next
+  p.secondary {{project.activeWorkStep.nextPhase.name}} phase next
