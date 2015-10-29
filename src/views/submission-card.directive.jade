@@ -1,9 +1,9 @@
 .flex.column.middle.center.flex-grow
   img.icon.big(src="/images/icon-download.svg")
 
-  h6(ng-if="vm.phase == 'DESIGN'") Design submissions received
+  h6(ng-if="vm.phase == 'Design Concepts'") Design submissions received
 
-  h6(ng-if="vm.phase != 'DESIGN'") Final design submissions received
+  h6(ng-if="vm.phase == 'Final Designs'") Final design submissions received
 
   p {{ vm.end }} left to choose winners
 
