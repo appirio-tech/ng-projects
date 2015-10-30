@@ -1,11 +1,11 @@
 .flex.column.middle.center.flex-grow
   img.icon.big(src="/images/icon-download.svg")
 
-  h6(ng-if="vm.phase == 'Design Concepts'") Design submissions received
+  h6(ng-if="vm.phase == 'Design Concepts'") submissions received
 
-  h6(ng-if="vm.phase == 'Final Designs'") Final design submissions received
+  h6(ng-if="vm.phase == 'Final Designs'") submissions received
 
   p {{ vm.end }} left to choose winners
 
-footer.flex.bottom.center
+footer.flex.center.middle
   a.button.action(ui-sref="timeline({ workId: project.id })") choose winners
