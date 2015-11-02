@@ -69,10 +69,6 @@ estimate-project(
 
       hr.biggest
 
-      h4 Uploaded documents
-
-      a(href="#") abc123.doc (wip)
-
       h4 iOS platform details
 
       ul.platform.flex.space-between
@@ -111,9 +107,9 @@ estimate-project(
 
       hr.biggest
 
-      h4 Uploaded documents
+      h4(ng-if="vm.project.files.features.downloadUrl") Uploaded features documents
 
-      a(href="#") abc123.doc (wip)
+      a(ng-if="vm.project.files.features.downloadUrl" href="vm.project.files.features.downloadUrl") {{vm.project.files.features.filename}}
 
       h4 Features &amp; descriptions
 
@@ -130,9 +126,9 @@ estimate-project(
 
       hr.biggest
 
-      h4 Uploaded documents
+      h4(ng-if="vm.project.files.visuals.downloadUrl") Uploaded design documents
 
-      a(href="#") abc123.doc (wip)
+      a(ng-if="vm.project.files.visuals.downloadUrl" href="#") {{vm.project.files.visuals.filename}}
 
       h4 URL to get styles
 
@@ -163,9 +159,9 @@ estimate-project(
 
       hr.biggest
 
-      h4 Uploaded Specs
+      h4(ng-if="vm.project.files.development.downloadUrl") Uploaded development documents
 
-      a(href="#") abc123.doc (wip)
+      a(ng-if="vm.project.files.development.downloadUrl" href="#") {{vm.project.files.development.filename}}
 
       h4 What level of security is needed?
 

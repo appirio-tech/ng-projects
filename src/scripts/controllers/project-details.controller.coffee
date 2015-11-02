@@ -27,7 +27,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.imageMap =
     'FLAT_COLORS': 'icon-flat-color'
     'SOLID_LINE' : 'icon-solid'
-    'THIN_LINE'  : 'icon-solid'
+    'THIN_LINE'  : 'icon-outlined'
     'BLUE'       : 'colors-blue'
     'RED'        : 'colors-red'
     'GREEN'      : 'colors-green'
