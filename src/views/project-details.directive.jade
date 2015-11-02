@@ -109,7 +109,7 @@ estimate-project(
 
       h4(ng-if="vm.project.files.features.downloadUrl") Uploaded features documents
 
-      a(ng-if="vm.project.files.features.downloadUrl" href="vm.project.files.features.downloadUrl") {{vm.project.files.features.filename}}
+      a(ng-if="vm.project.files.features.downloadUrl" href="{{vm.project.files.features.downloadUrl}}") {{vm.project.files.features.filename}}
 
       h4 Features &amp; descriptions
 
@@ -128,7 +128,7 @@ estimate-project(
 
       h4(ng-if="vm.project.files.visuals.downloadUrl") Uploaded design documents
 
-      a(ng-if="vm.project.files.visuals.downloadUrl" href="#") {{vm.project.files.visuals.filename}}
+      a(ng-if="vm.project.files.visuals.downloadUrl" href="{{vm.project.files.visuals.downloadUrl}}") {{vm.project.files.visuals.filename}}
 
       h4 URL to get styles
 
@@ -161,7 +161,7 @@ estimate-project(
 
       h4(ng-if="vm.project.files.development.downloadUrl") Uploaded development documents
 
-      a(ng-if="vm.project.files.development.downloadUrl" href="#") {{vm.project.files.development.filename}}
+      a(ng-if="vm.project.files.development.downloadUrl" href="{{vm.project.files.development.downloadUrl}}") {{vm.project.files.development.filename}}
 
       h4 What level of security is needed?
 
