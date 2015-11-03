@@ -186,7 +186,7 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
   'use strict';
   var OpenProjectsController;
 
-  OpenProjectsController = function($scope, ProjectsAPIService) {
+  OpenProjectsController = function($scope, CopilotUnclaimedProjectsAPIService) {
     var activate, getProjects, orderProjectsByCreationDate, vm;
     vm = this;
     vm.projects = [];
@@ -207,12 +207,9 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
       }) : void 0;
     };
     getProjects = function() {
-      var params, resource;
+      var resource;
       vm.loading = true;
-      params = {
-        filter: 'copilotId=unassigned'
-      };
-      resource = ProjectsAPIService.query(params);
+      resource = CopilotUnclaimedProjectsAPIService.query();
       resource.$promise.then(function(response) {
         return vm.projects = orderProjectsByCreationDate(response);
       });
@@ -224,7 +221,7 @@ $templateCache.put("views/submission-card.directive.html","<div class=\"flex col
     return activate();
   };
 
-  OpenProjectsController.$inject = ['$scope', 'ProjectsAPIService'];
+  OpenProjectsController.$inject = ['$scope', 'CopilotUnclaimedProjectsAPIService'];
 
   angular.module('appirio-tech-ng-projects').controller('OpenProjectsController', OpenProjectsController);
 
