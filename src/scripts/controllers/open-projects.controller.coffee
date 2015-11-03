@@ -1,6 +1,6 @@
 'use strict'
 
-OpenProjectsController = ($scope, ProjectsAPIService) ->
+OpenProjectsController = ($scope, CopilotUnclaimedProjectsAPIService) ->
   vm          = this
   vm.projects = []
   vm.loading  = false
@@ -21,10 +21,7 @@ OpenProjectsController = ($scope, ProjectsAPIService) ->
   getProjects = ->
     vm.loading = true
 
-    params =
-      filter: 'copilotId=unassigned'
-
-    resource = ProjectsAPIService.query params
+    resource = CopilotUnclaimedProjectsAPIService.query()
 
     resource.$promise.then (response) ->
       vm.projects = orderProjectsByCreationDate response
@@ -37,6 +34,6 @@ OpenProjectsController = ($scope, ProjectsAPIService) ->
 
   activate()
 
-OpenProjectsController.$inject = ['$scope', 'ProjectsAPIService']
+OpenProjectsController.$inject = ['$scope', 'CopilotUnclaimedProjectsAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'OpenProjectsController', OpenProjectsController
