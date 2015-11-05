@@ -30,7 +30,7 @@ loader(ng-show="vm.loading")
   .loader-house(ng-show="vm.launching")
     loader
 
-estimate-project(
+estimate-project.dark-bg(
   project-id="{{ vm.id }}"
   ng-if="vm.userType == 'COPILOT'"
   ng-class="{ active: vm.claimed }"

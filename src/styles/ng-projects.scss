@@ -3,24 +3,6 @@
 ng-projects {
   display: block;
 
-  .incomplete {
-    background-color: $danger-color-light;
-
-  }
-
-  .complete {
-    background-color: $success-color;
-  }
-
-  .complete, .incomplete {
-    color: $white;
-
-    main {
-      height: auto;
-      border: none;
-    }
-  }
-
   .assigned {
     avatar {
       margin-top: $margin-small;

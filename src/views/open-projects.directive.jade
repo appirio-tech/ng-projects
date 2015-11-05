@@ -1,21 +1,24 @@
 loader(ng-show="vm.loading")
 
 ul.flex.wrap
-  li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
-    header
-      a(ui-sref="copilot-project-details({ id: project.id })")
-        h5 {{ project.name || 'Unnamed Project' }}
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    project-card.elevated-bottom
+      card-header
+        a(ui-sref="copilot-project-details({ id: project.id })")
+          h5 {{ project.name || 'Unnamed Project' }}
 
-      p.type {{ vm.typeMap[project.projectType] }} - {{project.createdAt | date:'MM/dd/yyyy'}}
+        p.type {{ project.createdAt | date:'MM/dd/yyyy' }}
 
-    main.flex.column.middle.center
-      .flex.column.middle.center.flex-grow
-        img.flex-grow(src="/images/design-colored.svg" ng-if="project.projectType == 'DESIGN'")
+      card-main.flex.column
+        main.solid.flex.column.middle.center
+          img(src="/images/design-colored.svg" ng-if="project.projectType == 'DESIGN'")
 
-        img.flex-grow(src="/images/design-development-colored.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+          img(src="/images/design-development-colored.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
-      footer.flex.bottom.center
-        a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
+          label {{ vm.typeMap[project.projectType] }}
+
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p There are no open projects.

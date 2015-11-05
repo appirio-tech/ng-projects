@@ -1,54 +1,55 @@
 loader(ng-show="vm.loading")
 
 ul.flex.wrap
-  li.elevated-bottom(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
-    header
-      a(ui-sref="copilot-project-details({ id: project.id })")
-        h5 {{ project.name || 'Unnamed Project' }}
+  li(ng-repeat= "project in vm.projects track by $index" fitted-width=true)
+    project-card.elevated-bottom
+      card-header
+        a(ui-sref="copilot-project-details({ id: project.id })")
+          h5 {{ project.name || 'Unnamed Project' }}
 
-      p.type {{ vm.typeMap[project.projectType] }} - {{project.createdAt | date:'MM/dd/yyyy'}}
+        p.type {{ vm.typeMap[project.projectType] }} - {{project.createdAt | date:'MM/dd/yyyy'}}
 
-    main.flex.column.middle.center(ng-if="project.status == 'ASSIGNED'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-claimed.svg")
+      card-main.flex.column(ng-if="project.status == 'ASSIGNED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src="/images/project-claimed.svg")
 
-        h6 Project Claimed
+          label Project Claimed
 
-      footer.flex.bottom.center
-        a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") estimate
 
-    main.flex.column.middle.center(ng-if="project.status == 'ESTIMATED'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/quote-generated.svg")
+      card-main.flex.column(ng-if="project.status == 'ESTIMATED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src="/images/quote-generated.svg")
 
-        h6 Projected Estimated
+          label Projected Estimated
 
-      footer.flex.bottom.center
-        p Client is reviewing estimate
+        footer.flex.bottom.center
+          p Client is reviewing estimate
 
-    main.flex.column.middle.center(ng-if="project.status == 'APPROVED'")
-      .flex.column.middle.center.flex-grow
+      card-main.flex.column(ng-if="project.status == 'APPROVED'")
+        main.solid.flex.column.middle.center.flex-grow
 
-        img.icon.big(src="/images/project-approved.svg")
+          img.icon.biggest(src="/images/project-approved.svg")
 
-        h6 Project Approved
+          label Project Approved
 
-      footer.flex.bottom.center
-        a.action.button(ui-sref="copilot-project-details({ id: project.id })") create challenges
+        footer.flex.bottom.center
+          a.action.button(ui-sref="copilot-project-details({ id: project.id })") view project
 
-    main.flex.column.middle.center(ng-if="project.status == 'LAUNCHED'")
-      .flex.column.middle.center.flex-grow
-        img.icon.big(src="/images/project-launched.svg")
+      card-main.flex.column(ng-if="project.status == 'LAUNCHED'")
+        main.solid.flex.column.middle.center.flex-grow
+          img.icon.biggest(src="/images/project-launched.svg")
 
-        h6 Project launched
+          label Project launched
 
-      footer.flex.bottom.center
-        p Check back later for updates
+        footer.flex.bottom.center
+          p Check back later for updates
 
-    main.complete.flex.column.middle.center(ng-if="project.status == 'COMPLETE'")
-      img.icon.big(src="/images/features.svg")
+      card-main.complete.flex.column.middle.center(ng-if="project.status == 'COMPLETE'")
+        img.icon.biggest(src="/images/project-complete.svg")
 
-      h6 Project complete
+        label Project complete
 
 .no-projects(ng-hide="vm.loading || vm.projects.length > 0")
   p You have not claimed any projects yet.
