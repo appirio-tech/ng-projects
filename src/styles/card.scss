@@ -41,6 +41,10 @@ project-card {
       }
     }
 
+    p {
+      margin-top: 5px;
+    }
+
     h5 {
       line-height: 25px;
       max-height : 52px;
@@ -71,7 +75,7 @@ project-card {
     display   : block;
     margin-top: $margin-small;
     text-align: center;
-    height    : 242px;
+    height    : 253px;
     overflow  : hidden;
 
     label {
@@ -104,7 +108,16 @@ project-card {
       background-color: $white;
       text-align      : center;
       width           : 100%;
-      margin-top: $margin-small;
+      margin-top      : 20px;
+
+      p {
+        margin-top: 15px;
+        font-weight: $font-weight;
+
+        &.secondary {
+          font-weight: $font-weight-light;
+        }
+      }
     }
   }
 }
