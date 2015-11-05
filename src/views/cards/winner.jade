@@ -1,10 +1,10 @@
-.flex.column.middle.center.flex-grow
+main.flex.column.middle.center.flex-grow
   .house
-    avatar
+    avatar.icon.biggest
 
   p.name {{project.activeWorkStep.winners[0].handle}}
 
-  h5 Winner!
+  p.winner-text winner!
 
-footer.flex.column.middle
+footer.flex-grow.flex.column.end
   p {{project.activeWorkStep.nextPhase.name}} phase next

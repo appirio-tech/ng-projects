@@ -5,5 +5,5 @@
 
   p {{ project.copilot.handle || 'n/a' }}
 
-footer.flex.bottom.center
+footer.flex-grow.flex.column.end
   a.button.action(ui-sref="messaging({ id: project.id, threadId: 'threadfor-' + project.id })") send a message

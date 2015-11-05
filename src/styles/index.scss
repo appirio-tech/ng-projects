@@ -5,6 +5,12 @@ ng-projects, open-projects, claimed-projects {
     margin-top: $margin-small;
   }
 
+  h5 {
+    line-height: 25px;
+    max-height : 50px;
+    overflow   : hidden;
+  }
+
   .no-projects {
     text-align: center;
 
@@ -26,23 +32,45 @@ ng-projects, open-projects, claimed-projects {
     @include align-content(flex-end);
   }
 
-  main {
-    height          : 210px;
-    margin-top      : $margin-small;
-    text-align      : center;
-    overflow        : auto;
-    background-color: $primary-color-light;
+  card {
+    display   : block;
+    margin-top: $margin-smallest;
+    text-align: center;
+    height    : 240px;
+    overflow  : hidden;
+
+    .status {
+      text-transform: uppercase;
+      margin-top: $margin-small;
+      font-weight: $font-weight-bold;
+    }
+
+    main {
+      width      : 100%;
+      height     : 180px;
+      border-top : 1px solid $neutral-color-light;
+      padding    : $padding-small 0;
+
+      button, .button {
+        margin-top: $margin;
+      }
+
+      &.solid {
+        background-color: $primary-color-light;
+        height          : 170px;
+        border-top      : none;
+
+        .status {
+          color: $primary-color;
+        }
+      }
+    }
 
     footer {
       background-color: $white;
       text-align      : center;
       width           : 100%;
-      padding-top     : $padding;
-
-      p {
-        line-height: 32px;
-        padding: 0; /* get rid of padding from font-height */
-      }
+      margin-top: $margin-small;
     }
   }
 
@@ -50,26 +78,36 @@ ng-projects, open-projects, claimed-projects {
     margin: 0 auto;
 
     > li {
-      $card-width: 280px;
+      $card-width: 300px;
 
       width           : $card-width;
       margin          : $margin-smallest;
       background-color: $white;
-      padding         : $padding $padding-small;
+      overflow        : hidden;
+
+      > * {
+        margin-left: $margin-smallest;
+        margin-right: $margin-smallest;
+
+        &:first-child {
+          margin-top: $margin-small;
+        }
+
+        &:last-child {
+          margin-bottom: $margin-small;
+        }
+      }
 
       > header {
-        @include clearfix;
+        height: 74px + $margin-small;
+        overflow: hidden;
 
         .project-name {
           float: left;
-          width: $card-width - ($padding-small * 2) - 35px; /* .message-notification width */
+          max-width: 230px;
 
           a {
             display: block;
-          }
-
-          * {
-            @include ellipsis;
           }
         }
 
@@ -77,9 +115,18 @@ ng-projects, open-projects, claimed-projects {
           position: relative;
           float   : right;
           width   : 35px;
+          margin  : 12px 8px 0;
 
           .notification {
-            font-size: $font-size-smallest;
+            $diameter: 20px;
+
+            font-size    : $font-size-smallest;
+            min-width    : $diameter;
+            min-height   : $diameter;
+            line-height  : $diameter;
+            border-radius: $diameter;
+            padding      : 0;
+            right        : -4px;
           }
         }
       }

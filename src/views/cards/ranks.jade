@@ -1,10 +1,14 @@
-ul.flex-grow.flex.column
-  li.winner.flex.middle(ng-repeat= "winner in project.activeWorkStep.winners")
-      avatar
+main
+  ul.flex.column
+    li.winner.flex.middle(ng-repeat= "winner in project.activeWorkStep.winners")
+        avatar.icon.big
 
-      p.name.flex-grow {{ winner.handle }}
+        p.name.flex-grow {{ winner.handle }}
 
-      .rank {{ winner.rank }}
+        .rank
+          .value {{ winner.rank }}
 
-footer.flex.column.middle
+          .unit place
+
+footer.flex-grow.flex.column.end
   p {{ project.activeWorkStep.nextPhase.name }} phase next

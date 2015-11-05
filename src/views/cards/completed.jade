@@ -1,8 +1,6 @@
-.flex.column.middle.center.flex-grow
-  .house
-    .icon.big.checkmark-white
+main.flex.column.middle.center.flex-grow
+  img.icon.biggest(src="/images/project-complete.svg")
 
-  h6 Project complete!
+  .status project complete!
 
-footer.flex.column.middle
-  a.button.action(ui-sref="timeline({ workId: project.id })") deploy my app
+  a.button.hollow(ui-sref="timeline({ workId: project.id })") deploy my app

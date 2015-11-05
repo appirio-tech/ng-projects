@@ -1,11 +1,11 @@
-.flex.column.middle.center.flex-grow
-  img.icon.big(src="/images/project-submitted.svg")
+main.solid.flex.column.middle.center
+  img.icon.biggest(src="/images/project-submitted.svg")
 
-  h6(ng-if="project.activeWorkStep.name == 'Design Concepts' ||  project.activeWorkStep.name == 'Final Designs'") Awaiting {{project.activeWorkStep.name}}
+  .status(ng-if="project.activeWorkStep.name == 'Design Concepts' ||  project.activeWorkStep.name == 'Final Designs'") Awaiting {{project.activeWorkStep.name}}
 
-  h6(ng-if="project.activeWorkStep.name == 'Final Fixes'") Awaiting final deliverables
+  .status(ng-if="project.activeWorkStep.name == 'Final Fixes'") Awaiting final deliverables
 
-footer.flex.column.middle
+footer.flex-grow.flex.column.end
   p(ng-if="project.activeWorkStep.name == 'Design Concepts' ||  project.activeWorkStep.name == 'Final Designs'") Receive submissions in several days
 
   p(ng-if="project.activeWorkStep.name == 'Final Fixes'") Receive final submissions in several days
