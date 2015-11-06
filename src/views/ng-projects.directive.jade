@@ -13,10 +13,11 @@ ul.flex.wrap
 
           p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
 
-        button.clean.message-notification
-          avatar.icon
+        button.clean.message-notification(ng-if="project.copilot != null")
+          a(ui-sref="messaging({id: project.id, threadId: project.projectThread.id})")
+            avatar.icon(avatar-url="{{project.copilot.avatar}}")
 
-          .notification.absolute 88
+            .notification.absolute(ng-if="project.projectThread.unreadCount > 0") {{project.projectThread.unreadCount}}
 
       card-main.flex.center.middle.incomplete(ng-if="project.status == 'INCOMPLETE'")
         include cards/incomplete
