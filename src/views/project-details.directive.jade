@@ -107,9 +107,11 @@ estimate-project.dark-bg(
 
       hr.biggest
 
-      h4(ng-if="vm.project.files.features.downloadUrl") Uploaded features documents
+      h4(ng-if="vm.project.files.features.length") Uploaded features documents
 
-      a(ng-if="vm.project.files.features.downloadUrl" href="{{vm.project.files.features.downloadUrl}}") {{vm.project.files.features.filename}}
+      ul.features-files
+        li(ng-repeat="file in vm.project.files.features")
+          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
 
       h4 Features &amp; descriptions
 
@@ -126,9 +128,11 @@ estimate-project.dark-bg(
 
       hr.biggest
 
-      h4(ng-if="vm.project.files.visuals.downloadUrl") Uploaded design documents
+      h4(ng-if="vm.project.files.visuals.length") Uploaded design documents
 
-      a(ng-if="vm.project.files.visuals.downloadUrl" href="{{vm.project.files.visuals.downloadUrl}}") {{vm.project.files.visuals.filename}}
+      ul.design-files
+        li(ng-repeat="file in vm.project.files.visuals")
+          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
 
       h4 URL to get styles
 
@@ -159,9 +163,11 @@ estimate-project.dark-bg(
 
       hr.biggest
 
-      h4(ng-if="vm.project.files.development.downloadUrl") Uploaded development documents
+      h4(ng-if="vm.project.files.development.length") Uploaded development documents
 
-      a(ng-if="vm.project.files.development.downloadUrl" href="{{vm.project.files.development.downloadUrl}}") {{vm.project.files.development.filename}}
+      ul.development-files
+        li(ng-repeat="file in vm.project.files.development")
+          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
 
       h4 What level of security is needed?
 
