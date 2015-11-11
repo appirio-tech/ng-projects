@@ -52,28 +52,27 @@ estimate-project.dark-bg(
 
     ul
       li
-        button.clean(scroll-element="projectSetup") Project setup
+        button.clean(scroll-element="proect-details-setup") Project setup
 
       li
-        button.clean(scroll-element="features") Features
+        button.clean(scroll-element="project-details-features") project-details-Features
 
       li
-        button.clean(scroll-element="design") Design
+        button.clean(scroll-element="project-details-design") project-details-Design
 
       li
-        button.clean(scroll-element="development") Development
+        button.clean(scroll-element="project-details-development") Development
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
-    li(id="projectSetup")
+    li(id="project-details-setup")
       include details/setup
 
-    li(id="features")
+    li(id="project-details-features")
       include details/features
 
-    li(id="design")
+    li(id="project-details-design")
       include details/design
 
-    li(id="development")
+    li(id="project-details-development")
       include details/development
-
 
