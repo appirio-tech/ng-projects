@@ -65,129 +65,15 @@ estimate-project.dark-bg(
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
     li(id="projectSetup")
-      h3 Project Setup
-
-      hr.biggest
-
-      h4 iOS platform details
-
-      ul.platform.flex.space-between
-        li.device
-          h5 Device
-
-          ul
-            li.flex.middle(ng-repeat="device in vm.project.deviceIds")
-              img.icon.small(ng-src="/images/icon-check.svg")
-
-              span {{ vm.textMap[device] || device }}
-
-        li.orientation
-          h5 Orientation
-
-          ul
-            li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
-              img.icon.small(ng-src="/images/icon-check.svg")
-
-              span {{ vm.textMap[orientation] || orientation }}
-
-      h4 Project type
-
-      .project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
-        img.biggest(ng-src="/images/design-colored.svg")
-
-        p Design
-
-      .project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
-        img.biggest(ng-src="/images/design-development-colored.svg")
-
-        p Design &amp; Development
+      include details/setup
 
     li(id="features")
-      h3 Features
-
-      hr.biggest
-
-      h4(ng-if="vm.project.files.features.length") Uploaded features documents
-
-      ul.features-files
-        li(ng-repeat="file in vm.project.files.features")
-          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
-
-      h4 Features &amp; descriptions
-
-      ul.features-descriptions
-        li(ng-repeat="feature in vm.project.features")
-          p {{ feature.title }}
-
-          p {{ feature.description }}
-
-          hr
+      include details/features
 
     li(id="design")
-      h3 Design
-
-      hr.biggest
-
-      h4(ng-if="vm.project.files.visuals.length") Uploaded design documents
-
-      ul.design-files
-        li(ng-repeat="file in vm.project.files.visuals")
-          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
-
-      h4 URL to get styles
-
-      a(href="{{ url }}" ng-repeat="url in vm.project.designUrls" target="_blank") {{ url }}
-
-      h4 Fonts
-
-      .flex.middle
-        .big-a A
-
-        span {{ vm.project.fontIds.join(', ') }}
-
-      h4 Colors
-
-      ul.color-swatches
-        li(ng-repeat="color in vm.project.colorSwatchIds")
-          img(ng-src="/images/{{ vm.imageMap[color] }}.png")
-
-      h4 Icons
-
-      .flex.middle(ng-repeat="icon in vm.project.iconsetIds")
-        img.icon.biggest(ng-src="/images/{{ vm.imageMap[icon] }}.svg")
-
-        span {{ vm.textMap[icon] }}
+      include details/design
 
     li(id="development")
-      h3 Development
-
-      hr.biggest
-
-      h4(ng-if="vm.project.files.development.length") Uploaded development documents
-
-      ul.development-files
-        li(ng-repeat="file in vm.project.files.development")
-          a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
-
-      h4 What level of security is needed?
-
-      p Security level needed: {{ vm.project.securityLevel }}
-
-      h4 Access to data offline?
-
-      p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
-
-      p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
-
-      h4 Is there any level of personal information? (stored or transmitted)?
-
-      p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
-
-      p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
-
-      h4 How many 3rd party integrations?
-
-      p There are {{ vm.project.numberOfApiIntegrations }} integrations needed.
-
+      include details/development
 
 

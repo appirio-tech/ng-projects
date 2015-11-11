@@ -1,0 +1,36 @@
+h5 Project Setup
+
+hr.biggest
+
+h4 iOS platform details
+
+ul.platform.flex.space-between
+  li.device
+    h6 Device
+
+    ul
+      li.flex.middle(ng-repeat="device in vm.project.deviceIds")
+        img.icon.small(ng-src="/images/icon-check.svg")
+
+        span {{ vm.textMap[device] || device }}
+
+  li.orientation
+    h6 Orientation
+
+    ul
+      li.flex.middle(ng-repeat="orientation in vm.project.orientationIds")
+        img.icon.small(ng-src="/images/icon-check.svg")
+
+        span {{ vm.textMap[orientation] || orientation }}
+
+h4 Project type
+
+.project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
+  img.biggest(ng-src="/images/design-colored.svg")
+
+  p Design
+
+.project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
+  img.biggest(ng-src="/images/design-development-colored.svg")
+
+  p Design &amp; Development
