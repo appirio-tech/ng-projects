@@ -36004,18 +36004,13 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
     var elements, link, lockHeight;
     elements = [];
     lockHeight = function($element) {
-      var attr, childrenWithClass, classToToggle, ignoreContent;
+      var attr, childrenWithClass, classToToggle;
       attr = $element.attr('lock-height');
-      if (attr !== 'lock-height') {
+      if (typeof attr === 'string') {
         classToToggle = attr;
       }
-      ignoreContent = $element.attr('ignore-content').length;
       $element.css('height', 'auto');
       $element.css('max-height', 'none');
-      $element.addClass('lock-height');
-      if (ignoreContent) {
-        $element.addClass('ignore-content');
-      }
       if (classToToggle) {
         childrenWithClass = $element.find('.' + classToToggle);
         childrenWithClass.removeClass(classToToggle);
@@ -36029,11 +36024,8 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
           $element.addClass(classToToggle);
         }
         if (childrenWithClass) {
-          childrenWithClass.addClass(classToToggle);
+          return childrenWithClass.addClass(classToToggle);
         }
-      }
-      if (ignoreContent) {
-        return $element.removeClass('ignore-content');
       }
     };
     $($window).bind('resize', function() {
@@ -36056,8 +36048,7 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
       link: link,
       priority: -1,
       scope: {
-        retainClass: '@',
-        ignoreContent: '@'
+        retainClass: '@retainClass'
       }
     };
   };
@@ -36254,26 +36245,6 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
   };
 
   angular.module('appirio-tech-ng-ui-components').filter('timeLapse', filter);
-
-}).call(this);
-
-(function() {
-  'use strict';
-  var filter;
-
-  filter = function() {
-    return function(number) {
-      var ordinalMap;
-      ordinalMap = {
-        1: '1st',
-        2: '2nd',
-        3: '3rd'
-      };
-      return ordinalMap[number];
-    };
-  };
-
-  angular.module('appirio-tech-ng-ui-components').filter('ordinalNumber', filter);
 
 }).call(this);
 
