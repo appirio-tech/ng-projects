@@ -52,10 +52,15 @@ ul.flex.wrap
       )
         include cards/winner
 
-      //- card-main.flex.column.middle.center(
-      //-   ng-if="project.status == 'CHOOSE_WINNERS' && project.activeWorkStep.name == 'Final Fixes' "
-      //- )
-      //-   include cards/fixes
+      card-main.flex.column.middle.center(
+        ng-if="project.workStepStatus == 'CHOOSE_WINNERS' && project.activeWorkStep.name == 'Final Fixes' "
+      )
+        include cards/final-fixes
+
+      card-main.flex.column.middle.center(
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Fixes' "
+      )
+        include cards/final-fixes-approved
 
       card-main.flex.column.winners(
         ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Design Concepts'"
