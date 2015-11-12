@@ -8,4 +8,4 @@
   p.secondary {{vm.end}} left to review
 
 footer.flex.column.middle
-  a.button.action(ui-sref="timeline({ workId: project.id })") review fixes
+  a.button.action(ui-sref="step({ projecId: project.id, stepId: project.activeWorkStep.id })") review fixes
