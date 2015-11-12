@@ -6,7 +6,7 @@ main
         p.name.flex-grow {{ winner.handle }}
 
         .rank
-          .value {{ winner.rank }}
+          .value {{ winner.rank | ordinalNumber}}
 
           .unit place
 
