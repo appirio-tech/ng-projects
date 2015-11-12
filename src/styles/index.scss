@@ -10,15 +10,10 @@ ng-projects, open-projects, claimed-projects {
   }
 
   .no-projects {
-    text-align: center;
-
-    p {
-      font-size: $font-size-big;
-    }
-
-    .button {
-      margin-top: $margin-small;
-    }
+    text-align : center;
+    font-size  : 18px;
+    font-weight: $font-weight;
+    color      : $neutral-color-dark;
   }
 
   hr {

@@ -1,6 +1,6 @@
 loader(ng-show="vm.loading")
 
-.confirm.claim.flex.middle.center(ng-class="{ active: vm.showConfirmClaim }")
+.confirm.transition.claim.flex.middle.center(ng-class="{ active: vm.showConfirmClaim }")
   p(ng-hide="vm.claimed") Are you sure you want to claim this project?
 
   .flex.bottom(ng-show="vm.claimed")
@@ -30,7 +30,7 @@ loader(ng-show="vm.loading")
   .loader-house(ng-show="vm.launching")
     loader
 
-estimate-project.dark-bg(
+estimate-project.transition.dark-bg(
   project-id="{{ vm.id }}"
   ng-if="vm.userType == 'COPILOT'"
   ng-class="{ active: vm.claimed }"
