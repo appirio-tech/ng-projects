@@ -21,6 +21,10 @@ project-card {
   .complete, .incomplete {
     color: $white;
 
+    label {
+      color: $white;
+    }
+
     main {
       height: auto;
       border: none;
@@ -81,6 +85,7 @@ project-card {
     label {
       text-transform: uppercase;
       margin-top    : $margin-small;
+      color         : $primary-color;
     }
 
     main {

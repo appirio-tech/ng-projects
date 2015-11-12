@@ -6,6 +6,12 @@ ng-projects {
   .assigned {
     avatar {
       margin-top: $margin-small;
+      width     : 64px;
+      height    : 64px;
+    }
+
+    p {
+      margin-top: 5px;
     }
   }
 

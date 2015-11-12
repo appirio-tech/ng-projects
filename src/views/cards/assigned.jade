@@ -1,9 +1,9 @@
-.flex.column.middle.center.flex-grow
-  h6 Meet your co-pilot
-
-  avatar.icon.big(avatar-url="{{ project.copilot.avatar }}")
+main.flex.column.middle.center.flex-grow
+  avatar(avatar-url="{{ project.copilot.avatar }}")
 
   p {{ project.copilot.handle || 'n/a' }}
 
-footer.flex-grow.flex.column.end
+  label meet your co-pilot
+
+footer
   a.button.action(ui-sref="messaging({ id: project.id, threadId: 'threadfor-' + project.id })") send a message
