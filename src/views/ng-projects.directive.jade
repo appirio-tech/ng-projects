@@ -11,7 +11,9 @@ ul.flex.wrap
           a(ng-if="project.status == 'INCOMPLETE' " ui-sref="submit-work({ id: project.id })")
             h5 {{ project.name || 'unnamed project' }}
 
-          p.type {{ vm.typeMap[project.projectType] }} - {{ project.status }}
+          p.type(ng-if="!project.activeWorkStep.name") {{ vm.typeMap[project.projectType] }} - {{ vm.statusMap[project.status] }}
+
+          p.type(ng-if="project.activeWorkStep.name") {{ vm.typeMap[project.projectType] }} - {{ project.activeWorkStep.name }} Phase
 
         button.clean.message-notification(ng-if="project.copilot != null")
           a(ui-sref="messaging({id: project.id, threadId: project.projectThread.id})")
@@ -43,19 +45,19 @@ ul.flex.wrap
         include cards/completed
 
       card-main.flex.column(
-        ng-if="project.workStepStatus == 'CHOOSE_WINNERS'"
+        ng-if="project.workStepStatus == 'CHOOSE_WINNERS' && (project.activeWorkStep.name == 'Design Concepts' || project.activeWorkStep.name == 'Final Designs') "
       )
         submission-card.flex.flex-grow.column(phase="{{project.activeWorkStep.name}}" end="{{project.activeWorkStep.endsAt}}" id="{{project.id}}" step-id="{{project.activeWorkStep.id}}")
-
-      card-main.flex.column.winner(
-        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Designs' "
-      )
-        include cards/winner
 
       card-main.flex.column.middle.center(
         ng-if="project.workStepStatus == 'CHOOSE_WINNERS' && project.activeWorkStep.name == 'Final Fixes' "
       )
         include cards/final-fixes
+
+      card-main.flex.column.winner(
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Designs' "
+      )
+        include cards/winner
 
       card-main.flex.column.middle.center(
         ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Fixes' "
