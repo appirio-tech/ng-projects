@@ -1,0 +1,36 @@
+header
+  h5 Design
+
+  hr.biggest
+
+main
+  h4(ng-if="vm.project.files.visuals.length") Uploaded design documents
+
+  ul.files
+    li(ng-repeat="file in vm.project.files.visuals")
+      a(ng-if="file.downloadUrl" href="{{file.downloadUrl}}") {{file.filename}}
+
+  h4 URL to get styles
+
+  a(href="{{ url }}" ng-repeat="url in vm.project.designUrls" target="_blank") {{ url }}
+
+  h4 Fonts
+
+  .flex.middle
+    .big-a.flex.center.middle A
+
+    label {{ vm.project.fontIds.join(', ') }}
+
+  h4 Colors
+
+  ul.color-swatches
+    li(ng-repeat="color in vm.project.colorSwatchIds")
+      img(ng-src="/images/{{ vm.imageMap[color] }}.png")
+
+  h4 Icons
+
+  ul.icons
+    li.flex.middle(ng-repeat="icon in vm.project.iconsetIds")
+      img.icon.biggest(ng-src="/images/{{ vm.imageMap[icon] }}.svg")
+
+      label {{ vm.textMap[icon] }}

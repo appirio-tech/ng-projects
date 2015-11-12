@@ -61,7 +61,9 @@ project-details {
       border-right: 2px solid $neutral-color-lightest;
 
       button {
-        text-align: left;
+        text-align    : left;
+        text-transform: uppercase;
+        font-weight   : $font-weight;
       }
 
       li {
@@ -69,84 +71,6 @@ project-details {
 
         &:first-child {
           margin-top: 0;
-        }
-      }
-    }
-  }
-
-  .requirements {
-    margin-left: $margin;
-
-    hr {
-      margin-top: $margin-small;
-      background-color: $neutral-color-lightest;
-    }
-
-    > li {
-      margin-top: $margin-big;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
-  h4 {
-    margin-bottom: $margin-small;
-    margin-top: $margin;
-  }
-
-  .platform {
-    max-width: 400px;
-
-    ul > li {
-      margin-top: $margin-small;
-    }
-  }
-
-  span {
-    margin-left: $margin-smallest;
-  }
-
-  .project-type {
-    img {
-      height: 68px;
-    }
-
-    p {
-      margin-left: $margin-small;
-      text-transform: uppercase;
-    }
-  }
-
-  .big-a {
-    background-color: $primary-color;
-    color           : $white;
-    display         : inline-block;
-    padding         : $padding-small;
-    font-size       : $font-size-biggest;
-  }
-
-  .color-swatches {
-    li {
-      display: inline-block;
-      margin-left: $margin-smallest;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    img {
-      height: 68px;
-    }
-  }
-
-  .features-descriptions {
-    li {
-      &:last-child {
-        hr {
-          display: none;
         }
       }
     }
