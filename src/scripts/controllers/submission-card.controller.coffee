@@ -4,8 +4,10 @@ SubmissionCardController = ($scope) ->
   vm = this
 
   activate = ->
-    vm.phase = $scope.phase || 'DESIGN'
-    vm.end   = $scope.end || 'xx hours'
+    vm.id     = $scope.id
+    vm.stepId = $scope.stepId
+    vm.phase  = $scope.phase || 'Design Concepts'
+    vm.end    = $scope.end
 
     vm
 

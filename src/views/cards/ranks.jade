@@ -1,12 +1,12 @@
 main
   ul.flex.column
     li.winner.flex.middle(ng-repeat= "winner in project.activeWorkStep.winners")
-        avatar.icon.big
+        avatar.icon.big(avatar-url="{{winner.avatar}}")
 
         p.name.flex-grow {{ winner.handle }}
 
         .rank
-          .value {{ winner.rank }}
+          .value {{ winner.rank | ordinalNumber}}
 
           .unit place
 
