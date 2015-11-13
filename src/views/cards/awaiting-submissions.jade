@@ -3,9 +3,11 @@ main.solid.flex.column.middle.center
 
   label(ng-if="project.activeWorkStep.name == 'Design Concepts' ||  project.activeWorkStep.name == 'Final Designs'") Awaiting {{project.activeWorkStep.name}}
 
-  label(ng-if="project.activeWorkStep.name == 'Final Fixes'") Awaiting final deliverables
+  label(ng-if="project.activeWorkStep.name == 'Final Fixes' || project.activeWorkStep.name == 'Code'") Awaiting final deliverables
 
 footer.flex-grow.flex.column.end
   p(ng-if="project.activeWorkStep.name == 'Design Concepts' ||  project.activeWorkStep.name == 'Final Designs'") Receive submissions in several days
 
   p(ng-if="project.activeWorkStep.name == 'Final Fixes'") Receive final submissions in several days
+
+  p(ng-if="project.activeWorkStep.name == 'Code'") Receive final deliverables in several days
