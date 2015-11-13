@@ -17,3 +17,7 @@ main
       p.title {{ feature.title }}
 
       p.description {{ feature.description }}
+
+      p.notes-title(ng-if="feature.notes.length > 0") {{feature.title}} Notes
+
+      p.notes(ng-if="feature.notes.length > 0") {{feature.notes}}
