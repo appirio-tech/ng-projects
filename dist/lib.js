@@ -36004,12 +36004,12 @@ $templateCache.put("views/simple-countdown.directive.html","<p>{{vm.timeRemainin
     var elements, link, lockHeight;
     elements = [];
     lockHeight = function($element) {
-      var attr, childrenWithClass, classToToggle, ignoreContent;
+      var attr, childrenWithClass, classToToggle, ignoreContent, ref;
       attr = $element.attr('lock-height');
       if (attr !== 'lock-height') {
         classToToggle = attr;
       }
-      ignoreContent = $element.attr('ignore-content').length;
+      ignoreContent = (ref = $element.attr('ignore-content')) != null ? ref.length : void 0;
       $element.css('height', 'auto');
       $element.css('max-height', 'none');
       $element.addClass('lock-height');
