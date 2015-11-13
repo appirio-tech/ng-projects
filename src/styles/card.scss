@@ -86,6 +86,7 @@ project-card {
       text-transform: uppercase;
       margin-top    : $margin-small;
       color         : $primary-color;
+      width         : 100%; /* ie */
     }
 
     main {
@@ -102,6 +103,7 @@ project-card {
         background-color: $primary-color-light;
         height          : 170px;
         border-top      : none;
+        padding         : 10px;
 
         label {
           color: $primary-color;
