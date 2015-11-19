@@ -33,6 +33,25 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     'GREEN'      : 'colors-green'
     'ORANGE'     : 'colors-orange'
 
+  vm.featureCategories = [
+      'Custom Features'
+    ,
+      'Login & Registration'
+    ,
+      'General Building Blocks'
+    ,
+      'Ecommerce Building Blocks'
+    ,
+      'Social Building Blocks'
+  ]
+
+  vm.filterByCategory = (list, category) ->
+    featureList = list?.filter (feature) ->
+      feature.category == category
+
+    featureList
+
+
   #TODO: Combine code with launch
   vm.claim = ->
     payload     = id: $scope.id

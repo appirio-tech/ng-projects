@@ -13,11 +13,15 @@ main
   h4 Features &amp; descriptions
 
   ul.features-descriptions
-    li(ng-repeat="feature in vm.project.features")
-      p.title {{ feature.title }}
+    li(ng-repeat="featureCategory in vm.featureCategories" ng-if="vm.filterByCategory(vm.project.features, featureCategory).length > 0")
+      p.title {{featureCategory}}
 
-      p.description {{ feature.description }}
+      ul
+        li(ng-repeat="feature in vm.project.features" ng-if="feature.category == featureCategory")
+          p.title {{ feature.title }}
 
-      p.notes-title(ng-if="feature.notes.length > 0") {{feature.title}} Notes
+          p.description {{ feature.description }}
 
-      p.notes(ng-if="feature.notes.length > 0") {{feature.notes}}
+          p.notes-title(ng-if="feature.notes.length > 0") {{feature.title}} Notes
+
+          p.notes(ng-if="feature.notes.length > 0") {{feature.notes}}
