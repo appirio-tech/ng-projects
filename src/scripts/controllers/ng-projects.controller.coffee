@@ -25,19 +25,13 @@ NgProjectsController = ($scope, WorkAPIService, ProjectsAPIService) ->
 
     vm
 
-  orderProjectsByCreationDate = (projects) ->
-    orderedProjects = projects?.sort (previous, next) ->
-      new Date(next.createdAt) - new Date(previous.createdAt)
-
-    orderedProjects
-
   getProjects = (params) ->
     vm.loading = true
 
     resource = ProjectsAPIService.query()
 
     resource.$promise.then (response) ->
-      vm.projects = orderProjectsByCreationDate response
+      vm.projects = response
 
     resource.$promise.catch (response) ->
       # TODO: handle error
