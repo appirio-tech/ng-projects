@@ -11,4 +11,4 @@ main
           .unit place
 
 footer.flex-grow.flex.column.end
-  p {{ project.activeWorkStep.nextPhase.name }} phase next
+  p You'll receive complete designs in {{ project.activeWorkStep.nextPhase.startsAt | timeLapse:project.activeWorkStep.nextPhase.startsAt:true }}
