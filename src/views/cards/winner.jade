@@ -7,4 +7,4 @@ main.flex.column.middle.center.flex-grow
   p.winner-text winner chosen
 
 footer.flex-grow.flex.column.end
-  p Awaiting {{project.activeWorkStep.nextPhase.name}}
+  p You have {{project.activeWorkStep.nextPhase.startsAt | timeLapse:project.activeWorkStep.nextPhase.startsAt:true }} to ask for final changes
