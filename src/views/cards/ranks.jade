@@ -11,4 +11,4 @@ main
           .unit place
 
 footer.flex-grow.flex.column.end
-  p Awaiting {{project.activeWorkStep.nextPhase.name}}
+  p You'll receive complete designs in {{project.activeWorkStep.nextPhase.submissionDueBy | timeLapse:project.activeWorkStep.nextPhase.submissionDueBy:true }}
