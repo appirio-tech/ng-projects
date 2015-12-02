@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 #project-details-setup {
   .project-type {
@@ -7,7 +7,7 @@
     }
 
     p {
-      margin-left: $margin-small;
+      margin-left: 15px;
       text-transform: uppercase;
     }
   }
@@ -16,7 +16,7 @@
     max-width: 400px;
 
     ul > li {
-      margin-top: $margin-small;
+      margin-top: 15px;
     }
   }
 
@@ -26,8 +26,8 @@
   }
 
   label {
-    font-weight: $font-weight;
+    font-weight: 400;
     margin-left: 10px;
-    font-size  : $font-size-big;
+    font-size  : 16px;
   }
 }

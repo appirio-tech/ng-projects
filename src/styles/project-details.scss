@@ -1,4 +1,4 @@
-@import "work-includes";
+@import "work/work-includes";
 
 project-details {
   display: block;
@@ -12,8 +12,8 @@ project-details {
 
     &.active {
       max-height   : 300px;
-      margin-bottom: $margin;
-      padding      : $padding;
+      margin-bottom: 30px;
+      padding      : 15px;
     }
   }
 
@@ -24,7 +24,7 @@ project-details {
     overflow        : hidden;
 
     h5 {
-      margin-left: $margin-smallest;
+      margin-left: 10px;
       padding    : 0;
       color      : $white;
     }
@@ -40,33 +40,33 @@ project-details {
 
     &.active {
       max-height: 100px;
-      margin-bottom: $margin;
+      margin-bottom: 30px;
     }
 
     > * {
-      margin: $margin-small;
+      margin: 15px;
     }
   }
 
   .nav {
     width: 200px;
-    margin-top: $margin-smallest;
+    margin-top: 10px;
 
     .claim, .launch {
-      margin-bottom: $margin;
+      margin-bottom: 30px;
     }
 
     ul {
-      border-right: 2px solid $neutral-color-lightest;
+      border-right: 2px solid $grey-lightest;
 
       button {
         text-align    : left;
         text-transform: uppercase;
-        font-weight   : $font-weight;
+        font-weight   : 400;
       }
 
       li {
-        margin-top: $margin;
+        margin-top: 30px;
 
         &:first-child {
           margin-top: 0;

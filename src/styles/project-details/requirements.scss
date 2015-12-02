@@ -1,10 +1,10 @@
-@import "work-includes";
+@import "work/work-includes";
 
 project-details .requirements {
-  margin-left: $margin;
+  margin-left: 30px;
 
   h5 {
-    font-weight: $font-weight-bold;
+    font-weight: 500;
   }
 
   h6 {
@@ -14,7 +14,7 @@ project-details .requirements {
   hr {
     margin-top: 20px;
     margin-bottom: 30px;
-    background-color: $neutral-color-lightest;
+    background-color: $grey-lightest;
   }
 
   > li {
@@ -30,7 +30,7 @@ project-details .requirements {
     margin-top   : 50px;
     font-size    : 22px;
 
-    color: $neutral-color-dark;
+    color: $grey-dark;
 
     &:first-child {
       margin-top: 30px;
