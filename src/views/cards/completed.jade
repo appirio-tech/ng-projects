@@ -1,6 +1,8 @@
 main.flex.column.middle.center.flex-grow
   img.icon.biggest(src="/images/project-complete.svg")
 
-  label project complete!
+  label project complete
 
-  a.button.hollow(ui-sref="timeline({ workId: project.id })") deploy my app
+  a.button.hollow(ng-if="project.projectType == 'DESIGN'" ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") View final design
+
+  a.button.hollow(ng-if="project.projectType == 'DESIGN_AND_CODE'" ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") View final code
