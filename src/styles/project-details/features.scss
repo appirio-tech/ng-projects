@@ -1,9 +1,9 @@
-@import "work-includes";
+@import "work/work-includes";
 
 #project-details-features {
   .features-descriptions {
     li {
-      border-top: 1px solid $neutral-color-light;
+      border-top: 1px solid $grey-light;
       padding: 30px 0;
 
       &:first-child {

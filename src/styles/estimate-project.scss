@@ -1,32 +1,32 @@
-@import "work-includes";
+@import "work/work-includes";
 
 estimate-project {
   display         : block;
-  background-color: $neutral-color-lightest;
-  padding         : $padding;
+  background-color: $grey-lightest;
+  padding         : 15px;
 
   button {
-    margin-top: $margin;
+    margin-top: 30px;
   }
 
   .success-message {
     h3 {
       padding: 0;
-      margin-left: $margin-smallest;
+      margin-left: 10px;
     }
 
     .estimates {
       max-width: 300px;
-      margin-top: $margin-small;
+      margin-top: 15px;
 
       p {
-        font-weight: $font-weight-bold;
+        font-weight: 500;
       }
     }
   }
 
   hr {
-    margin: $margin-small 0 0 0;
+    margin: 15px 0 0 0;
   }
 
   .cost-estimate {
@@ -35,10 +35,10 @@ estimate-project {
 
   form {
     .cost, .duration {
-      margin-top: $margin-small;
+      margin-top: 15px;
 
       .fields {
-        margin-top: $margin-small;
+        margin-top: 15px;
 
         p {
           margin-top: 0;
@@ -49,7 +49,7 @@ estimate-project {
         }
 
         > * {
-          margin-left: $margin-small;
+          margin-left: 15px;
 
           &:first-child {
             margin-left: 0;

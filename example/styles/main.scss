@@ -1,4 +1,4 @@
-@import "work-styles";
+@import "work/work-styles";
 
 body #example-nav {
   position: fixed;
@@ -17,14 +17,14 @@ body #example-nav {
 }
 
 body {
-  background-color: $neutral-color-lightest;
+  background-color: $grey-lightest;
 
   > main {
-    padding: $padding;
+    padding: 15px;
   }
 
   .project-details-layout {
     background-color: $white;
-    padding: $padding;
+    padding: 15px;
   }
 }

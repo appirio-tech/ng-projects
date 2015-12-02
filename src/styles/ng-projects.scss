@@ -1,11 +1,11 @@
-@import "work-includes";
+@import "work/work-includes";
 
 ng-projects {
   display: block;
 
   .assigned {
     avatar {
-      margin-top: $margin-small;
+      margin-top: 15px;
       width     : 64px;
       height    : 64px;
     }
@@ -32,7 +32,7 @@ ng-projects {
       }
 
       > * {
-        margin: $margin-smallest;
+        margin: 10px;
       }
 
       .rank {
@@ -45,27 +45,27 @@ ng-projects {
 
   .winner {
     h5 {
-      margin-top: $margin-small;
+      margin-top: 15px;
       color: $primary-color;
     }
 
     .name {
-      margin-top: $margin-smallest;
-      font-size: $font-size-big;
+      margin-top: 10px;
+      font-size: 16px;
     }
 
     .winner-text {
       color         : $primary-color;
       text-transform: uppercase;
-      margin-top    : $margin-small;
+      margin-top    : 15px;
       font-size     : 24px;
-      font-weight   : $font-weight-bold;
+      font-weight   : 500;
     }
 
     .house {
       border-radius: 50%;
       border       : 1px solid $success-color;
-      padding      : $padding-small;
+      padding      : 10px;
     }
   }
 }

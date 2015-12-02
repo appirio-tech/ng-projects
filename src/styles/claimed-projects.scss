@@ -1,11 +1,11 @@
-@import "work-includes";
+@import "work/work-includes";
 
 claimed-projects {
   display: block;
 
   main {
     .icon {
-      margin-top: $margin-small;
+      margin-top: 15px;
     }
   }
 }

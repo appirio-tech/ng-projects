@@ -1,23 +1,23 @@
-@import "work-includes";
+@import "work/work-includes";
 
 ng-projects, open-projects, claimed-projects {
   h6 {
-    margin-top: $margin-small;
+    margin-top: 15px;
   }
 
   h5 {
-    font-weight: $font-weight-bold;
+    font-weight: 500;
   }
 
   .no-projects {
     text-align : center;
     font-size  : 18px;
-    font-weight: $font-weight;
-    color      : $neutral-color-dark;
+    font-weight: 400;
+    color      : $grey-dark;
   }
 
   hr {
-    margin: $margin-small 0 0 0;
+    margin: 15px 0 0 0;
     width: 100%;
   }
 
