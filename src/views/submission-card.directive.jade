@@ -6,7 +6,7 @@ main.solid.flex.column.middle.center
   label(ng-if="vm.phase == 'Final Designs'") Designs Completed!
 
 
-footer.flex-grow.flex.column.end.middle
+footer.flex-grow.flex.column.end.middle.space-between
   a.button.action(ng-if="vm.phase == 'Design Concepts'" ui-sref="step({projectId: vm.id, stepId: vm.stepId})") review concepts
 
   a.button.action(ng-if="vm.phase == 'Final Designs'" ui-sref="step({projectId: vm.id, stepId: vm.stepId})") choose winners

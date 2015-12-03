@@ -3,7 +3,7 @@ main.solid.flex.column.middle.center
 
   label final fixes received
 
-footer.flex-grow.flex.column.end.middle
+footer.flex-grow.flex.column.space-between.middle
   a.button.action(ui-sref="step({projectId: project.id, stepId: project.activeWorkStep.id})") view submissions
 
   p.secondary You have {{ project.activeWorkStep.endsAt | timeLapse:project.activeWorkStep.endsAt:true }}
