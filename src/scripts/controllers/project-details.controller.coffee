@@ -67,6 +67,13 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource.$promise.finally ->
       vm.launching = false
 
+  mapFonts = (fonts) ->
+    mappedFonts = fonts.map (font) ->
+      if font == 'SANS_SERIF'
+        'SANS SERIF'
+      else
+        font
+
   activate = ->
     $scope.$watch 'copilotId', ->
       vm.userType = 'COPILOT' if $scope.copilotId
@@ -77,6 +84,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
 
     resource.$promise.then (response) ->
       vm.project          = response
+      vm.project.fonts    = mapFonts vm.project.fontIds
       vm.claimed          = response.copilotId != 'unassigned'
       vm.launched         = response.status == 'LAUNCHED'
       vm.estimateAccepted = response.status == 'APPROVED'
