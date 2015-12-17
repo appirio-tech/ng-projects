@@ -14,10 +14,11 @@ main
 
   ul.features-descriptions
     li(ng-repeat="feature in vm.project.features")
-      p.title {{ feature.title }}
+      label {{ feature.title }}
 
       p.description {{ feature.description }}
 
-      p.notes-title(ng-if="feature.notes.length > 0") {{feature.title}} Notes
+      .notes(ng-if="feature.notes.length > 0")
+        label Notes:
 
-      p.notes(ng-if="feature.notes.length > 0") {{feature.notes}}
+        p {{feature.notes}}

@@ -17,10 +17,19 @@
           margin-top: 0;
         }
       }
+
+      label {
+        font-size: 18px;
+      }
+      .notes {
+        margin-top: 30px;
+
+        label {
+          font-size: 15px;
+          color: $primary-color;
+        }
+      }
     }
   }
 
-  .title {
-    font-size: 18px;
-  }
 }
