@@ -68,7 +68,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       vm.launching = false
 
   mapFonts = (fonts) ->
-    mappedFonts = fonts.map (font) ->
+    mappedFonts = fonts?.map (font) ->
       if font == 'SANS_SERIF'
         'SANS SERIF'
       else
