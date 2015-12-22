@@ -28,11 +28,11 @@ main
   h4 Project type
 
   .project-type.flex.middle(ng-if="vm.project.projectType == 'DESIGN'")
-    img.biggest(ng-src="/images/design-colored.svg")
+    img.biggest(ng-src=require("../../images/design-colored.svg"))
 
     p Design
 
   .project-type.flex.middle(ng-if="vm.project.projectType != 'DESIGN'")
-    img.biggest(ng-src="/images/design-development-colored.svg")
+    img.biggest(ng-src=require("../../images/design-development-colored.svg"))
 
     p Design &amp; Development

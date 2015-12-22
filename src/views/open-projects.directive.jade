@@ -11,9 +11,9 @@ ul.flex.wrap
 
       card-main.flex.column
         main.solid.flex.column.middle.center
-          img(src="/images/design-colored.svg" ng-if="project.projectType == 'DESIGN'")
+          img(ng-src=require("../images/design-colored.svg") ng-if="project.projectType == 'DESIGN'")
 
-          img(src="/images/design-development-colored.svg" ng-if="project.projectType == 'DESIGN_AND_CODE'")
+          img(ng-src=require("../images/design-development-colored.svg") ng-if="project.projectType == 'DESIGN_AND_CODE'")
 
           label {{ vm.typeMap[project.projectType] }}
 

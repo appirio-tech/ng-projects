@@ -25,12 +25,12 @@ main
 
   ul.color-swatches
     li(ng-repeat="color in vm.project.colorSwatchIds")
-      img(ng-src="/images/{{ vm.imageMap[color] }}.png")
+      img(ng-src="{{ vm.imageMap[color] }}")
 
   h4 Icons
 
   ul.icons
     li.flex.middle(ng-repeat="icon in vm.project.iconsetIds")
-      img.icon.biggest(ng-src="/images/{{ vm.imageMap[icon] }}.svg")
+      img.icon.biggest(ng-src="{{ vm.imageMap[icon] }}")
 
       label {{ vm.textMap[icon] }}

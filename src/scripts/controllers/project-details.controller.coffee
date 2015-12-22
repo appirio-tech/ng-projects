@@ -25,13 +25,13 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     'THIN_LINE'  : 'THIN LINE'
 
   vm.imageMap =
-    'FLAT_COLORS': 'icon-flat-color'
-    'SOLID_LINE' : 'icon-solid'
-    'THIN_LINE'  : 'icon-outlined'
-    'BLUE'       : 'colors-blue'
-    'RED'        : 'colors-red'
-    'GREEN'      : 'colors-green'
-    'ORANGE'     : 'colors-orange'
+    'FLAT_COLORS': require '../../images/icon-flat-color'
+    'SOLID_LINE' : require '../../images/icon-solid'
+    'THIN_LINE'  : require '../../images/icon-outlined'
+    'BLUE'       : require '../../images/colors-blue'
+    'RED'        : require '../../images/colors-red'
+    'GREEN'      : require '../../images/colors-green'
+    'ORANGE'     : require '../../images/colors-orange'
 
   #TODO: Combine code with launch
   vm.claim = ->
