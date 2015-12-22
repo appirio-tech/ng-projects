@@ -413,13 +413,13 @@ $templateCache.put("views/submission-card.directive.html","<main class=\"solid f
     };
     mapFonts = function(fonts) {
       var mappedFonts;
-      return mappedFonts = fonts.map(function(font) {
+      return mappedFonts = fonts != null ? fonts.map(function(font) {
         if (font === 'SANS_SERIF') {
           return 'SANS SERIF';
         } else {
           return font;
         }
-      });
+      }) : void 0;
     };
     activate = function() {
       var params, resource;
