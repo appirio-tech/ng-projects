@@ -15,7 +15,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.userType          = 'CUSTOMER'
 
   vm.textMap  = # this is retarted!
-    'IWATCH'     : 'iWatch'
+    'APPLE_WATCH': 'Apple Watch'
     'IPHONE'     : 'iPhone'
     'IPad'       : 'iPad'
     'PORTRAIT'   : 'Portrait'
