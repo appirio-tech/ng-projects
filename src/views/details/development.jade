@@ -26,6 +26,8 @@ main
 
   p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
 
-  h4 How many 3rd party integrations?
+  h4 List of 3rd party integrations
 
-  p There are {{ vm.project.numberOfApiIntegrations }} integrations needed.
+  ul.third-party-integrations.flex.column
+    li(ng-repeat="apiIntegration in vm.project.apiIntegrations track by $index")
+      p {{apiIntegration}}
