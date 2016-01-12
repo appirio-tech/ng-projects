@@ -1,6 +1,6 @@
 {
   "name": "appirio-tech-ng-projects",
-  "version": "4.0.1",
+  "version": "0.0.0",
   "main": "./src/src.coffee",
   "devDependencies": {
     "appirio-tech-webpack-config": "0.x.x",
