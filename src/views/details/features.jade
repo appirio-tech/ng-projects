@@ -16,9 +16,9 @@ main
     li(ng-repeat="feature in vm.project.features")
       label {{ feature.title }}
 
-      pre.description {{ feature.description }}
+      p.description {{ feature.description }}
 
       .notes(ng-if="feature.notes.length > 0")
         label Notes:
 
-        pre {{feature.notes}}
+        p {{feature.notes}}
