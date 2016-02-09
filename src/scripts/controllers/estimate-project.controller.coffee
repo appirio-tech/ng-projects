@@ -5,7 +5,7 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
   vm.projects    = []
   vm.loading     = false
   vm.permissions = $scope.permissions
-  vm.canUpdate   = $scope.permissions.indexOf('UPDATE') > -1
+  vm.canUpdate   = vm.permissions?.indexOf('UPDATE') > -1
   vm.payload     =
     price:
       min: 0
