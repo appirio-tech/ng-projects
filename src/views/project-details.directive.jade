@@ -11,13 +11,13 @@ loader(ng-show="vm.loading")
   button.hollow(
     ng-click="vm.claim()"
     ng-hide="vm.claiming || vm.claimed"
-    ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+    ng-disabled="!vm.canUpdate"
   ) yes, claim it!
 
   button.hollow(
     ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
     ng-hide="vm.claiming || vm.claimed"
-    ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+    ng-disabled="!vm.canUpdate"
   ) cancel
 
   .loader-house(ng-show="vm.claiming")
@@ -34,13 +34,13 @@ loader(ng-show="vm.loading")
   button.hollow(
     ng-click="vm.launch()"
     ng-hide="vm.launching || vm.launched"
-    ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+    ng-disabled="!vm.canUpdate"
   ) yes, launch it!
 
   button.hollow(
     ng-click="vm.showConfirmlaunch = !vm.showConfirmlaunch"
     ng-hide="vm.launching || vm.launched"
-    ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+    ng-disabled="!vm.canUpdate"
   ) cancel
 
   .loader-house(ng-show="vm.launching")
@@ -59,14 +59,14 @@ estimate-project.transition.dark-bg(
       ng-if="vm.userType == 'COPILOT' && !vm.claimed"
       ng-hide="vm.showConfirmClaim"
       ng-click="vm.showConfirmClaim = !vm.showConfirmClaim"
-      ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+      ng-disabled="!vm.canUpdate"
     ) claim project
 
     button.action.launch(
       ng-if="vm.userType == 'COPILOT' && vm.estimateAccepted"
       ng-hide="vm.showConfirmLaunch"
       ng-click="vm.showConfirmLaunch = !vm.showConfirmLaunch; vm.showConfirmClaim = false"
-      ng-disabled="vm.permissions.indexOf('UPDATE') == -1"
+      ng-disabled="!vm.canUpdate"
     ) launch project
 
     ul

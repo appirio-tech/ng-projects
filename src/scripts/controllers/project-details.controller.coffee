@@ -14,6 +14,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.launched          = false
   vm.estimateAccepted  = false
   vm.userType          = 'CUSTOMER'
+  vm.canUpdate         = $scope.permissions.indexOf('UPDATE') > -1
 
   vm.textMap  = # this is retarted!
     'APPLE_WATCH': 'Apple Watch'
