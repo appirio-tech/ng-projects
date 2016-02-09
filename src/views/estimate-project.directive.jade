@@ -30,7 +30,7 @@ main(ng-hide="vm.costEstimate")
 
           p weeks
 
-    button.action.wider save estimates
+    button.action.wider(ng-disabled="!vm.canUpdate") save estimates
 
 .success-message(ng-show="vm.costEstimate")
   .flex.middle
