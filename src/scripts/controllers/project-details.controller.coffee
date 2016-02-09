@@ -5,6 +5,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.projects          = []
   vm.loading           = false
   vm.id                = $scope.id
+  vm.permissions       = $scope.permissions
   vm.showConfirmClaim  = false
   vm.showConfirmLaunch = false
   vm.claiming          = false

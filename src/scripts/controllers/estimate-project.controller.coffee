@@ -1,10 +1,11 @@
 'use strict'
 
 EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIService) ->
-  vm          = this
-  vm.projects = []
-  vm.loading  = false
-  vm.payload  =
+  vm             = this
+  vm.projects    = []
+  vm.loading     = false
+  vm.permissions = $scope.permissions
+  vm.payload     =
     price:
       min: 0
       max: 0
