@@ -5,6 +5,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.projects          = []
   vm.loading           = false
   vm.id                = $scope.id
+  vm.permissions       = $scope.permissions || ['CREATE', 'UPDATE', 'DELETE']
   vm.showConfirmClaim  = false
   vm.showConfirmLaunch = false
   vm.claiming          = false
@@ -13,6 +14,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.launched          = false
   vm.estimateAccepted  = false
   vm.userType          = 'CUSTOMER'
+  vm.canUpdate         = vm.permissions?.indexOf('UPDATE') > -1
 
   vm.textMap  = # this is retarted!
     'APPLE_WATCH': 'Apple Watch'

@@ -12,25 +12,25 @@ main(ng-hide="vm.costEstimate")
         label Project Cost
 
         .fields.flex.middle
-          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
           p to
 
-          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
       .duration
         label Project Duration
 
         .fields.flex.middle
-          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
           p to
 
-          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0")
+          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
           p weeks
 
-    button.action.wider save estimates
+    button.action.wider(ng-disabled="!vm.canUpdate") save estimates
 
 .success-message(ng-show="vm.costEstimate")
   .flex.middle
