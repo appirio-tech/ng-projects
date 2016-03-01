@@ -17,6 +17,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.canUpdate         = vm.permissions?.indexOf('UPDATE') > -1
 
   vm.textMap  = # this is retarted!
+    'IOS'        : 'iOS'
+    'ANDROID'    : 'Android'
     'WATCH'      : 'Watch'
     'PHONE'      : 'Phone'
     'TABLET'     : 'Tablet'

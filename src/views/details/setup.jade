@@ -4,9 +4,18 @@ header
   hr.biggest
 
 main
-  h4 iOS platform details
+  h4 platform details
 
   ul.platform.flex.space-between
+    li.platform
+      h6 Platform
+
+      ul
+        li.flex.middle(ng-repeat="platform in vm.project.platformIds")
+          .icon.plus
+
+          label {{ vm.textMap[platform] || platform }}
+
     li.device
       h6 Device
 
