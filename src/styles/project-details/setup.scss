@@ -12,6 +12,12 @@
     }
   }
 
+  .project-description {
+    p {
+      white-space: pre-wrap;
+    }
+  }
+
   .platform {
     max-width: 400px;
 
