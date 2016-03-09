@@ -1,6 +1,6 @@
 'use strict'
 
-ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPIService) ->
+ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, CopilotProjectDetailsAPIService) ->
   vm                   = this
   vm.projects          = []
   vm.loading           = false
@@ -12,6 +12,8 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
   vm.claimed           = false
   vm.launching         = false
   vm.launched          = false
+  vm.completing        = false
+  vm.completed         = false
   vm.estimateAccepted  = false
   vm.userType          = 'CUSTOMER'
   vm.canUpdate         = vm.permissions?.indexOf('UPDATE') > -1
@@ -71,6 +73,23 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
     resource.$promise.finally ->
       vm.launching = false
 
+  vm.complete = ->
+    params       =
+      id: $scope.id
+
+    payload      = status: 'COMPLETED'
+    resource     = SubmitWorkAPIService.put params, payload
+    vm.completing = true
+
+    resource.$promise.then (response) ->
+      vm.completed = true
+
+    resource.$promise.catch (response) ->
+      # TODO: handle error
+
+    resource.$promise.finally ->
+      vm.completing = false
+
   mapFonts = (fonts) ->
     mappedFonts = fonts?.map (font) ->
       if font == 'SANS_SERIF'
@@ -92,6 +111,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
       vm.claimed          = response.copilotId != 'unassigned'
       vm.launched         = response.status == 'LAUNCHED'
       vm.estimateAccepted = response.status == 'APPROVED'
+      vm.completed        = response.status == 'COMPLETED'
 
     resource.$promise.catch (response) ->
       # TODO: handle error
@@ -103,6 +123,6 @@ ProjectDetailsController = ($scope, ProjectsAPIService, CopilotProjectDetailsAPI
 
   activate()
 
-ProjectDetailsController.$inject = ['$scope', 'ProjectsAPIService', 'CopilotProjectDetailsAPIService']
+ProjectDetailsController.$inject = ['$scope', 'ProjectsAPIService', 'SubmitWorkAPIService', 'CopilotProjectDetailsAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'ProjectDetailsController', ProjectDetailsController
