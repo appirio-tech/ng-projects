@@ -77,7 +77,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
     params       =
       id: $scope.id
 
-    payload      = status: 'COMPLETED'
+    payload      = angular.extend {}, vm.project, {status: 'COMPLETED'}
     resource     = SubmitWorkAPIService.put params, payload
     vm.completing = true
 
