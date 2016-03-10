@@ -77,7 +77,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
     params       =
       id: $scope.id
 
-    payload      = angular.extend {}, vm.project, {status: 'COMPLETED'}
+    payload      = angular.extend {}, vm.project, {status: 'COMPLETE'}
     resource     = SubmitWorkAPIService.put params, payload
     vm.completing = true
 
@@ -111,7 +111,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
       vm.claimed          = response.copilotId != 'unassigned'
       vm.launched         = response.status == 'LAUNCHED'
       vm.estimateAccepted = response.status == 'APPROVED'
-      vm.completed        = response.status == 'COMPLETED'
+      vm.completed        = response.status == 'COMPLETE'
 
     resource.$promise.catch (response) ->
       # TODO: handle error
