@@ -109,7 +109,7 @@ loader(ng-show="vm.loading")
 
     estimate-project.transition(
       project-id="{{ vm.id }}"
-      
+      ng-if="vm.userType == 'COPILOT'"
       ng-class="{ active: vm.claimed }"
       permissions="vm.permissions"
     )
