@@ -69,13 +69,6 @@ loader(ng-show="vm.loading")
   .loader-house(ng-show="vm.completing")
     loader
 
-estimate-project.transition.dark-bg(
-  project-id="{{ vm.id }}"
-  ng-if="vm.userType == 'COPILOT'"
-  ng-class="{ active: vm.claimed }"
-  permissions="vm.permissions"
-)
-
 .flex.rows
   .house.nav
     button.action.claim(
@@ -113,6 +106,14 @@ estimate-project.transition.dark-bg(
         button.clean(scroll-element="project-details-development") development
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
+
+    estimate-project.transition(
+      project-id="{{ vm.id }}"
+      
+      ng-class="{ active: vm.claimed }"
+      permissions="vm.permissions"
+    )
+
     li(id="project-details-setup")
       include details/setup
 

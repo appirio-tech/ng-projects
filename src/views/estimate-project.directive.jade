@@ -1,5 +1,5 @@
 main(ng-hide="vm.costEstimate")
-  h3 Project Estimate
+  h5 Create Project Estimates
 
   hr.biggest
 
@@ -33,10 +33,7 @@ main(ng-hide="vm.costEstimate")
     button.action.wider(ng-disabled="!vm.canUpdate") save estimates
 
 .success-message(ng-show="vm.costEstimate")
-  .flex.middle
-    .icon.checkmark.small
-
-    h3 Project Estimates
+  h5 Project Estimates
 
   hr.biggest
 
