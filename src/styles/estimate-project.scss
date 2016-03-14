@@ -2,8 +2,10 @@
 
 estimate-project {
   display         : block;
-  background-color: $grey-lightest;
-  padding         : 15px;
+
+  h5 {
+    font-weight: 500;
+  }
 
   button {
     margin-top: 30px;

@@ -13,7 +13,6 @@ project-details {
     &.active {
       max-height   : 300px;
       margin-bottom: 30px;
-      padding      : 15px;
     }
   }
 
@@ -52,7 +51,7 @@ project-details {
     width: 200px;
     margin-top: 10px;
 
-    .claim, .launch {
+    .claim, .launch, .complete {
       margin-bottom: 30px;
     }
 

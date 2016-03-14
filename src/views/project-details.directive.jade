@@ -46,12 +46,28 @@ loader(ng-show="vm.loading")
   .loader-house(ng-show="vm.launching")
     loader
 
-estimate-project.transition.dark-bg(
-  project-id="{{ vm.id }}"
-  ng-if="vm.userType == 'COPILOT'"
-  ng-class="{ active: vm.claimed }"
-  permissions="vm.permissions"
-)
+.confirm.complete.flex.middle.center(ng-class="{ active: vm.showConfirmComplete }")
+  p(ng-hide="vm.completed") Are you sure you want to complete this project?
+
+  .flex.bottom(ng-show="vm.completed")
+    .icon.checkmark-white.small
+
+    h5 Project completed!
+
+  button.hollow(
+    ng-click="vm.complete()"
+    ng-hide="vm.completing || vm.completed"
+    ng-disabled="!vm.canUpdate"
+  ) yes, complete it!
+
+  button.hollow(
+    ng-click="vm.showConfirmComplete = !vm.showConfirmComplete"
+    ng-hide="vm.completing || vm.completed"
+    ng-disabled="!vm.canUpdate"
+  ) cancel
+
+  .loader-house(ng-show="vm.completing")
+    loader
 
 .flex.rows
   .house.nav
@@ -69,6 +85,13 @@ estimate-project.transition.dark-bg(
       ng-disabled="!vm.canUpdate"
     ) launch project
 
+    button.action.complete(
+      ng-if="vm.userType == 'COPILOT' && vm.launched"
+      ng-hide="vm.showConfirmComplete"
+      ng-click="vm.showConfirmComplete = !vm.showConfirmComplete; vm.showConfirmLaunch = false"
+      ng-disabled="!vm.canUpdate"
+    ) complete project
+
     ul
       li
         button.clean(scroll-element="proect-details-setup") basic details
@@ -83,6 +106,14 @@ estimate-project.transition.dark-bg(
         button.clean(scroll-element="project-details-development") development
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
+
+    estimate-project.transition(
+      project-id="{{ vm.id }}"
+      ng-if="vm.userType == 'COPILOT'"
+      ng-class="{ active: vm.claimed }"
+      permissions="vm.permissions"
+    )
+
     li(id="project-details-setup")
       include details/setup
 
