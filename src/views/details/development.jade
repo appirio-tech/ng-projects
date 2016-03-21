@@ -16,15 +16,19 @@ main
 
   h4 Access to data offline?
 
-  p(ng-if="vm.project.offlineAccess") Yes, access to offline data is needed.
+  p(ng-if="vm.project.offlineAccess == 'yes'") Yes, access to offline data is needed.
 
-  p(ng-if="!vm.project.offlineAccess") No, access to offline data is not needed.
+  p(ng-if="vm.project.offlineAccess == 'no'") No, access to offline data is not needed.
+
+  p(ng-if="vm.project.offlineAccess == 'unsure'") Not sure whether access to offline data is needed.
 
   h4 Is there any level of personal information? (stored or transmitted)?
 
-  p(ng-if="vm.project.usesPersonalInformation") Yes, storing and/or transmitting personal information is needed.
+  p(ng-if="vm.project.usesPersonalInformation == 'yes'") Yes, storing and/or transmitting personal information is needed.
 
-  p(ng-if="!vm.project.usesPersonalInformation") No, storing and/or transmitting personal information is not needed.
+  p(ng-if="vm.project.usesPersonalInformation == 'no'") No, storing and/or transmitting personal information is not needed.
+
+  p(ng-if="vm.project.usesPersonalInformation == 'unsure'") Not sure whether storing and/or transmitting personal information is needed.
 
   h4 List of 3rd party integrations
 
