@@ -3,34 +3,9 @@ main(ng-hide="vm.costEstimate")
 
   hr.biggest
 
-  form(ng-submit="vm.submit()")
-    .cost-estimate.flex.space-between.wrap
-      .description
-        p.secondary Enter a range for your proposed cost and duration for this project.
+  estimate-form(type="design")
 
-      .cost
-        label Project Cost
-
-        .fields.flex.middle
-          input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
-
-          p to
-
-          input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
-
-      .duration
-        label Project Duration
-
-        .fields.flex.middle
-          input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
-
-          p to
-
-          input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
-
-          p weeks
-
-    button.action.wider(ng-disabled="!vm.canUpdate") save estimates
+  estimate-form(type="code" ng-if="vm.projectType == 'DESIGN_AND_CODE' ")
 
 .success-message(ng-show="vm.costEstimate")
   h5 Project Estimates
