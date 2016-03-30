@@ -1,4 +1,6 @@
-main(ng-hide="vm.costEstimate")
+loader(ng-show="vm.loading")
+
+main(ng-hide="vm.hasAllEstimates()")
   h5 Create Project Estimates
 
   hr.biggest
@@ -6,24 +8,17 @@ main(ng-hide="vm.costEstimate")
   .description
     p.secondary Enter a range for your proposed cost and duration for this project.
 
-  estimate-form(ng-if="vm.projectType" estimate-type="DESIGN" project-id="{{vm.projectId}}" loading="vm.loading" cost-estimate="vm.costEstimate" can-update="vm.canUpdate")
+  estimate-form(ng-if="vm.projectType" estimate-type="DESIGN" project-id="{{vm.projectId}}" loading="vm.loading" estimates="vm.estimates" can-update="vm.canUpdate")
 
-  estimate-form(ng-if="vm.projectType == 'DESIGN_AND_CODE'" estimate-type="CODE" project-id="{{vm.projectId}}" loading="vm.loading" cost-estimate="vm.costEstimate" can-update="vm.canUpdate")
+  estimate-form(ng-if="vm.projectType == 'DESIGN_AND_CODE'" estimate-type="CODE" project-id="{{vm.projectId}}" loading="vm.loading" estimates="vm.estimates" can-update="vm.canUpdate")
 
-.success-message(ng-show="vm.costEstimate")
+
+.success-message(ng-show="vm.estimates.DESIGN || vm.estimates.CODE" ng-class="{incomplete: !vm.hasAllEstimates()}")
   h5 Project Estimates
 
   hr.biggest
 
-  .estimates.flex.space-between
-    .costs
-      h6 Costs
+  estimate-detail(ng-if="vm.estimates.DESIGN" estimates="vm.estimates.DESIGN")
 
-      p ${{ vm.costEstimate.price.min }} - ${{ vm.costEstimate.price.max }}
+  estimate-detail(ng-if="vm.estimates.CODE" estimates="vm.estimates.CODE")
 
-    .duration
-      h6 Duration
-
-      p {{ vm.costEstimate.duration.min }} - {{ vm.costEstimate.duration.max }} {{ vm.costEstimate.duration.unit }}s
-
-loader(ng-show="vm.loading")

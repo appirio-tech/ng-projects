@@ -9,7 +9,13 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
   vm.permissions = $scope.permissions
   vm.projectId   = $scope.projectId
   vm.canUpdate   = vm.permissions?.indexOf('UPDATE') > -1
-  vm.estimates = null
+  vm.estimates   = {}
+
+  vm.hasAllEstimates = ->
+    if vm.projectType == 'DESIGN'
+      vm.estimates['DESIGN']
+    else
+      vm.estimates['DESIGN'] && vm.estimates['CODE']
 
   parseEstimates = (estimates) ->
     vm.estimates['CODE'] = find estimates, (estimate) ->
@@ -25,7 +31,6 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
 
     resource.$promise.then (response) ->
       if response.estimates then parseEstimates response.estimates
-      # vm.costEstimate = response.costEstimate
       vm.projectType = response.projectType
 
     resource.$promise.finally ->

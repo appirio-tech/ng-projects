@@ -1,7 +1,7 @@
 form(ng-submit="vm.submit()")
-  .cost-estimate.flex.space-between.center.middle.wrap
+  .cost-estimate.flex.space-between.center.middle.wrap(ng-if="!estimates[vm.estimateType]")
     .cost
-      label {{vm.projectType}} Cost
+      label {{vm.estimateType}} Cost
 
       .fields.flex.middle
         input(ng-model="vm.payload.estimateMin" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
@@ -11,7 +11,7 @@ form(ng-submit="vm.submit()")
         input(ng-model="vm.payload.estimateMax" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
     .duration
-      label {{vm.projectType}} Duration
+      label {{vm.estimateType}} Duration
 
       .fields.flex.middle
         input(ng-model="vm.payload.durationMin" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")

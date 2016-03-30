@@ -1,12 +1,10 @@
 'use strict'
 
 EstimateFormController = ($scope) ->
-  vm = this
-  vm.projectId = $scope.projectId
+  vm              = this
+  vm.projectId    = $scope.projectId
   vm.estimateType = $scope.estimateType
-  # vm.costEstimate = $scope.costEstimate
-  vm.loading = $scope.loading
-  vm.canUpdate = $scope.canUpdate
+  vm.canUpdate    = $scope.canUpdate
 
   vm.payload =
     estimateType: vm.estimateType
@@ -17,15 +15,16 @@ EstimateFormController = ($scope) ->
     durationUnit: 'WEEK'
 
   vm.submit = ->
-    $scope.costEstimates[vm.estimateType] = vm.payload
-    vm.loading = true
+    $scope.loading = true
+    $scope.estimates[vm.estimateType] = vm.payload
     params     = id: vm.projectId
+
     resource   = ProjectEstimatesAPIService.post params, vm.payload
 
     resource.$promise.then ->
 
     resource.$promise.finally ->
-      vm.loading = false
+      $scope.loading = false
 
   vm
 

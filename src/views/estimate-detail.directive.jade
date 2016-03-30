@@ -1,0 +1,10 @@
+.estimates.flex.space-between
+  .costs
+    h6 {{estimates.estimateType}} Costs
+
+    p ${{ estimates.estimateMin }} - ${{ estimates.estimateMax }}
+
+  .duration
+    h6 {{estimates.estimateType}} Duration
+
+    p {{ estimates.durationMin }} - {{ estimates.durationMax }} {{ estimates.durationUnit }}s
