@@ -15,7 +15,7 @@ EstimateFormController = ($scope) ->
     durationUnit: 'WEEK'
 
   vm.submit = ->
-    $scope.loading = true
+    # $scope.loading = true
     $scope.estimates[vm.estimateType] = vm.payload
     params     = id: vm.projectId
 

@@ -23,11 +23,20 @@ estimate-project {
     }
 
     .estimates {
-      max-width: 300px;
+      max-width: 340px;
       margin-top: 15px;
 
       p {
         font-weight: 500;
+      }
+
+      .costs {
+        width: 125px;
+        margin-right: 10px;
+      }
+
+      .duration {
+        width: 165px;
       }
     }
   }
