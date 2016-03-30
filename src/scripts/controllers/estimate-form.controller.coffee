@@ -16,13 +16,13 @@ EstimateFormController = ($scope, ProjectEstimatesAPIService) ->
 
   vm.submit = ->
     $scope.loading = true
-    $scope.estimates[vm.estimateType] = vm.payload
 
     params     = id: vm.projectId
 
     resource   = ProjectEstimatesAPIService.post params, vm.payload
 
     resource.$promise.then ->
+      $scope.estimates[vm.estimateType] = vm.payload
 
     resource.$promise.finally ->
       $scope.loading = false
