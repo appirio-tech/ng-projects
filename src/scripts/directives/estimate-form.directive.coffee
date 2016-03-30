@@ -5,6 +5,10 @@ directive = ->
   templateUrl : 'views/estimate-form.directive.html'
   controller  : 'EstimateFormController as vm'
   scope       :
-    type : '@'
+    estimateType:  '@'
+    projectId:    '@'
+    costEstimate: '='
+    loading:      '='
+    canUpdate:    '='
 
 angular.module('appirio-tech-ng-projects').directive 'estimateForm', directive

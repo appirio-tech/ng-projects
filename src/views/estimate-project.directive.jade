@@ -3,9 +3,12 @@ main(ng-hide="vm.costEstimate")
 
   hr.biggest
 
-  estimate-form(type="design")
+  .description
+    p.secondary Enter a range for your proposed cost and duration for this project.
 
-  estimate-form(type="code" ng-if="vm.projectType == 'DESIGN_AND_CODE' ")
+  estimate-form(ng-if="vm.projectType" estimate-type="DESIGN" project-id="{{vm.projectId}}" loading="vm.loading" cost-estimate="vm.costEstimate" can-update="vm.canUpdate")
+
+  estimate-form(ng-if="vm.projectType == 'DESIGN_AND_CODE'" estimate-type="CODE" project-id="{{vm.projectId}}" loading="vm.loading" cost-estimate="vm.costEstimate" can-update="vm.canUpdate")
 
 .success-message(ng-show="vm.costEstimate")
   h5 Project Estimates

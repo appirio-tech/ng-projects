@@ -1,28 +1,25 @@
 form(ng-submit="vm.submit()")
-  .cost-estimate.flex.space-between.wrap
-    .description
-      p.secondary Enter a range for your proposed cost and duration for this project.
-
+  .cost-estimate.flex.space-between.center.middle.wrap
     .cost
-      label Project Cost
+      label {{vm.projectType}} Cost
 
       .fields.flex.middle
-        input(ng-model="vm.payload.price.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+        input(ng-model="vm.payload.estimateMin" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
         p to
 
-        input(ng-model="vm.payload.price.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+        input(ng-model="vm.payload.estimateMax" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
     .duration
-      label Project Duration
+      label {{vm.projectType}} Duration
 
       .fields.flex.middle
-        input(ng-model="vm.payload.duration.min" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+        input(ng-model="vm.payload.durationMin" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
         p to
 
-        input(ng-model="vm.payload.duration.max" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
+        input(ng-model="vm.payload.durationMax" type="number" placeholder="$" required="true" min="0" ng-disabled="!vm.canUpdate")
 
         p weeks
 
-    button.action.wider(ng-disabled="!vm.canUpdate") save estimates
+    button.action(ng-disabled="!vm.canUpdate || vm.loading") save {{vm.projectType}} estimates
