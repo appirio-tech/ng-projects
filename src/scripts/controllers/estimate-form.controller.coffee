@@ -1,6 +1,6 @@
 'use strict'
 
-EstimateFormController = ($scope) ->
+EstimateFormController = ($scope, ProjectEstimatesAPIService) ->
   vm              = this
   vm.projectId    = $scope.projectId
   vm.estimateType = $scope.estimateType
@@ -15,8 +15,9 @@ EstimateFormController = ($scope) ->
     durationUnit: 'WEEK'
 
   vm.submit = ->
-    # $scope.loading = true
+    $scope.loading = true
     $scope.estimates[vm.estimateType] = vm.payload
+
     params     = id: vm.projectId
 
     resource   = ProjectEstimatesAPIService.post params, vm.payload
@@ -28,6 +29,6 @@ EstimateFormController = ($scope) ->
 
   vm
 
-EstimateFormController.$inject = ['$scope']
+EstimateFormController.$inject = ['$scope', 'ProjectEstimatesAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'EstimateFormController', EstimateFormController

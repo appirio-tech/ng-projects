@@ -2,7 +2,7 @@
 
 find = require 'lodash/find'
 
-EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIService) ->
+EstimateProjectController = ($scope, ProjectsAPIService) ->
   vm             = this
   vm.projects    = []
   vm.loading     = false
@@ -40,6 +40,6 @@ EstimateProjectController = ($scope, ProjectsAPIService, ProjectEstimatesAPIServ
 
   activate()
 
-EstimateProjectController.$inject = ['$scope', 'ProjectsAPIService', 'ProjectEstimatesAPIService']
+EstimateProjectController.$inject = ['$scope', 'ProjectsAPIService']
 
 angular.module('appirio-tech-ng-projects').controller 'EstimateProjectController', EstimateProjectController
