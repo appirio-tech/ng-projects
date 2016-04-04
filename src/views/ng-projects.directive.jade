@@ -60,12 +60,12 @@ ul.flex.wrap
         include cards/winner
 
       card-main.flex.column.middle.center(
-        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && project.activeWorkStep.name == 'Final Fixes' "
+        ng-if="project.workStepStatus == 'WINNERS_SELECTED' && (project.activeWorkStep.name == 'Final Fixes' || project.activeWorkStep.name == 'Code' || project.activeWorkStep.name == 'Final Code Fixes')"
       )
         include cards/final-fixes-approved
 
       card-main.flex.column.middle.center(
-        ng-if="project.workStepStatus == 'STATUS_REPORT_RECEIVED' && project.activeWorkStep.name == 'Code' "
+        ng-if="project.workStepStatus == 'STATUS_REPORT_RECEIVED' && (project.activeWorkStep.name == 'Code' || project.activeWorkStep.name == 'Final Code Fixes')"
       )
         include cards/status-report
 
