@@ -1,5 +1,3 @@
-require 'appirio-tech-ng-ui-components'
-require 'appirio-tech-ng-api-services'
 require './scripts/ng-projects.module'
 
 requireContextFiles = (files) ->
