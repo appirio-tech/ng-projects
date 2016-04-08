@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/ng-projects.directive.html'
+  template    : require('../../views/ng-projects.directive.jade')()
   controller  : 'NgProjectsController as vm'
   scope       : true
 

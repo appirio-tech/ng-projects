@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/project-details.directive.html'
+  template    : require('../../views/project-details.directive.jade')()
   controller  : 'ProjectDetailsController as vm'
   scope       :
     id:          '@projectId'
