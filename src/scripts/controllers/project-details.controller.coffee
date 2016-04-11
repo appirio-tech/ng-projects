@@ -18,7 +18,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
   vm.userType          = 'CUSTOMER'
   vm.canUpdate         = vm.permissions?.indexOf('UPDATE') > -1
 
-  vm.textMap  = # this is retarted!
+  vm.textMap  =
     'IOS'        : 'iOS'
     'ANDROID'    : 'Android'
     'WATCH'      : 'Watch'
