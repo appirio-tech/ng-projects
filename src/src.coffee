@@ -1,5 +1,3 @@
-require 'appirio-tech-ng-ui-components'
-require 'appirio-tech-ng-api-services'
 require './scripts/ng-projects.module'
 
 requireContextFiles = (files) ->
@@ -15,20 +13,4 @@ controllers = require.context './scripts/controllers/', true, /^(.*\.(coffee$))[
 requireContextFiles directives
 requireContextFiles controllers
 requireContextFiles styles
-
-views = require.context './views/', true, /^(.*\.(jade$))[^.]*$/igm
-viewPaths = views.keys()
-
-templateCache = ($templateCache) ->
-  for viewPath in viewPaths
-    viewPathClean = viewPath.split('./').pop()
-
-    # TODD: bug if .jade occurs more often than once
-    viewPathCleanHtml = viewPathClean.replace '.jade', '.html'
-
-    $templateCache.put "views/#{viewPathCleanHtml}", views(viewPath)()
-
-templateCache.$inject = ['$templateCache']
-
-angular.module('appirio-tech-ng-projects').run templateCache
 

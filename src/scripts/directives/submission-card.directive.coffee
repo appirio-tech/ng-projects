@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/submission-card.directive.html'
+  template    : require('../../views/submission-card.directive.jade')()
   controller  : 'SubmissionCardController as vm'
   scope       :
     phase: '@phase'

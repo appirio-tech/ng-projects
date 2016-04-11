@@ -2,7 +2,7 @@
 
 directive = ->
   restrict    : 'E'
-  templateUrl : 'views/open-projects.directive.html'
+  template    : require('../../views/open-projects.directive.jade')()
   controller  : 'OpenProjectsController as vm'
   scope       : true
 
