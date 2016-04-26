@@ -21,9 +21,12 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
   vm.textMap  =
     'IOS'        : 'iOS'
     'ANDROID'    : 'Android'
+    'WEB_APP'    : 'Web App'
+    'OTHER'      : 'Other'
     'WATCH'      : 'Watch'
     'PHONE'      : 'Phone'
     'TABLET'     : 'Tablet'
+    'DESKTOP'    : 'Desktop'
     'PORTRAIT'   : 'Portrait'
     'LANDSCAPE'  : 'Landscape'
     'FLAT_COLORS': 'FLAT, COLORS'
