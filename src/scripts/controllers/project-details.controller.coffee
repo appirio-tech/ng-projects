@@ -15,6 +15,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
   vm.completing        = false
   vm.completed         = false
   vm.estimateAccepted  = false
+  vm.isOtherPlatform   = false
   vm.userType          = 'CUSTOMER'
   vm.canUpdate         = vm.permissions?.indexOf('UPDATE') > -1
 
@@ -115,6 +116,7 @@ ProjectDetailsController = ($scope, ProjectsAPIService, SubmitWorkAPIService, Co
       vm.launched         = response.status == 'LAUNCHED'
       vm.estimateAccepted = response.status == 'APPROVED'
       vm.completed        = response.status == 'COMPLETE'
+      vm.isOtherPlatform  = (response.platformIds.length == 1) && (response.platformIds[0] == 'OTHER')
 
     resource.$promise.catch (response) ->
       # TODO: handle error
