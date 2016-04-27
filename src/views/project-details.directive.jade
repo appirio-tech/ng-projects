@@ -99,13 +99,13 @@ loader(ng-show="vm.loading")
       li(ng-if="vm.isOtherPlatform")
         button.clean(scroll-element="project-details-requirements") requirements
 
-      li(ng-if="!vm.isOtherPlatform")
+      li
         button.clean(scroll-element="project-details-features") features
 
-      li(ng-if="!vm.isOtherPlatform")
+      li
         button.clean(scroll-element="project-details-design") visual design
 
-      li(ng-if="!vm.isOtherPlatform")
+      li
         button.clean(scroll-element="project-details-development") development
 
   ul.requirements.flex-grow(ng-hide="vm.loading")
@@ -121,14 +121,14 @@ loader(ng-show="vm.loading")
       include details/setup
 
     li(id="project-details-requirements" ng-if="vm.isOtherPlatform")
-      include detais/requirements
+      include details/requirements
 
-    li(id="project-details-features" ng-if="!vm.isOtherPlatform")
+    li(id="project-details-features")
       include details/features
 
-    li(id="project-details-design" ng-if="!vm.isOtherPlatform")
+    li(id="project-details-design")
       include details/design
 
-    li(id="project-details-development" ng-if="!vm.isOtherPlatform")
+    li(id="project-details-development")
       include details/development
 
